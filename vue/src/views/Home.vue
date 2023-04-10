@@ -1,8 +1,7 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
-     <div class="restaurant-cards">
+  <div>
+    <h1>Marg Spots</h1>
+    <div class="restaurant-list">
       <RestaurantCard
         v-for="restaurant in restaurants"
         :key="restaurant.id"
@@ -17,14 +16,25 @@
 import RestaurantCard from '../components/RestaurantCard.vue';
 
 export default {
-  name: "Home",
+  name: 'RestaurantList',
   components: {
     RestaurantCard,
   },
+  data() {
+    return {
+      restaurants: [
+        {
+          id: 1,
+          name: "Example Restaurant 1",
+          address: "123 Main St",
+        },
+        {
+          id: 2,
+          name: "Example Restaurant 2",
+          address: "456 Elm St",
+        },
+      ],
+    };
+  },
 };
 </script>
-
-<style scoped>
-
-
-</style>
