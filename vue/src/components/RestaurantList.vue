@@ -1,14 +1,6 @@
 <template>
   <div>
      <h1>Marg Spots</h1> 
-      <div class="restaurant-cards">
-        <RestaurantCard
-          v-for="restaurant in restaurants"
-          :key="restaurant.id"
-          :name="restaurant.name"
-          :address="restaurant.address"
-        />
-      </div>
        <div class="restaurant-cards">
       <restaurant-card
         v-for="restaurant in restaurants"
