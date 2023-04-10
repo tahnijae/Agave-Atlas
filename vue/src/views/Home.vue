@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-    <h1>lit Ass Margs</h1>
-    
+  <div class="home">    
     <restraunt-list/>
   </div>
 </template>

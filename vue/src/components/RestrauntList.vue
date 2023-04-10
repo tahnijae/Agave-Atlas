@@ -1,16 +1,17 @@
 <template>
   <div>
      <h1>Marg Spots</h1> 
-    
+        <restaurant-card></restaurant-card>
   
   </div>
 </template>
 
 <script>
+import RestaurantCard from './RestaurantCard.vue'
 
 export default {
-    name: "restraunt-list",
-    components: {  }
+    name: "restaurant-list",
+    components: {RestaurantCard  }
 
 }
 </script>
