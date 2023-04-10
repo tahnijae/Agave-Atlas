@@ -15,12 +15,15 @@
       />
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
   
 =======
 >>>>>>> 7ef97faae30eda6e56895e3fcb37b66e3ecab583
 >>>>>>> a6179ecc9d07612aca2692008aadd81c94f43497
+=======
+>>>>>>> fe79f01f261479b7c3cdc186419094911fbc7c44
   </div>
 </template>
 

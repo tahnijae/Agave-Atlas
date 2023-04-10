@@ -1,12 +1,37 @@
 <template>
-  <h1>Logout</h1>
+  <div id= "logout">
+    <h1>Logout</h1>
+    <div v-if="isAuthenticated">
+      <p>You have successfully logged out.</p>
+      <router-link to="/login">Click here to log back in.</router-link>
+    </div>
+    <div v-else>
+      <p>You are not currently logged in.</p>
+      <router-link to="/login">Click here to log in.</router-link>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
+  name: "Logout",
+  data() {
+    return {
+      isAuthenticated: false,
+    };
+  },
   created() {
+    this.isAuthenticated = this.$store.state.token !== "";
     this.$store.commit("LOGOUT");
-    this.$router.push("/login");
-  }
+  },
 };
 </script>
+<style>
+#logout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+</style>
