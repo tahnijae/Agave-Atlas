@@ -1,5 +1,15 @@
 <template>
   <div>
+    <nav>
+  <router-link to="/"></router-link>
+  <span v-if="isAuthenticated">
+    <router-link to="/logout"></router-link>
+  </span>
+  <span v-else-if="$route.name != 'login'">
+    <router-link to="/login"></router-link>
+  </span>
+</nav>
+
     <h1>Marg Spots</h1>
     <div class="restaurant-list">
       <RestaurantCard
@@ -9,23 +19,20 @@
         :address="restaurant.address"
       />
     </div>
-    <router-link to="/login">Back to Login</router-link>
   </div>
 </template>
 
 <script>
 import RestaurantCard from '../components/RestaurantCard.vue';
 
-
-
 export default {
-  name: 'RestaurantList',
+  name: 'Home',
   components: {
     RestaurantCard
-    
   },
   data() {
     return {
+      isAuthenticated: false, // Set to false by default
       restaurants: [
         {
           id: 1,
@@ -40,18 +47,8 @@ export default {
       ],
     };
   },
+  created() {
+    this.isAuthenticated = this.$store.state.token !== '';
+  }
 };
 </script>
-
-<style>
-
-html{
-  background-color: #dcf1d0;
-}
-body{
-  background: white;
-}
-.restaurant-list div{
-  border-radius: 15px;
-}
-</style>
