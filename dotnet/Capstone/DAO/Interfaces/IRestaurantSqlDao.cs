@@ -9,6 +9,6 @@ namespace Capstone.DAO.Interfaces
         public IList<Restaurant> GetRestaurantsByZipCode(string zipcode);
         public Restaurant GetRestaurantByID(int ID);
 
-        public List<Restaurant> GetAllRestaurants();
+        
     }
 }

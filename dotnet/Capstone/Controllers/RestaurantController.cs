@@ -5,11 +5,13 @@ using Capstone.Security;
 using Capstone.DAO.Interfaces;
 using System.Collections.Generic;
 using Capstone.DAO;
+using Microsoft.AspNetCore.Cors;
 
 namespace Capstone.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
+    [EnableCors]
     public class RestaurantController : ControllerBase
     {
         private readonly IRestaurantSqlDao restaurantDao;

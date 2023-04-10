@@ -1,27 +1,30 @@
 <template>
   <div>
-     <h1>Marg Spots</h1> 
+     
        <div class="restaurant-cards">
       <restaurant-card
         v-for="restaurant in restaurants"
-        :key="restaurant.id"
-        :name="restaurant.name"
-        :address="restaurant.address"
+        v-bind:key="restaurant.id"
+        v-bind:restaurant = restaurant
       />
     </div>
-<<<<<<< HEAD
-  
-=======
->>>>>>> 7ef97faae30eda6e56895e3fcb37b66e3ecab583
   </div>
 </template>
 
 <script>
 import RestaurantCard from './RestaurantCard.vue'
+import RestaurantService from '../services/RestaurantService.js'
 
 export default {
     name: "restaurant-list",
-    components: { RestaurantCard }
+    components: { RestaurantCard },
+    computed: {
+      
+    },
+    created(){
+      RestaurantService.getRestaurants().then((response) =>
+      {this.restaurants = response.data})
+    }
 }
 </script>
 

@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const http = axios.create({
-    baseURL: "http://localhost:3000"
+    baseURL: "http://localhost:44351"
 });
 
 export default {
     getRestaurants() {
-        return http.get('/restaurants');
+        return http.get('/');
     },
 
     getRestaurant(id) {
