@@ -1,10 +1,10 @@
 <template>
   <div class="card">
       <div class="card-header">
-          <h2> {{name}} </h2>
+          <h2> {{ restaurant.name}} </h2>
       </div>
       <div class = "card-body">
-          <p>{{address}}</p>
+          <p>{{restaurant.address}}</p>
       </div>
   </div>
 </template>
@@ -17,6 +17,19 @@ export default {
         address: String
     
     },
+    data(){
+      return{
+        restaurant:{
+          name : 'test',
+          address : 'test',
+        },
+        
+      }
+
+    },
+    created(){
+      
+    }
 };
 </script>
 

@@ -15,10 +15,13 @@
 <script>
 import RestaurantCard from '../components/RestaurantCard.vue';
 
+
+
 export default {
   name: 'RestaurantList',
   components: {
-    RestaurantCard,
+    RestaurantCard
+    
   },
   data() {
     return {
