@@ -24,7 +24,12 @@ export default {
 };
 </script>
 
-<style scoped>
 
-
+<style>
+html{
+  background-color: #dcf1d0;
+}
+body{
+  background: white;
+}
 </style>
