@@ -1,32 +1,43 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
-     <restraunt-list/>
-     <restaurant-card/>
+  <div>
+    <h1>Marg Spots</h1>
+    <div class="restaurant-list">
+      <RestaurantCard
+        v-for="restaurant in restaurants"
+        :key="restaurant.id"
+        :name="restaurant.name"
+        :address="restaurant.address"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import RestaurantCard from '../components/RestaurantCard.vue';
-import RestrauntList from '../components/RestaurantList.vue';
+
 
 
 export default {
-  name: "Home",
+  name: 'RestaurantList',
   components: {
-    RestrauntList,
     RestaurantCard
     
   },
+  data() {
+    return {
+      restaurants: [
+        {
+          id: 1,
+          name: "Example Restaurant 1",
+          address: "123 Main St",
+        },
+        {
+          id: 2,
+          name: "Example Restaurant 2",
+          address: "456 Elm St",
+        },
+      ],
+    };
+  },
 };
 </script>
-
-
-<style>
-html{
-  background-color: #dcf1d0;
-}
-body{
-  background: white;
-}
-</style>

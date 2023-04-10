@@ -43,7 +43,7 @@ export default {
 }
 
 .card-header {
-  background-color: #f7f7f7;
+  background-color: #7bc950;
   border-bottom: 1px solid #eaeaea;
   padding: 10px;
 }
