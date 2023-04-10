@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using Capstone.DAO.Interfaces;
 using Capstone.Models;
 using Capstone.Security;
 using Capstone.Security.Models;
