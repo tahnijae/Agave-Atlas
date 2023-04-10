@@ -1,25 +1,22 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
-     <div class="restaurant-cards">
-      <RestaurantCard
-        v-for="restaurant in restaurants"
-        :key="restaurant.id"
-        :name="restaurant.name"
-        :address="restaurant.address"
-      />
-    </div>
+     <restraunt-list/>
+     <restaurant-card/>
   </div>
 </template>
 
 <script>
 import RestaurantCard from '../components/RestaurantCard.vue';
+import RestrauntList from '../components/RestaurantList.vue';
+
 
 export default {
   name: "Home",
   components: {
-    RestaurantCard,
+    RestrauntList,
+    RestaurantCard
+    
   },
 };
 </script>
