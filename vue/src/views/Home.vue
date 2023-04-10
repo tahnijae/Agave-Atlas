@@ -9,6 +9,7 @@
         :address="restaurant.address"
       />
     </div>
+    <router-link to="/login">Back to Login</router-link>
   </div>
 </template>
 
