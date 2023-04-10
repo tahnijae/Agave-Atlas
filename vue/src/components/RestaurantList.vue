@@ -1,6 +1,16 @@
 <template>
   <div>
      <h1>Marg Spots</h1> 
+<<<<<<< HEAD:vue/src/components/RestaurantList.vue
+      <div class="restaurant-cards">
+        <RestaurantCard
+          v-for="restaurant in restaurants"
+          :key="restaurant.id"
+          :name="restaurant.name"
+          :address="restaurant.address"
+        />
+      </div>
+=======
        <div class="restaurant-cards">
       <restaurant-card
         v-for="restaurant in restaurants"
@@ -10,6 +20,7 @@
       />
     </div>
   
+>>>>>>> e07fb8bb67bc7d1cbb06b18e36f3e98c9a547317:vue/src/components/RestrauntList.vue
   </div>
 </template>
 
@@ -18,10 +29,14 @@ import RestaurantCard from './RestaurantCard.vue'
 
 export default {
     name: "restaurant-list",
-    components: {RestaurantCard  }
-
+    components: { RestaurantCard }
 }
 </script>
+
+<style>
+  /* Style for restaurant list */
+</style>
+
 
 <style>
 div.main {
