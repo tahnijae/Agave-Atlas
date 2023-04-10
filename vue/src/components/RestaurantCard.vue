@@ -19,10 +19,12 @@ export default {
     },
     data(){
       return{
-        restaurant:{
+        restaurant:
+          {
           name : 'test',
           address : 'test',
         },
+        
         
       }
 

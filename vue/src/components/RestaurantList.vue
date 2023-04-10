@@ -1,13 +1,8 @@
 <template>
-  <div>
-     <h1>Marg Spots</h1> 
-       <div class="restaurant-cards">
-      <restaurant-card
-        v-for="restaurant in restaurants"
-        :key="restaurant.id"
-        :name="restaurant.name"
-        :address="restaurant.address"
-      />
+  <div> 
+       <div >
+        <restaurant-card class="restaurant-cards" v-for="restaurant in restaurants"
+        :key="restaurant.id"/>
     </div>
   </div>
 </template>
@@ -17,7 +12,8 @@ import RestaurantCard from './RestaurantCard.vue'
 
 export default {
     name: "restaurant-list",
-    components: { RestaurantCard }
+    components: { RestaurantCard },
+    props:[ 'restaurant' ]
 }
 </script>
 
@@ -54,5 +50,9 @@ div.main div.well-display div.well span.amount {
 
 div.main div.well-display div.well {
   cursor: pointer;
+}
+.restaurant-cards{
+  border-style: solid;
+  border-color: black;
 }
 </style>
