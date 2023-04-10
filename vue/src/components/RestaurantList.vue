@@ -18,7 +18,8 @@ import RestaurantCard from './RestaurantCard.vue'
 
 export default {
     name: "restaurant-list",
-    components: {RestaurantCard  }
+    components: {RestaurantCard  },
+    
 
 }
 </script>
