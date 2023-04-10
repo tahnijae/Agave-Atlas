@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Capstone.DAO.Interfaces
 {
-    public interface IRestaurantDao
+    public interface IRestaurantSqlDao
     {
         public IList<Restaurant> GetAllRestaurants();
         public IList<Restaurant> GetRestaurantsByZipCode(string zipcode);
