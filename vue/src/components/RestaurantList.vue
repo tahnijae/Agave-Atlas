@@ -9,10 +9,6 @@
         :address="restaurant.address"
       />
     </div>
-<<<<<<< HEAD
-  
-=======
->>>>>>> 7ef97faae30eda6e56895e3fcb37b66e3ecab583
   </div>
 </template>
 
