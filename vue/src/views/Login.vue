@@ -1,5 +1,8 @@
 <template>
   <div id="login">
+    <div class="title-container">
+      <h1 class="title">Welcome to Marg Spots!</h1>
+    </div>
     <form @submit.prevent="login">
       <h1 >Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
@@ -68,4 +71,25 @@ export default {
 label {
   margin-right: 0.5rem;
 }
+#login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.title-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+
 </style>
