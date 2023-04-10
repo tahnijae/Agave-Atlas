@@ -5,8 +5,8 @@ namespace Capstone.DAO.Interfaces
 {
     public interface IRestaurantDao
     {
+        public IList<Restaurant> GetAllRestaurants();
+        public IList<Restaurant> GetRestaurantsByZipCode(string zipcode);
         public Restaurant GetRestaurantByID(int ID);
-
-        public List<Restaurant> GetAllRestaurants();
     }
 }
