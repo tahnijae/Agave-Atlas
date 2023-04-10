@@ -7,7 +7,7 @@ using System.Security.Cryptography.Xml;
 
 namespace Capstone.DAO
 {
-    public class RestaurantSqlDao : IRestaurantDao
+    public class RestaurantSqlDao : IRestaurantSqlDao
     {
 
         private readonly string connectionString;
