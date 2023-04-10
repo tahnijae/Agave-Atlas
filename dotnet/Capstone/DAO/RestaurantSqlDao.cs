@@ -1,12 +1,4 @@
 ﻿using Capstone.DAO.Interfaces;
-<<<<<<< HEAD
-
-namespace Capstone.DAO
-{
-    public class RestaurantSqlDao /*: IRestaurantDao*/
-    {
-
-=======
 using Capstone.Models;
 using System;
 using System.Collections.Generic;
@@ -116,6 +108,5 @@ namespace Capstone.DAO
         return restaurant;
     }
 
->>>>>>> 65e663621f30135af884833261caa66dc2452fbf
     }
 }
