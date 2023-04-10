@@ -20,11 +20,15 @@ export default {
     data(){
       return{
         restaurant:{
-          name : '',
-          address : '',
+          name : 'test',
+          address : 'test',
         },
         
       }
+
+    },
+    created(){
+      
     }
 };
 </script>
