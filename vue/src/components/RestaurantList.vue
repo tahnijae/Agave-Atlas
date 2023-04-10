@@ -1,8 +1,8 @@
 <template>
   <div> 
-       <div >
-        <restaurant-card class="restaurant-cards" v-for="restaurant in restaurants"
-        :key="restaurant.id"/>
+       <div class="restaurant-cards" v-for="restaurant in restaurants"
+        :key="restaurant.id">
+        <restaurant-card/>
     </div>
   </div>
 </template>
@@ -13,46 +13,24 @@ import RestaurantCard from './RestaurantCard.vue'
 export default {
     name: "restaurant-list",
     components: { RestaurantCard },
-    props:[ 'restaurant' ]
+    props:[ 'restaurant' ],
+    data(){
+      return{
+      restaurants:[
+        {
+          name : 'test',
+          address : 'test',
+        },
+        {
+          name : 'test',
+          address : 'test',
+        },
+      ]
+    }
+    }
 }
 </script>
 
 <style>
   /* Style for restaurant list */
-</style>
-
-
-<style>
-div.main {
-  margin: 1rem 0;
-}
-div.main div.well-display {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1rem;
-}
-
-div.main div.well-display div.well {
-  display: inline-block;
-  width: 15%;
-  border: 1px black solid;
-  border-radius: 6px;
-  text-align: center;
-  margin: 0.25rem;
-  padding: 0.25rem;
-}
-
-div.main div.well-display div.well span.amount {
-  color: darkslategray;
-  display: block;
-  font-size: 2.5rem;
-}
-
-div.main div.well-display div.well {
-  cursor: pointer;
-}
-.restaurant-cards{
-  border-style: solid;
-  border-color: black;
-}
 </style>

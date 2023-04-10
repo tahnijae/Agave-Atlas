@@ -1,22 +1,19 @@
 <template>
   <div class="card">
       <div class="card-header">
-          <h2> {{ restaurant.name}} </h2>
+          <h2> {{name}} </h2>
       </div>
       <div class = "card-body">
-          <p>{{restaurant.address}}</p>
+          <p>{{address}}</p>
       </div>
   </div>
 </template>
 
 <script>
+
 export default {
     name: "restaurant-card",
-    props: {
-        name: String,
-        address: String
-    
-    },
+    props: ['restaurants','name','address'],
     data(){
       return{
         restaurant:
