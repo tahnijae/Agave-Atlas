@@ -11,7 +11,7 @@
 
 <script>
 export default {
-    name: "RestaurantCard",
+    name: "restaurant-card",
     props: {
         name: String,
         address: String
