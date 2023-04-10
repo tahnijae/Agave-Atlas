@@ -9,6 +9,14 @@
           :address="restaurant.address"
         />
       </div>
+       <div class="restaurant-cards">
+      <restaurant-card
+        v-for="restaurant in restaurants"
+        :key="restaurant.id"
+        :name="restaurant.name"
+        :address="restaurant.address"
+      />
+    </div>
   </div>
 </template>
 

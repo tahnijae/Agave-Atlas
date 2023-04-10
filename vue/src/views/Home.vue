@@ -9,6 +9,7 @@
         :address="restaurant.address"
       />
     </div>
+    <router-link to="/login">Back to Login</router-link>
   </div>
 </template>
 
@@ -41,3 +42,16 @@ export default {
   },
 };
 </script>
+
+<style>
+
+html{
+  background-color: #dcf1d0;
+}
+body{
+  background: white;
+}
+.restaurant-list div{
+  border-radius: 15px;
+}
+</style>
