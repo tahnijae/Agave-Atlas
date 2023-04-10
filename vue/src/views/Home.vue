@@ -41,3 +41,16 @@ export default {
   },
 };
 </script>
+
+<style>
+
+html{
+  background-color: #dcf1d0;
+}
+body{
+  background: white;
+}
+.restaurant-list div{
+  border-radius: 15px;
+}
+</style>
