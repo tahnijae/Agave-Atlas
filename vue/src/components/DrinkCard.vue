@@ -1,7 +1,14 @@
 <template>
-  <div>
-      <h1>{{drink.name}}</h1>
+  <div class = "card">
+      <div class = "card-header">
+      <h2>{{drink.name}}</h2>
+      </div>
+      <div class = "card-body">
       <p>{{drink.description}}</p>
+      </div>
+      <div v-if="drink.isFrozen">
+          <p>It's Frozen!</p>
+      </div>
   </div>
 </template>
 
@@ -12,5 +19,27 @@ props: ["drink"]
 </script>
 
 <style>
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
 
+h2{
+  text-align: center;
+}
+
+.card-header {
+  background-color: #7bc950;
+  border-bottom: 1px solid #eaeaea;
+  padding: 10px;
+}
+
+.card-body {
+  padding: 10px;
+}
 </style>

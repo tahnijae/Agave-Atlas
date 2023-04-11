@@ -26,6 +26,6 @@ export default {
     },
 
     getDrinksByRestaurant(id){
-        return http.get(`restaurant/drink/${id}`);
+        return http.get(`restaurant/${id}/drinks`);
     }
 }

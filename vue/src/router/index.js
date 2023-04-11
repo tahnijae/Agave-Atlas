@@ -55,8 +55,13 @@ const router = new Router({
       }
     },
     {
-      path: "/drink",
-      name:"drink",
+      path: "/restaurant/:id/drinks",
+      name:"drink-list",
+      component: DrinkList
+    },
+    {
+      path: "/drinks",
+      name:"all-drinks",
       component: DrinkList
     }
   ]

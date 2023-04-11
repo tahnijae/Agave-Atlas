@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" v-on:click="seeDrinks(restaurant.restaurant_ID)">
       <div class="card-header">
           <h2> {{restaurant.name}} </h2>
       </div>
@@ -19,7 +19,12 @@ export default {
 
       }
 
-    },
+    },methods:{
+    seeDrinks(id){
+      
+      this.$router.push(`/restaurant/${id}/drinks`);
+    }
+  },
     created(){
       
     }
