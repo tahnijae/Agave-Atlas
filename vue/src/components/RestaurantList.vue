@@ -1,45 +1,37 @@
 <template>
-  <div> 
-       <div class="restaurant-cards" v-for="restaurant in restaurants"
-        :key="restaurant.id">
-      <div class="card">
-      <div class="card-header">
-          <h2> {{restaurant.name}} </h2>
-      </div>
-      <div class = "card-body">
-          <p>{{restaurant.address}}</p>
-      </div>
+  <div>
+     
+       <div class="restaurant-cards">
+      <restaurant-card
+        v-for="restaurant in restaurants"
+        v-bind:key="restaurant.id"
+        v-bind:restaurant = restaurant
+      />
     </div>
   </div>
-  </div>
+
 </template>
 
 <script>
-//import RestaurantCard from './RestaurantCard.vue'
-import restaurantService from '../services/RestaurantService'
+import RestaurantCard from '../components/RestaurantCard.vue'
+import RestaurantService from '../services/RestaurantService.js'
 
 export default {
     name: "restaurant-list",
-    //components: { RestaurantCard },
-    props:[ 'restaurant' ],
-    data(){
-      return{
-      restaurants:[
-        {
-          name : 'test',
-          address : 'test',
-        },
-        {
-          name : 'test2',
-          address : 'test2',
-        },
-      ]
-    }
+    components: { RestaurantCard },
+    data () {
+      return {
+        restaurants: [],
+      }
+    },
+    computed: {
+      
     },
     created(){
-      restaurantService.getRestaurants().then((response)=>{
-        this.restaurants=response.data;
-      })
+      RestaurantService.getRestaurants().then((response) =>
+      {this.restaurants = response.data})
+      .catch(error =>
+      {if(error){ console.log(error);}})
     }
 }
 </script>

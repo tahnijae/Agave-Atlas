@@ -13,6 +13,7 @@
 
 export default {
     name: "restaurant-card",
+<<<<<<< HEAD
     props: ['restaurants','name','address'],
     data(){
       return{
@@ -23,6 +24,11 @@ export default {
         },
         
         
+=======
+    props: ["restaurant"],
+    data(){
+      return{
+>>>>>>> b81d695749e427b31e22252e07cd965808adce24
       }
 
     },
