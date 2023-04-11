@@ -9,10 +9,10 @@
       >&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'login' }" v-if="this.$store.state.token == ''"
         >Login</router-link
-      >&nbsp;&nbsp;
+      >&nbsp;|&nbsp;
       <router-link v-if="this.$store.state.token !== ''" v-bind:to="{ name: 'logout' }"
         >Logout</router-link
-      >&nbsp;|&nbsp;
+      >
       <router-link v-if="this.$store.state.token == ''" v-bind:to="{ name: 'register' }"
         >Register</router-link
       >
