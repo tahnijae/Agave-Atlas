@@ -1,11 +1,10 @@
 <template>
   <div>
-     
-       <div class="restaurant-cards">
+    <div class="restaurant-cards">
       <restaurant-card
         v-for="restaurant in restaurants"
         v-bind:key="restaurant.id"
-        v-bind:restaurant = restaurant
+        v-bind:restaurant="restaurant"
       />
     </div>
   </div>
@@ -13,36 +12,54 @@
 </template>
 
 <script>
-import RestaurantCard from '../components/RestaurantCard.vue'
-import RestaurantService from '../services/RestaurantService.js'
+import RestaurantCard from "./RestaurantCard.vue";
+import RestaurantService from "../services/RestaurantService.js";
 
 export default {
-    name: "restaurant-list",
-    components: { RestaurantCard },
-    data () {
-      return {
-        restaurants: [],
-      }
-    },
-    computed: {
-      
-    },
-    created(){
-      RestaurantService.getRestaurants().then((response) =>
-      {this.restaurants = response.data})
-      .catch(error =>
-      {if(error){ console.log(error);}})
-    }
-}
+  name: "restaurant-list",
+  components: { RestaurantCard },
+  data() {
+    return {
+      restaurants: [],
+    };
+  },
+  computed: {},
+  created() {
+    RestaurantService.getRestaurants()
+      .then((response) => {
+        this.restaurants = response.data;
+      })
+      .catch((error) => {
+        if (error) {
+          console.log(error);
+        }
+      });
+  },
+};
 </script>
 
 <style>
-  .card {
-  background-color: #fff;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+/* Style for restaurant list */
+</style>
+
+<style>
+div.main {
+  margin: 1rem 0;
+}
+div.main div.well-display {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+div.main div.well-display div.well {
+  display: inline-block;
+  width: 15%;
+  border: 1px black solid;
+  border-radius: 6px;
+  text-align: center;
+  margin: 0.25rem;
+  padding: 0.25rem;
 }
 
 .card-header {
