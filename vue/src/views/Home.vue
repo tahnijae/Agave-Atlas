@@ -13,6 +13,7 @@
     <div class="restaurant-list">
       <restaurant-list/>
     </div>
+    
   </div>
 </template>
 
