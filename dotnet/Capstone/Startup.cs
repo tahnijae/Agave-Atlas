@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Capstone.DAO;
 using Capstone.Security;
 using Capstone.DAO.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Capstone
 {
@@ -25,6 +26,7 @@ namespace Capstone
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddControllers();
 
             services.AddCors(options =>
@@ -32,10 +34,13 @@ namespace Capstone
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
                     });
             });
-
+            
             string connectionString = Configuration.GetConnectionString("Project");
 
             // configure jwt authentication
@@ -74,21 +79,23 @@ namespace Capstone
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors();
+           
             app.UseAuthentication();
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseCors();
-
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            
         }
     }
 }
