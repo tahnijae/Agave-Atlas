@@ -1,21 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-if="!isAuthenticated" v-bind:to="{ name: 'home' }"
-        >Home</router-link
-      >&nbsp;|&nbsp;
-      <router-link v-if="isAuthenticated" v-bind:to="{ name: 'home' }"
-        >Home</router-link
-      >&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'login' }" v-if="!isAuthenticated"
-        >Login</router-link
-      >&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="isAuthenticated"
-        >Logout</router-link
-      >&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'register' }" v-if="!isAuthenticated"
-        >Register</router-link
-      >
+      <router-link v-if="!isAuthenticated" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+      <router-link v-if="isAuthenticated" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'login' }" v-if="!isAuthenticated">Login</router-link>&nbsp;|&nbsp;
     </div>
     <router-view />
   </div>
