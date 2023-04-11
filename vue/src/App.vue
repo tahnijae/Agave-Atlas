@@ -13,7 +13,7 @@
       <router-link v-if="this.$store.state.token !== ''" v-bind:to="{ name: 'logout' }"
         >Logout</router-link
       >&nbsp;|&nbsp;
-      <router-link v-if="!isAuthenticated" v-bind:to="{ name: 'register' }"
+      <router-link v-if="this.$store.state.token == ''" v-bind:to="{ name: 'register' }"
         >Register</router-link
       >
     </div>
