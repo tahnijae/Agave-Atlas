@@ -36,5 +36,28 @@ namespace Capstone.Controllers
             }
             return Ok(restaurants);
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<Restaurant> GetRestaurantById(int id)
+        {
+            Restaurant restaurant = restaurantDao.GetRestaurantByID(id);
+            if (restaurant == null)
+            {
+                return NoContent();
+            }
+            return Ok(restaurant);
+        }
+
+        [HttpGet("zipcode/{zip_code}")]
+        public ActionResult<IList<Restaurant>> GetRestaurantByZipcode(string zip_code)
+        {
+            IList<Restaurant> restaurants = restaurantDao.GetRestaurantsByZipCode(zip_code);
+            if (restaurants.Count == 0)
+            {
+                return NoContent();
+            }
+            return Ok(restaurants);
+        }
+
     }
 }
