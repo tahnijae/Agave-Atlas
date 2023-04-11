@@ -13,14 +13,11 @@
     <h1>Marg Spots</h1>
       <restaurant-list/>
     </div>
-    
   </div>
 </template>
-
 <script>
 import RestaurantList from '../components/RestaurantList.vue';
 import authService from '../services/AuthService.js'
-
 export default {
   name: 'Home',
   components: {
@@ -55,7 +52,6 @@ export default {
   }
 };
 </script>
-
 <style scoped>
 .restaurant-list{
   text-align: center;
