@@ -39,7 +39,13 @@ export default {
 </script>
 
 <style>
-/* Style for restaurant list */
+.restaurant-cards{
+  display:flex;
+  flex-direction: column;
+  
+  
+  
+}
 </style>
 
 <style>

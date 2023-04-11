@@ -1,10 +1,10 @@
 <template>
   <div class="card">
       <div class="card-header">
-          <h2> {{name}} </h2>
+          <h2> {{restaurant.name}} </h2>
       </div>
       <div class = "card-body">
-          <p>{{address}}</p>
+          <p>{{restaurant.address}}</p>
       </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
     props: ["restaurant"],
     data(){
       return{
-        
+
       }
 
     },
@@ -28,11 +28,17 @@ export default {
 
 <style scoped>
 .card {
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   border: 1px solid #eaeaea;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+}
+
+h2{
+  text-align: center;
 }
 
 .card-header {
