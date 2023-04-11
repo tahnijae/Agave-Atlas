@@ -9,6 +9,10 @@
         <!-- <router-link to="/logout" @click="logout">Logout</router-link> -->
       </span>
     </nav>
+    <div class='banner'>
+      <page-banner/>
+    </div>
+    
     <div class="restaurant-list">
       <h1>Marg Spots</h1>
       <restaurant-list />
@@ -16,13 +20,16 @@
   </div>
 </template>
 <script>
+import PageBanner from '../components/PageBanner.vue'
 import RestaurantList from "../components/RestaurantList.vue";
 import authService from "../services/AuthService.js";
 export default {
   name: "Home",
   components: {
     RestaurantList,
+    PageBanner
   },
+  
   data() {
     return {
       isAuthenticated: false, // Set to false by default
@@ -58,8 +65,17 @@ export default {
   margin: auto;
   width: 50%;
 }
-.main{
-  background-color: #A0B4BA;
+.banner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  background-color: #dcf1d0;
+  border-style:solid;
+  border-color:black;
+  border-radius: 15px;
+
 }
+
 
 </style>
