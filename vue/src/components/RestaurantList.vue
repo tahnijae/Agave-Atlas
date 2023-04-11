@@ -18,12 +18,19 @@ import RestaurantService from '../services/RestaurantService.js'
 export default {
     name: "restaurant-list",
     components: { RestaurantCard },
+    data () {
+      return {
+        restaurants: [],
+      }
+    },
     computed: {
       
     },
     created(){
       RestaurantService.getRestaurants().then((response) =>
       {this.restaurants = response.data})
+      .catch(error =>
+      {if(error){ console.log(error);}})
     }
 }
 </script>

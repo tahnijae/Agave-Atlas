@@ -6,12 +6,13 @@ using Capstone.DAO.Interfaces;
 using System.Collections.Generic;
 using Capstone.DAO;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Capstone.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    [EnableCors]
+    
     public class RestaurantController : ControllerBase
     {
         private readonly IRestaurantSqlDao restaurantDao;
@@ -24,6 +25,7 @@ namespace Capstone.Controllers
         }
 
         [HttpGet]
+        
         public ActionResult<IList<Restaurant>> GetAllRestaurants()
         {
             IList<Restaurant> restaurants = restaurantDao.GetAllRestaurants();

@@ -79,16 +79,16 @@ namespace Capstone
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors();
+           
             app.UseAuthentication();
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseCors();
-
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {
