@@ -25,10 +25,10 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(
-                        "SELECT * FROM restaurants", conn);
 
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM restaurants", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
+
                     while (reader.Read())
                     {
                         Restaurant restaurant = CreateRestaurantFromReader(reader);
@@ -79,7 +79,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM transfer WHERE id = @id", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM restaurants WHERE id = @id", conn);
                     cmd.Parameters.AddWithValue("@id", ID);
 
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -99,7 +99,7 @@ namespace Capstone.DAO
 
     public Restaurant CreateRestaurantFromReader(SqlDataReader sdr)
     {
-        Restaurant restaurant = new Restaurant
+        Restaurant restaurant = new Restaurant()
         {
             Restaurant_ID = Convert.ToInt32(sdr["id"]),
             Name = Convert.ToString(sdr["name"]),
