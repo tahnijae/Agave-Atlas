@@ -1,14 +1,14 @@
 <template>
   <div>
-    <!-- <nav> -->
-      <!-- <router-link to="/">Home</router-link>
+    <nav>
+      <router-link to="/">Home</router-link>
       <span v-if="!isAuthenticated">
-        <router-link to="login">Login</router-link>
+        <router-link to="/login" @click="login">Login</router-link>
       </span>
       <span v-else>
-        <router-link to="logout" v-on:click="logout">Logout</router-link>
+        <router-link to="/logout" @click="logout">Logout</router-link>
       </span>
-    </nav> -->
+    </nav>
 
     <h1>Marg Spots</h1>
     <div class="restaurant-list">
