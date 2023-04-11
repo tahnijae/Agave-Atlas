@@ -71,7 +71,7 @@ namespace Capstone.DAO
             return drinks;
         }
 
-        public Drink GetDrinkById() { return new Drink(); }
+        public Drink GetDrinkById(int drinkID) { return new Drink(); }
 
         private Drink CreateDrinkFromReader(SqlDataReader reader)
         {

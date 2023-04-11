@@ -39,13 +39,10 @@ namespace Capstone.Controllers
         [HttpGet("{id}")]
         public ActionResult<Drink> GetDrinkByDrinkId(int id)
         {
-            IList<Drink> drinks = drinkDao.GetDrinkById(id);
+            Drink drink = drinkDao.GetDrinkById(id);
 
-            if(drinks.Count == 0)
-            {
-                return NoContent();
-            }
-            return Ok(drinks);
+            
+            return Ok(drink);
         }
     }
 }

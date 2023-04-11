@@ -8,5 +8,7 @@ namespace Capstone.DAO.Interfaces
         IList<Drink> GetAllDrinks();
 
         IList<Drink> GetRestaurantDrinks(int restID);
+
+        Drink GetDrinkById(int drinkID);
     }
 }
