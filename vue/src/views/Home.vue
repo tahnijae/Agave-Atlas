@@ -9,11 +9,11 @@
         <router-link to="/logout" @click="logout">Logout</router-link>
       </span>
     </nav>
-
-    <h1>Marg Spots</h1>
     <div class="restaurant-list">
+    <h1>Marg Spots</h1>
       <restaurant-list/>
     </div>
+    
   </div>
 </template>
 
@@ -55,3 +55,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.restaurant-list{
+  text-align: center;
+  margin:auto;
+  width:50%;
+}
+</style>

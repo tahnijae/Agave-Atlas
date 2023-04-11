@@ -8,6 +8,7 @@
       />
     </div>
   </div>
+
 </template>
 
 <script>
@@ -38,7 +39,13 @@ export default {
 </script>
 
 <style>
-/* Style for restaurant list */
+.restaurant-cards{
+  display:flex;
+  flex-direction: column;
+  
+  
+  
+}
 </style>
 
 <style>
@@ -61,13 +68,13 @@ div.main div.well-display div.well {
   padding: 0.25rem;
 }
 
-div.main div.well-display div.well span.amount {
-  color: darkslategray;
-  display: block;
-  font-size: 2.5rem;
+.card-header {
+  background-color: #7bc950;
+  border-bottom: 1px solid #eaeaea;
+  padding: 10px;
 }
 
-div.main div.well-display div.well {
-  cursor: pointer;
+.card-body {
+  padding: 10px;
 }
 </style>
