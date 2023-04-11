@@ -12,24 +12,18 @@
 
     <h1>Marg Spots</h1>
     <div class="restaurant-list">
-      <RestaurantCard
-        v-for="restaurant in restaurants"
-        :key="restaurant.id"
-        :name="restaurant.name"
-        :address="restaurant.address"
-      />
+      <restaurant-list/>
     </div>
   </div>
 </template>
 
 <script>
-import RestaurantCard from '../components/RestaurantCard.vue';
-import authService from "../services/AuthService";
+import RestaurantList from '../components/RestaurantList.vue';
 
 export default {
   name: 'Home',
   components: {
-    RestaurantCard
+    RestaurantList
   },
   data() {
     return {
