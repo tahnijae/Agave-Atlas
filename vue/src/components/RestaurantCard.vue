@@ -16,6 +16,7 @@ export default {
     props: ["restaurant"],
     data(){
       return{
+        
       }
 
     },

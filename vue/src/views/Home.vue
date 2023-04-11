@@ -20,7 +20,7 @@
 
 <script>
 import RestaurantList from '../components/RestaurantList.vue';
-import authService from '../services/AuthService.js';
+import authService from '../services/AuthService.js'
 
 export default {
   name: 'Home',
