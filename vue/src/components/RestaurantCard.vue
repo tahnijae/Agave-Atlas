@@ -12,18 +12,9 @@
 <script>
 export default {
     name: "restaurant-card",
-    props: {
-        name: String,
-        address: String
-    
-    },
+    props: ["restaurant"],
     data(){
       return{
-        restaurant:{
-          name : 'test',
-          address : 'test',
-        },
-        
       }
 
     },

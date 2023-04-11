@@ -1,12 +1,10 @@
 <template>
   <div>
-    <h1>Marg Spots</h1>
     <div class="restaurant-cards">
       <restaurant-card
         v-for="restaurant in restaurants"
-        :key="restaurant.id"
-        :name="restaurant.name"
-        :address="restaurant.address"
+        v-bind:key="restaurant.id"
+        v-bind:restaurant="restaurant"
       />
     </div>
   </div>
@@ -14,10 +12,28 @@
 
 <script>
 import RestaurantCard from "./RestaurantCard.vue";
+import RestaurantService from "../services/RestaurantService.js";
 
 export default {
   name: "restaurant-list",
   components: { RestaurantCard },
+  data() {
+    return {
+      restaurants: [],
+    };
+  },
+  computed: {},
+  created() {
+    RestaurantService.getRestaurants()
+      .then((response) => {
+        this.restaurants = response.data;
+      })
+      .catch((error) => {
+        if (error) {
+          console.log(error);
+        }
+      });
+  },
 };
 </script>
 
