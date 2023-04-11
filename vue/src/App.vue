@@ -11,14 +11,14 @@
 
 <script>
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
       isAuthenticated: false, // Set to false by default
     };
   },
   created() {
-    this.isAuthenticated = this.$store.state.token !== '';
-  }
+    this.isAuthenticated = this.$store.state.token !== "";
+  },
 };
 </script>
