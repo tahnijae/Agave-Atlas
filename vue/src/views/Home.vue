@@ -9,7 +9,6 @@
     <router-link to="/login"></router-link>
   </span>
 </nav>
-
     <h1>Marg Spots</h1>
     <div class="restaurant-list">
       <RestaurantCard
