@@ -38,5 +38,11 @@ export default {
 </script>
 
 <style scoped>
+#app{
+  background-color: #A0B4BA;
+  border:0px;
+  margin:0px;
+  padding:5px;
+}
 
 </style>

@@ -4,7 +4,7 @@
           <h2> {{restaurant.name}} </h2>
       </div>
       <div class = "card-body">
-          <p>{{restaurant.address}}</p>
+          <p>{{restaurant.zipCode}}</p>
       </div>
   </div>
 </template>
