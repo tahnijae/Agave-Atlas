@@ -1,12 +1,7 @@
 <template>
   <div>
-<<<<<<< HEAD
     <h1>Marg Spots</h1>
     <div class="restaurant-cards">
-=======
-     <h1>Marg Spots</h1> 
-       <div class="restaurant-cards">
->>>>>>> a6179ecc9d07612aca2692008aadd81c94f43497
       <restaurant-card
         v-for="restaurant in restaurants"
         :key="restaurant.id"
@@ -14,16 +9,6 @@
         :address="restaurant.address"
       />
     </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-  
-=======
->>>>>>> 7ef97faae30eda6e56895e3fcb37b66e3ecab583
->>>>>>> a6179ecc9d07612aca2692008aadd81c94f43497
-=======
->>>>>>> fe79f01f261479b7c3cdc186419094911fbc7c44
   </div>
 </template>
 
