@@ -71,7 +71,32 @@ namespace Capstone.DAO
             return drinks;
         }
 
-        public Drink GetDrinkById(int drinkID) { return new Drink(); }
+        public Drink GetDrinkById(int drinkID) {
+            Drink drink = new Drink();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand($@"SELECT * FROM drinks
+                    WHERE drinks.id = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", drinkID);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        drink = CreateDrinkFromReader(reader);
+                    }
+                    
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error getting drink by ID");
+            }
+            return drink;
+        }
 
         private Drink CreateDrinkFromReader(SqlDataReader reader)
         {

@@ -23,5 +23,9 @@ export default {
 
     deleteRestaurant(id) {
         return http.delete(`restaurants/${id}`);
+    },
+
+    getDrinksByRestaurant(id){
+        return http.get(`restaurant/drink/${id}`);
     }
 }
