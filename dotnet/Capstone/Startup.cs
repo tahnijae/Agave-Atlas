@@ -70,6 +70,7 @@ namespace Capstone
             services.AddSingleton<IPasswordHasher>(ph => new PasswordHasher());
             services.AddTransient<IUserDao>(m => new UserSqlDao(connectionString));
             services.AddTransient<IRestaurantSqlDao>(m => new RestaurantSqlDao(connectionString));
+            services.AddTransient<IDrinkDao>(m => new DrinkSqlDao(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
