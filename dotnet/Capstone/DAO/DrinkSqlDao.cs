@@ -35,7 +35,7 @@ namespace Capstone.DAO
                     }
                 }
             }
-            catch(SqlException ex)
+            catch(SqlException)
             {
                 Console.WriteLine("Error getting drinks");
             }

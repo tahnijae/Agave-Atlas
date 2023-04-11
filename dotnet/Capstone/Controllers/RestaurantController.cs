@@ -17,15 +17,16 @@ namespace Capstone.Controllers
     {
         private readonly IRestaurantSqlDao restaurantDao;
         private readonly IUserDao userDao;
+        private readonly IDrinkDao drinkDao;
 
-        public RestaurantController(IRestaurantSqlDao restaurantDao, IUserDao userDao)
+        public RestaurantController(IRestaurantSqlDao restaurantDao, IUserDao userDao, IDrinkDao drinkDao)
         {
             this.restaurantDao = restaurantDao;
             this.userDao = userDao;
+            this.drinkDao = drinkDao;
         }
 
         [HttpGet]
-        
         public ActionResult<IList<Restaurant>> GetAllRestaurants()
         {
             IList<Restaurant> restaurants = restaurantDao.GetAllRestaurants();
@@ -59,5 +60,16 @@ namespace Capstone.Controllers
             return Ok(restaurants);
         }
 
+        [HttpGet("{id}/drinks")]
+        public ActionResult<IList<Drink>> GetDrinksForRestaurant(int id)
+        {
+            IList<Drink> drinks = drinkDao.GetRestaurantDrinks(id);
+
+            if (drinks.Count == 0)
+            {
+                return NoContent();
+            }
+            return Ok(drinks);
+        }
     }
 }
