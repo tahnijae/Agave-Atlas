@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class = 'main'>
     <nav>
       <router-link to="/">Home</router-link>
       <span v-if="!isAuthenticated">
@@ -62,4 +62,8 @@ export default {
   margin:auto;
   width:50%;
 }
+.main{
+  background-color: #A0B4BA;
+}
+
 </style>
