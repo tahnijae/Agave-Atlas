@@ -1,6 +1,6 @@
 <template>
   <div class='banner'>
-      <h1>What eva we goin call dis lolz</h1> 
+      <h1 class = 'pagename'>What eva we goin call dis lolz</h1> 
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .banner{
   display: flex;
   align-items: center;
@@ -21,6 +21,5 @@ export default {
   border-style:solid;
   border-color:black;
   border-radius: 15px;
-
 }
 </style>

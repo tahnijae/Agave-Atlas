@@ -40,4 +40,7 @@ export default {
   flex-direction: row;
   justify-content: center;
 }
+#app{
+  font-family:sans-serif;
+}
 </style>

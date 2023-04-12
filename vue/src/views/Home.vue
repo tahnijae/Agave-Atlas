@@ -56,12 +56,13 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 .restaurant-list {
   text-align: center;
   margin: auto;
   width: 50%;
 }
+
 
 
 
