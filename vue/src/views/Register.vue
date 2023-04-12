@@ -1,5 +1,11 @@
 <template>
   <div id="register">
+  <div class="corner top-left"><img src="../assets/spinning-lime-illo.gif" alt=""></div>
+  <div class="corner top-right"><img src="../assets/spinning-lime-illo.gif" alt=""></div>
+    <div class="corner bottom-right"><img src="../assets/spinning-lime-illo.gif" alt=""></div>
+      <div class="corner bottom-left"><img src="../assets/spinning-lime-illo.gif" alt=""></div>
+
+
   <div class="text-center">
       <h1 class="title">Welcome New User!</h1>
   </div>
@@ -104,6 +110,8 @@ label {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  
+  background:repeating-radial-gradient(circle at center, transparent, transparent 50%, #7bc950 50%, #7bc950 70%, transparent 70%);
 }
 .title{
   font-size: 2rem;
@@ -111,5 +119,25 @@ label {
   font-family: 'Helvetica Neue', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+  
+}
+.corner {
+  position: absolute;
+}
+.top-left {
+  top: 0;
+  left: 0;
+}
+.top-right {
+  top: 0;
+  right: 0;
+}
+.bottom-left {
+  bottom: 0;
+  left: 0;
+}
+.bottom-right {
+  bottom: 0;
+  right: 0;
 }
 </style>
