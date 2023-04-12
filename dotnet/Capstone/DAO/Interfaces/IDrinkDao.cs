@@ -10,5 +10,12 @@ namespace Capstone.DAO.Interfaces
         IList<Drink> GetRestaurantDrinks(int restID);
 
         Drink GetDrinkById(int drinkID);
+
+        Drink AddDrink(Drink drink);
+
+        Drink UpdateDrink(Drink newDrink);
+
+        void DeleteDrink(int drinkID);
     }
+
 }
