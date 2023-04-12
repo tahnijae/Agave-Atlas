@@ -71,5 +71,17 @@ namespace Capstone.Controllers
             }
             return Ok(drinks);
         }
+
+        [HttpPost("new")]
+        public ActionResult<Restaurant> AddRestaurantToDB(NewRestaurantInput newRestaurantInput)
+        {
+            Restaurant restaurant = restaurantDao.AddRestaurant(newRestaurantInput);
+            if (restaurant == null)
+            {
+                return NoContent();
+            }
+            return restaurant;
+        }
+
     }
 }

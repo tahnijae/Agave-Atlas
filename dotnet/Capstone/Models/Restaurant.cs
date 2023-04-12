@@ -11,4 +11,9 @@ namespace Capstone.Models
         //public List<Drink> Drinks { get; set; } - Took out for now since getting a restaurant from the database doesn't include
 
     }
+    public class NewRestaurantInput
+    {
+        public string Name { get; set; }
+        public string ZipCode { get; set; }
+    }
 }
