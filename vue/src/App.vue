@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }"
-        >Home</router-link
-      >
+      <!-- added click functionality that scrolls to top of page, but it doesn't work please fix, there is also a method at the bottom "scrollToTop"-->
+      <router-link v-bind:to="{ name: 'home' }" @click.prevent="scrollToTop">
+        Home
+      </router-link>
+      
       <!-- <router-link v-if="isAuthenticated" v-bind:to="{ name: 'home' }"
         > Home </router-link> -->
         &nbsp;|&nbsp;
@@ -33,6 +35,19 @@ export default {
   created() {
     this.isAuthenticated = this.$store.state.token !== "";
   },
+  methods:{
+     //this method is part of the scrollToTopfunctaionality at the top nav bar in template, it does not work, but maybe with some cool js and template powers, you can make it work
+    scrollToTop(){
+      if (this.$route.path === '/') {
+        window.scrollTo({
+          top:0,
+          behavior: "smooth",
+        });
+      } else {
+        this.$router.push({ name: 'home' });
+      }
+}
+  }
 };
 </script>
 <style scoped>

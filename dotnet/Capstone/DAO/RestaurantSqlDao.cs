@@ -122,6 +122,55 @@ namespace Capstone.DAO
         }
 
 
+        public Restaurant UpdateRestaurant(Restaurant inputRestaurant)
+        {
+            Restaurant restaurant = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("" +
+                        "UPDATE restaurants " +
+                        "SET name = @name, zip_code = @zip_code " +
+                        "WHERE restaurant_id = @restaurant_id;"
+                        , conn);
+                    cmd.Parameters.AddWithValue("@name", inputRestaurant.Name);
+                    cmd.Parameters.AddWithValue("@zip_code", inputRestaurant.ZipCode);
+                    cmd.Parameters.AddWithValue("@restaurant_id", inputRestaurant.Restaurant_ID);
+
+                    cmd.ExecuteNonQuery();
+                    restaurant = GetRestaurantByID(inputRestaurant.Restaurant_ID);
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error updating restaurant on the server");
+            }
+            return restaurant;
+        }
+
+
+        public void DeleteRestaurant(int restaurantID)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("DELETE FROM restaurants WHERE restaurant_id = @restaurant_id;"
+                        , conn);
+                    cmd.Parameters.AddWithValue("@restaurant_id", restaurantID);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error updating restaurant on the server");
+            }
+        }
+
         public Restaurant CreateRestaurantFromReader(SqlDataReader sdr)
     {
         Restaurant restaurant = new Restaurant()
