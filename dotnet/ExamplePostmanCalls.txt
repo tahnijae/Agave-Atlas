@@ -24,3 +24,20 @@ https://localhost:44315/restaurant/new
     "Name": "SuperMarg",
     "ZipCode": "44118"
 }
+
+
+## PUT:
+Update a restaurant:
+https://localhost:44315/restaurant/16
+{
+    "restaurant_ID": 16,
+    "Name": "MargMart",
+    "ZipCode": "44119"
+}
+
+
+
+
+## DELETES:
+Delete a restaurant:
+https://localhost:44315/restaurant/16
