@@ -1,11 +1,13 @@
 <template>
   <div>
+    <div>
+    <weather-output/>
+    </div>
     <div class="restaurant-cards" >
       <restaurant-card
         v-for="restaurant in restaurants"
         v-bind:key="restaurant.id"
         v-bind:restaurant="restaurant"
-        
       />
     </div>
   </div>
@@ -15,10 +17,11 @@
 <script>
 import RestaurantCard from "./RestaurantCard.vue";
 import RestaurantService from "../services/RestaurantService.js";
+import WeatherOutput from "./WeatherOutput.vue"
 
 export default {
   name: "restaurant-list",
-  components: { RestaurantCard },
+  components: { RestaurantCard, WeatherOutput },
   data() {
     return {
       restaurants: [],

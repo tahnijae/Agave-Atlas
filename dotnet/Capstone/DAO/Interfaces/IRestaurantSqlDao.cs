@@ -5,10 +5,11 @@ namespace Capstone.DAO.Interfaces
 {
     public interface IRestaurantSqlDao
     {
-        public IList<Restaurant> GetAllRestaurants();
-        public IList<Restaurant> GetRestaurantsByZipCode(string zipcode);
-        public Restaurant GetRestaurantByID(int ID);
+        IList<Restaurant> GetAllRestaurants();
+        IList<Restaurant> GetRestaurantsByZipCode(string zipcode);
+        Restaurant GetRestaurantByID(int ID);
+        Restaurant AddRestaurant(NewRestaurantInput inputRestaurant);
 
-        
+
     }
 }
