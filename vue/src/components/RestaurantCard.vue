@@ -40,7 +40,6 @@ export default {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
-  border-radius: 15px;
 }
 
 h2{
@@ -51,7 +50,6 @@ h2{
   background-color: #7bc950;
   border-bottom: 1px solid #eaeaea;
   padding: 10px;
-  border-radius: 15px;
 }
 
 .card-body {
