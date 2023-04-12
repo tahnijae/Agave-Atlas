@@ -45,26 +45,26 @@ DROP TABLE IF EXISTS restaurants;
 
 
 CREATE TABLE drinks (
-id int IDENTITY (1,1) NOT NULL,
+drink_id int IDENTITY (1,1) NOT NULL,
 drink_name VARCHAR (50) NOT NULL,
 description TEXT,
 isFrozen TINYINT NOT NULL,
-PRIMARY KEY (id)
+PRIMARY KEY (drink_id)
 );
 
 CREATE TABLE restaurants (
-id int IDENTITY (1,1) NOT NULL,
+restaurant_id int IDENTITY (1,1) NOT NULL,
 name VARCHAR (50) NOT NULL,
 zip_code VARCHAR(5) NOT NULL,
-PRIMARY KEY (id)
+PRIMARY KEY (restaurant_id)
 );
 
 CREATE TABLE restaurant_drinks (
 drink_id INT NOT NULL,
 restaurant_id INT NOT NULL,
 PRIMARY KEY (drink_id, restaurant_id),
-FOREIGN KEY (drink_id) REFERENCES drinks(id),
-FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+FOREIGN KEY (drink_id) REFERENCES drinks(drink_id),
+FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
 );
 COMMIT;
 GO
@@ -97,9 +97,9 @@ ROWTERMINATOR = ';'
 );
 
 
-SELECT drinks.id, drink_name, description FROM drinks 
-JOIN restaurant_drinks ON drinks.id = restaurant_drinks.drink_id
-JOIN restaurants ON restaurants.id = restaurant_drinks.restaurant_id
+SELECT drinks.drink_id, drink_name, description FROM drinks 
+JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
+JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
 WHERE name LIKE 'bar%' ;
 
 COMMIT;
