@@ -1,7 +1,9 @@
 <template>
-  <div id="register" class="text-center">
+  <div id="register">
+  <div class="text-center">
+      <h1 class="title">Welcome New User!</h1>
+  </div>
     <form @submit.prevent="register">
-      <h1>Welcome New User!</h1>
       <h1>Please Create A New Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
@@ -102,5 +104,12 @@ label {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+.title{
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
 }
 </style>

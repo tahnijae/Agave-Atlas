@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class = 'main'>
     <nav>
       <!-- <router-link to="/">Home</router-link> -->
       <span v-if="!isAuthenticated">
@@ -9,6 +9,7 @@
         <!-- <router-link to="/logout" @click="logout">Logout</router-link> -->
       </span>
     </nav>
+      <page-banner/>
     <div class="restaurant-list">
       <h1>Marg Spots</h1>
       <restaurant-list />
@@ -16,13 +17,16 @@
   </div>
 </template>
 <script>
+import PageBanner from '../components/PageBanner.vue'
 import RestaurantList from "../components/RestaurantList.vue";
 import authService from "../services/AuthService.js";
 export default {
   name: "Home",
   components: {
     RestaurantList,
+    PageBanner
   },
+  
   data() {
     return {
       isAuthenticated: false, // Set to false by default
@@ -58,4 +62,7 @@ export default {
   margin: auto;
   width: 50%;
 }
+
+
+
 </style>
