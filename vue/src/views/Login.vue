@@ -1,5 +1,10 @@
 <template>
   <div id="login">
+      <div class="corner top-left"><img src="../assets/marg_2.png" alt=""></div>
+  <div class="corner top-right"><img src="../assets/marg_2.png" alt=""></div>
+  <div class="corner bottom-left"><img src="../assets/marg_2.png" alt=""></div>
+  <div class="corner bottom-right"><img src="../assets/marg_2.png" alt=""></div>
+
     <div class="title-container">
       <h1 class="title">Welcome to Marg Spots!</h1>
     </div>
@@ -77,11 +82,13 @@ label {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background:repeating-radial-gradient(circle at center, transparent, transparent 50%, #dad617 50%, #7bc950 70%, transparent 70%);
 }
 .title-container {
   display: flex;
   align-items: center;
   margin-bottom: 2rem;
+  
 }
 .title {
   font-size: 2rem;
@@ -89,6 +96,29 @@ label {
   font-family: 'Helvetica Neue', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+  
+}
+.corner {
+  position: absolute;
+}
+.top-left {
+  top: 0;
+  left: 0;
+}
+.top-right {
+  top: 0;
+  right: 0;
+  position: absolute;
+  
+}
+.bottom-left {
+  bottom: 0;
+  left: 0;
+}
+.bottom-right {
+  bottom: 0;
+  right: 0;
+  position: absolute;
 }
 
 
