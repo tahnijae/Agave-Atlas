@@ -1,5 +1,8 @@
 <template>
   <div>
+    <!-- <div id="weather" class ="grid text-center" style="--bs-columns: 3;">
+    <weather-output/>
+    </div> -->
     <div class="restaurant-cards" >
       <restaurant-card
         v-for="restaurant in restaurants"
@@ -15,10 +18,13 @@
 <script>
 import RestaurantCard from "./RestaurantCard.vue";
 import RestaurantService from "../services/RestaurantService.js";
+// import WeatherOutput from "./WeatherOutput.vue"
 
 export default {
   name: "restaurant-list",
-  components: { RestaurantCard },
+  components: { RestaurantCard,
+   //WeatherOutput 
+   },
   data() {
     return {
       restaurants: [],
@@ -47,6 +53,7 @@ export default {
   
   
 }
+
 </style>
 
 <style>
@@ -78,4 +85,5 @@ div.main div.well-display div.well {
 .card-body {
   padding: 10px;
 }
+
 </style>
