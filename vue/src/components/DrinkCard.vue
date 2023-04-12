@@ -1,10 +1,10 @@
 <template>
   <div class = "card">
       <div class = "card-header">
-      <h2>{{drink.name}}</h2>
+      <h2>{{decodeHtml(drink.name)}}</h2>
       </div>
       <div class = "card-body">
-      <p>{{drink.description}}</p>
+      <p>{{decodeHtml(drink.description)}}</p>
       </div>
       <div v-if="drink.isFrozen">
           <p>It's Frozen!</p>
@@ -15,6 +15,14 @@
 <script>
 export default {
 props: ["drink"]
+, methods: {
+  decodeHtml(html) {
+      var txt = document.createElement("textarea");
+      txt.innerHTML = html;
+      return txt.value;
+    },
+}
+
 }
 </script>
 
