@@ -9,7 +9,8 @@
         <!-- <router-link to="/logout" @click="logout">Logout</router-link> -->
       </span>
     </nav>
-      <page-banner/>
+      <page-banner id="banner"/>
+      <weather-output id="weather"/>
     <div class="restaurant-list">
       <h1>Marg Spots</h1>
       <restaurant-list />
@@ -19,12 +20,15 @@
 <script>
 import PageBanner from '../components/PageBanner.vue'
 import RestaurantList from "../components/RestaurantList.vue";
+import WeatherOutput from '../components/WeatherOutput.vue';
 import authService from "../services/AuthService.js";
+
 export default {
   name: "Home",
   components: {
     RestaurantList,
-    PageBanner
+    PageBanner,
+    WeatherOutput
   },
   
   data() {
@@ -60,9 +64,29 @@ export default {
 .restaurant-list {
   text-align: center;
   margin: auto;
-  width: 50%;
+  width: 100%;
+  grid-area: rest;
 }
-
+#banner{
+  grid-area: banner;
+}
+#weather{
+  grid-area: weather;
+  padding: 10px;
+  margin: 10px;
+  border: black 2px;
+  border-style: solid;
+  width: 100%;
+  
+}
+.main{
+  display: grid;
+  grid-template-areas: 
+  "banner banner banner banner banner"
+  ". weather weather weather ."
+  ". . rest . .";
+  grid-template-columns: .5fr 1fr 4fr 1fr .5fr;
+}
 
 
 </style>
