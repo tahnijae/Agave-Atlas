@@ -83,16 +83,44 @@ namespace Capstone.Controllers
             return restaurant;
         }
 
-        [HttpPut("{restaurant_ID}")]
-        public ActionResult<Restaurant> UpdateRestaurant(int restaurant_ID)
+        [HttpPut("{Restaurant_ID}")]
+        public ActionResult<Restaurant> UpdateRestaurant(Restaurant inputRestaurant)
         {
-
+            if (GetRestaurantById(inputRestaurant.Restaurant_ID) == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                Restaurant restaurant = restaurantDao.UpdateRestaurant(inputRestaurant);
+                if(restaurant == null)
+                {
+                    return NoContent();
+                }
+                return Ok(restaurant);
+            }
         }
 
-        [HttpDelete("{resaturant_ID}")]
-        public ActionResult DeleteRestaurant(int restaurant_ID)
+        [HttpDelete("{restaurantID}")]
+        public ActionResult DeleteRestaurantFromDB(int restaurantID)
         {
-
+            Restaurant checkDelete = restaurantDao.GetRestaurantByID(restaurantID);
+            if (checkDelete == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                restaurantDao.DeleteRestaurant(restaurantID);
+                checkDelete = restaurantDao.GetRestaurantByID(restaurantID);
+                if (checkDelete == null)
+                {
+                    return NoContent();
+                }
+                else {
+                    return NotFound();
+                }
+            }
         }
     }
 }
