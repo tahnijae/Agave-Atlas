@@ -2,13 +2,16 @@ USE master
 GO
 
 --drop database if it exists
-IF DB_ID('final_capstone') IS NOT NULL
-BEGIN
-	ALTER DATABASE final_capstone SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-	DROP DATABASE final_capstone;
-END
+--IF DB_ID('final_capstone') IS NOT NULL
+--BEGIN
+--	ALTER DATABASE final_capstone SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+--	DROP DATABASE final_capstone;
+--END
 
-CREATE DATABASE final_capstone
+DROP DATABASE IF EXISTS final_capstone;
+GO
+
+CREATE DATABASE final_capstone;
 GO
 
 USE final_capstone
@@ -72,7 +75,7 @@ GO
 BEGIN TRANSACTION
 
 BULK INSERT dbo.drinks 
-FROM "C:\Users\Student\workspace\c-sharp-finalcapstone-team1\dotnet\database\Drinks.csv"
+FROM "C:\Users\Student\workspace\Partner Projects\c-sharp-finalcapstone-team1\dotnet\database\Drinks.csv"
 WITH (FORMAT = 'CSV',
 FIRSTROW = 2,
 FIELDTERMINATOR = ',',
@@ -80,7 +83,7 @@ ROWTERMINATOR = ';'
 );
 
 BULK INSERT dbo.restaurants
-FROM "C:\Users\Student\workspace\c-sharp-finalcapstone-team1\dotnet\database\Restaurants.csv"
+FROM "C:\Users\Student\workspace\Partner Projects\c-sharp-finalcapstone-team1\dotnet\database\Restaurants.csv"
 WITH (FORMAT = 'CSV',
 FIRSTROW = 2,
 FIELDTERMINATOR = ',',
@@ -89,7 +92,7 @@ ROWTERMINATOR = ';'
 
 
 BULK INSERT dbo.restaurant_drinks
-FROM "C:\Users\Student\workspace\c-sharp-finalcapstone-team1\dotnet\database\drink_restaurant.csv"
+FROM "C:\Users\Student\workspace\Partner Projects\c-sharp-finalcapstone-team1\dotnet\database\drink_restaurant.csv"
 WITH (FORMAT = 'CSV',
 FIRSTROW = 2,
 FIELDTERMINATOR = ',',
