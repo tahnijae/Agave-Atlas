@@ -2,21 +2,22 @@
   <div id="app">
     <div id="nav">
       <!-- added click functionality that scrolls to top of page, but it doesn't work please fix, there is also a method at the bottom "scrollToTop"-->
-      <router-link v-bind:to="{ name: 'home' }" @click.prevent="scrollToTop">
+      <button v-bind:to="{ name: 'home' }" @click.prevent="scrollToTop">
         Home
-      </router-link>
+      </button>
       
       <!-- <router-link v-if="isAuthenticated" v-bind:to="{ name: 'home' }"
         > Home </router-link> -->
         &nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'login' }" v-if="this.$store.state.token == ''"
-        >Login</router-link
-      >&nbsp;|&nbsp;
-      <router-link v-if="this.$store.state.token !== ''" v-bind:to="{ name: 'logout' }"
-        >Logout</router-link
-      >
-      <router-link v-if="this.$store.state.token == ''" v-bind:to="{ name: 'register' }"
-        > Register </router-link>
+      <button v-if="this.$store.state.token == ''" @click="$router.push('/login')">Login</button>
+&nbsp;|&nbsp;
+      <button v-if="this.$store.state.token !== ''" @click="$router.push('/logout')">Logout</button>
+
+      <!-- <router-link v-if="this.$store.state.token == ''" v-bind:to="{ name: 'register' }"
+        > Register </router-link> -->
+<button v-if="this.$store.state.token == ''" @click="$router.push('/register')">Register</button>
+
+        
     </div>
     <router-view />
   </div>
