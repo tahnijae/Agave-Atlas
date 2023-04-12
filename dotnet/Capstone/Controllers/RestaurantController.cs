@@ -83,5 +83,16 @@ namespace Capstone.Controllers
             return restaurant;
         }
 
+        [HttpPut("{restaurant_ID}")]
+        public ActionResult<Restaurant> UpdateRestaurant(int restaurant_ID)
+        {
+
+        }
+
+        [HttpDelete("{resaturant_ID}")]
+        public ActionResult DeleteRestaurant(int restaurant_ID)
+        {
+
+        }
     }
 }

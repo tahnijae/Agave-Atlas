@@ -122,6 +122,16 @@ namespace Capstone.DAO
         }
 
 
+        public Restaurant UpdateRestaurant(Restaurant restaurant)
+        {
+            return null;
+        }
+        public void DeleteRestaurant(int restaurantID)
+        {
+            
+        }
+
+
         public Restaurant CreateRestaurantFromReader(SqlDataReader sdr)
     {
         Restaurant restaurant = new Restaurant()
