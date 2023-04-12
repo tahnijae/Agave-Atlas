@@ -96,8 +96,33 @@ namespace Capstone.DAO
             return restaurant;
         }
 
+        public Restaurant AddRestaurant(NewRestaurantInput inputRestaurant)
+        {
+            Restaurant restaurant = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO restaurants (name, zip_code) " + 
+                        "OUTPUT INSERTED.restaurant_id " +
+                        "VALUES (@name, @zip_code);", conn);
+                    cmd.Parameters.AddWithValue("@name", inputRestaurant.Name);
+                    cmd.Parameters.AddWithValue("@zip_code", inputRestaurant.ZipCode);
 
-    public Restaurant CreateRestaurantFromReader(SqlDataReader sdr)
+                    int restaurantID = Convert.ToInt32(cmd.ExecuteScalar());
+                    restaurant = GetRestaurantByID(restaurantID);
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error adding new restaurant to server");
+            }
+            return restaurant;
+        }
+
+
+        public Restaurant CreateRestaurantFromReader(SqlDataReader sdr)
     {
         Restaurant restaurant = new Restaurant()
         {
