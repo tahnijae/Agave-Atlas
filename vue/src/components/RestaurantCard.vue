@@ -1,32 +1,39 @@
 <template>
   <div class="card" v-on:click="seeDrinks(restaurant.restaurant_ID)">
-      <div class="card-header">
-          <h2> {{restaurant.name}} </h2>
-      </div>
-      <div class = "card-body">
-          <p>{{restaurant.zipCode}}</p>
-      </div>
+    <div class="card-header">
+      <h2>{{ restaurant.name }}</h2>
+    </div>
+    <div class="card-body">
+      <p>{{locationData["place name"]}}, {{locationData["state abbreviation"]}}</p>
+    </div>
   </div>
 </template>
 
 <script>
-
+import zipcodeService from '../services/ZipCodeService.js';
 export default {
     name: "restaurant-card",
     props: ["restaurant"],
     data(){
       return{
-
+        locationData: [],
       }
 
-    },methods:{
+    },
+    methods:{
     seeDrinks(id){
       
       this.$router.push(`/restaurant/${id}/drinks`);
-    }
+    },
   },
-    created(){
-      
+  computed:{
+  },
+  created() {
+      zipcodeService.GetCityByZipcode(this.restaurant.zipCode).then((response) => {
+        this.locationData = response.data.places[0];
+        this.state = response.data.places.state;
+        
+      });
     }
 };
 </script>
@@ -43,7 +50,7 @@ export default {
   border-radius: 15px;
 }
 
-h2{
+h2 {
   text-align: center;
 }
 
