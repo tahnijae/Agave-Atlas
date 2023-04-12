@@ -1,10 +1,11 @@
 <template>
   <div>
-    <div class="restaurant-cards">
+    <div class="restaurant-cards" >
       <restaurant-card
         v-for="restaurant in restaurants"
         v-bind:key="restaurant.id"
         v-bind:restaurant="restaurant"
+        
       />
     </div>
   </div>
@@ -23,7 +24,7 @@ export default {
       restaurants: [],
     };
   },
-  computed: {},
+  
   created() {
     RestaurantService.getRestaurants()
       .then((response) => {

@@ -35,7 +35,7 @@ namespace Capstone.DAO
                     }
                 }
             }
-            catch(SqlException ex)
+            catch(SqlException)
             {
                 Console.WriteLine("Error getting drinks");
             }
@@ -50,10 +50,10 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand($@"SELECT drinks.id, drink_name, description, isFrozen FROM drinks 
-                    JOIN restaurant_drinks ON drink_id = drinks.id
-                    JOIN restaurants ON restaurant_id = restaurants.id
-                    WHERE restaurants.id = @restID",conn);
+                    SqlCommand cmd = new SqlCommand($@"SELECT drinks.drink_id, drink_name, description, isFrozen FROM drinks 
+                    JOIN restaurant_drinks ON restaurant_drinks.drink_id = drinks.drink_id
+                    JOIN restaurants ON restaurant_drinks.restaurant_id = restaurants.restaurant_id
+                    WHERE restaurants.restaurant_id = @restID",conn);
                     cmd.Parameters.AddWithValue("@restID", restID);
 
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -71,13 +71,38 @@ namespace Capstone.DAO
             return drinks;
         }
 
-        public Drink GetDrinkById(int drinkID) { return new Drink(); }
+        public Drink GetDrinkById(int drinkID) {
+            Drink drink = new Drink();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand($@"SELECT * FROM drinks
+                    WHERE drinks.drink_id = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", drinkID);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        drink = CreateDrinkFromReader(reader);
+                    }
+                    
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error getting drink by ID");
+            }
+            return drink;
+        }
 
         private Drink CreateDrinkFromReader(SqlDataReader reader)
         {
             Drink newDrink = new Drink();
 
-            newDrink.drink_ID = Convert.ToInt32(reader["id"]);
+            newDrink.drink_ID = Convert.ToInt32(reader["drink_id"]);
             newDrink.Name = Convert.ToString(reader["drink_name"]);
             newDrink.Description = Convert.ToString(reader["description"]);
             newDrink.isFrozen = Convert.ToBoolean(reader["isFrozen"]);

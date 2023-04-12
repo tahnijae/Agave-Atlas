@@ -9,10 +9,7 @@
         <!-- <router-link to="/logout" @click="logout">Logout</router-link> -->
       </span>
     </nav>
-    <div class='banner'>
       <page-banner/>
-    </div>
-    
     <div class="restaurant-list">
       <h1>Marg Spots</h1>
       <restaurant-list />
@@ -65,17 +62,7 @@ export default {
   margin: auto;
   width: 50%;
 }
-.banner{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  background-color: #dcf1d0;
-  border-style:solid;
-  border-color:black;
-  border-radius: 15px;
 
-}
 
 
 </style>

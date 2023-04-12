@@ -41,7 +41,10 @@ namespace Capstone.Controllers
         {
             Drink drink = drinkDao.GetDrinkById(id);
 
-            
+            if(drink.Name == null)
+            {
+                return NotFound();
+            }
             return Ok(drink);
         }
     }

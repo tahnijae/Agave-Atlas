@@ -1,10 +1,6 @@
 <template>
-  <div>
-      <header>
-        <h1>
-          What eva we goin call dis lolz
-        </h1>
-      </header>
+  <div class='banner'>
+      <h1>What eva we goin call dis lolz</h1> 
   </div>
 </template>
 
@@ -16,5 +12,15 @@ export default {
 </script>
 
 <style>
+.banner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  background-color: #dcf1d0;
+  border-style:solid;
+  border-color:black;
+  border-radius: 15px;
 
+}
 </style>
