@@ -1,9 +1,9 @@
 <template>
   <div id="register">
-  <div class="corner top-left"><img src="../assets/spinning-lime-illo.gif" alt=""></div>
-  <div class="corner top-right"><img src="../assets/spinning-lime-illo.gif" alt=""></div>
-    <div class="corner bottom-right"><img src="../assets/spinning-lime-illo.gif" alt=""></div>
-      <div class="corner bottom-left"><img src="../assets/spinning-lime-illo.gif" alt=""></div>
+  <div class="corner top-left"><img src="../assets/lime-slice2.png" alt=""></div>
+  <div class="corner top-right"><img src="../assets/lime-slice2.png" alt=""></div>
+    <div class="corner bottom-right"><img src="../assets/lime-slice2.png" alt=""></div>
+      <div class="corner bottom-left"><img src="../assets/lime-slice2.png" alt=""></div>
 
 
   <div class="text-center">
@@ -131,6 +131,7 @@ label {
 .top-right {
   top: 0;
   right: 0;
+  
 }
 .bottom-left {
   bottom: 0;
@@ -139,5 +140,6 @@ label {
 .bottom-right {
   bottom: 0;
   right: 0;
+  
 }
 </style>
