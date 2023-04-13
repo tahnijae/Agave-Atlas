@@ -107,13 +107,14 @@ created() {
     grid-area: today;
 }
 #main{
-    display: grid;
+display: grid;
   align-items: center;
   justify-content: center;
   grid-template-areas: 
   "today next next next next next next"
   "today next next next next next next";
   height: 100px;
+  text-overflow: ellipsis;
   background-color: #dcf1d0;
   border-style:solid;
   border-color:black;
