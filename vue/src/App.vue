@@ -3,7 +3,7 @@
     <div id="nav">
       <!-- added click functionality that scrolls to top of page, but it doesn't work please fix, there is also a method at the bottom "scrollToTop"-->
       <div id="nav_name">
-        <h1>Agave Atlas</h1>
+        <img src="./assets/AgaveAtlasLogo.png" alt="Agave Atlas logo">
       </div>
       <div id="nav_buttons">
         <button v-bind:to="{ name: 'home' }" @click.prevent="scrollToTop">
@@ -98,13 +98,17 @@ export default {
   height: 100px;
   transition: all 0.3s ease-in-out;
 }
-
 #nav_name {
   flex-grow: 1;
   margin-left: 10px;
 }
+
+#nav_name img {
+  height: 80px; /* Set the height of the image to the desired size */
+}
 #nav_buttons {
-  margin-right: 10px;}
+  margin-right: 10px;
+  }
 #nav_title h1{
   margin: 10px;
   color: #0C0C0C;
