@@ -11,7 +11,7 @@
     </nav>
       <weather-output id="weather"/>
     <div class="restaurant-list">
-      <h1>Marg Spots</h1>
+      <h2>Locations:</h2>
       <restaurant-list />
     </div>
   </div>
@@ -31,18 +31,7 @@ export default {
   data() {
     return {
       isAuthenticated: false, // Set to false by default
-      restaurants: [
-        {
-          id: 1,
-          name: "Example Restaurant 1",
-          address: "123 Main St",
-        },
-        {
-          id: 2,
-          name: "Example Restaurant 2",
-          address: "456 Elm St",
-        },
-      ],
+      restaurants: [],
     };
   },
   created() {
