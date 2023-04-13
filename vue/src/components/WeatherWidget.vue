@@ -1,10 +1,10 @@
 <template>
   <div>
-      <div id="fullDay" v-on:mouseover="hover = true" v-on:mouseleave="hover = false">
-          <div id="info">
-          <p id="name" v-show="!hover">{{period.name}}</p>
-          <p id="details" v-show="hover">{{period.detailedForecast}}</p>
-          </div>
+      <div id="fullDay">
+          <span id="info">
+          <p id="name">{{period.name}}</p>
+          <p id="details">{{period.detailedForecast}}</p>
+          </span>
       </div>
   </div>
 </template>
@@ -21,18 +21,19 @@ props: ["period"]
 }
 </script>
 
-<style>
-#fullDay{
+<style scoped>
+#info{
     display: flex;
     flex-direction: column;
     
 }
 #info{
-    height: 15vh;
-    width: 5vw;
+    max-height: 100%;
+    width: 100%;
 }
 p{
     display:inline-block;
+    margin: 5px;
 }
 
 </style>
