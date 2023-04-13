@@ -1,9 +1,23 @@
 <template>
-  <div id="mainW">
+  <div id="theWholeThing" ref="theWholeThing">
+      <div id="theInfoThing">
+          <div id="weatherHead">
       <h2>Forecast for {{cityName}}, {{stateAbb}}</h2>
-      <label for="zipCode">Input Zip Code </label>
-      <input type="text" pattern="[0-9]*" id="zipCode" name="zipCode" placeholder="44118" v-model="zipCode"/>
-      <input type="button" v-on:click="updateWeather(zipCode)" value="GO"/>
+      <div id="changeZipStuff">
+          <span id="zipChange" v-show="changingZip">
+            <label class="label" for="zipCode">Input Zip Code</label>
+            <input type="text" pattern="[0-9]*" id="zipCode" name="zipCode" placeholder="44118" v-model="zipCode"/>
+            <div id="buttons">
+            <input type="button" v-on:click="updateWeather(zipCode); changingZip = false;" value="Go"/>
+            <input type="button" v-on:click="changingZip = false" value="Cancel"/>
+            </div> 
+        </span>
+        <span id="wantToChangeZip" v-show="!changingZip">
+                <input type="button" v-on:click="changingZip = true" 
+                value="Change Location"/>
+        </span>
+      </div>
+      </div>
       <div id = "allWeather">
             <div id="forecastWeather">
                 <span class = "dayNames" v-for="period in periods" v-bind:key="period.id"
@@ -16,6 +30,7 @@
                 </div>
             </span>
       
+      </div>
       </div>
   </div>
 </template>
@@ -36,12 +51,14 @@ data(){
         newLat: '',
         newLong: '',
         cityName: 'Cleveland',
-        stateAbb: 'OH'
+        stateAbb: 'OH',
+        changingZip: false
     }
 },
 methods: {
     filterCurrent(num) {
         this.filter = this.periods.indexOf(num);
+        this.weatherBackground();
     },
     setWeatherPeriods(resp){
         this.periods = [];
@@ -67,6 +84,8 @@ methods: {
             Weather.GetWeatherByCoordinate(this.newLat, this.newLong).then(response => {
                 console.log(response);
             this.setWeatherPeriods(response);
+            this.filter = 0;
+            this.weatherBackground();
         }
 
         ).catch(error => {
@@ -77,7 +96,34 @@ methods: {
         }).catch(error => {
         alert(`${error.response.status}: Error finding City with zip code "${this.zipCode}"`);
            
-        })
+        });
+        
+    },
+    weatherBackground(){
+       if(this.$refs.theWholeThing.classList.contains('sunny')){
+           this.$refs.theWholeThing.classList.remove('sunny');
+       } else if (this.$refs.theWholeThing.classList.contains('cloudy')){
+           this.$refs.theWholeThing.classList.remove('cloudy');
+       } else if (this.$refs.theWholeThing.classList.contains('rain')){
+           this.$refs.theWholeThing.classList.remove('rain');
+       } else if(this.$refs.theWholeThing.classList.contains('snow')){
+           this.$refs.theWholeThing.classList.remove('snow');
+       } else if (this.$refs.theWholeThing.classList.contains('partlyCloudy')){
+           this.$refs.theWholeThing.classList.remove('partlyCloudy');
+       }
+        if(this.periods[this.filter].detailedForecast.includes("snow") || this.periods[this.filter].detailedForecast.includes("Snow")) {
+            this.$refs.theWholeThing.classList.add('snow');}
+        else if(this.periods[this.filter].detailedForecast.includes("howers") || this.periods[this.filter].detailedForecast.includes("ain")){
+            this.$refs.theWholeThing.classList.add('rain');
+        } else if(this.periods[this.filter].detailedForecast.includes("loudy")){
+            if(this.periods[this.filter].detailedForecast.includes("unny"))
+            {this.$refs.theWholeThing.classList.add('partlyCloudy');}
+            else {this.$refs.theWholeThing.classList.add('cloudy');}
+        
+        } else if(this.periods[this.filter].detailedForecast.includes("unny") || this.periods[this.filter].detailedForecast.includes("lear")){
+           // console.log("sunny");
+            this.$refs.theWholeThing.classList.add('sunny');
+        }
     }
 },
 created() {
@@ -96,6 +142,7 @@ created() {
                 }
                 
             });     
+            this.weatherBackground();
         }).catch(error =>
     {
         if(error){
@@ -121,6 +168,7 @@ created() {
     grid-area: next;
     width: 80%;
     justify-content: space-around;
+    
 };
 #currentWeather{
     display: flex;
@@ -128,6 +176,7 @@ created() {
     width: 100%;
     max-height: 100%;
     grid-area: today;
+    
 }
 #mainW{
 display: grid;
@@ -152,14 +201,82 @@ display: grid;
     height: 100%;
     inline-size: 80%;
     position: inherit;
+    
 }
 #name{
     margin: 0;
 }
+#theInfoThing{
+    background: rgb(243,250,239,0.8);
+    z-index: -1;
+    
+}
 .widgets{
     width:fit-content;
 }
-h2{
-    margin: 0 0 20px 0;
+#weatherHead {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-areas: 
+    ". header . zip";
+    grid-template-columns:1fr 2fr .3fr .7fr;
+    margin: 0 0 10px 0;
+    height: 70px;
+    
 }
+h2{
+    /* margin: 0 0 20px 0; */
+    display: inline-block;
+    grid-area: header;
+    position:sticky;
+}
+.sunny, .partlyCloudy{
+    background-image: url('../assets/weatherPics/blueSky.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    
+}
+.rain {background-image: url('../assets/weatherPics/rain.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    }
+.cloudy{
+    background-image: url('../assets/weatherPics/clouds.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    
+}
+.snow{
+    background-image: url('../assets/weatherPics/snow.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+#changeZipStuff{
+    display: inline-block;
+    grid-area: zip;
+    align-self:baseline;
+    justify-self: center;
+    width:100%;
+}
+#zipChange {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    align-content:center;
+    width:initial;
+}
+#zipCode{ 
+    width:90%;
+} 
+#buttons>input{
+    display:inline;
+    margin: 5px;
+}
+
 </style>
