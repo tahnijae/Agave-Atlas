@@ -14,8 +14,8 @@
   </div>
 </template>
 
-<script>
-import drinkService from '../services/DrinkService.vue'
+<script> 
+import drinkService from '../services/DrinkService.js'
 
 export default {
 name: "drink-form",
@@ -30,20 +30,13 @@ data(){
 },
 methods:{
   submitForm(){
-    const newDrink = {
-      name : this.name,
-      description: this.description,
-      isFrozen: this.isFrozen
-    }
-    drinkService.addDrink(newDrink).then((response)=>{
-      if(response.status === 200){
-      this.$router.push('/');
-      }
-    })
+    drinkService.addDrink();
   }
 }
 }
-</script>
+
+
+ </script>
 
 <style>
 

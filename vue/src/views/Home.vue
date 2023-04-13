@@ -19,7 +19,8 @@ export default {
   components: {
     RestaurantList,
     WeatherOutput,
-    NavigationBar
+    NavigationBar,
+  
   },
   
   data() {

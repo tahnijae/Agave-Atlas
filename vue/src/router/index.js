@@ -66,9 +66,9 @@ const router = new Router({
       name:"all-drinks",
       component: Restaurant
     },
-    {
+    
      
-    }
+    
     
   ]
 })
