@@ -100,7 +100,22 @@ export default {
   height: 100px;
   transition: all 0.3s ease-in-out; /* add transition for smooth effect */
 }
+<<<<<<< HEAD
 #nav_title{
   margin: 10px;
+=======
+#nav button {
+  margin: 0 5px;
+  padding: 8px 15px;
+  background-color: #7bc950;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#nav button:hover {
+  background-color: #6db743;
+>>>>>>> 48f3c702ef7314b351f1e83a175edc39707cbc63
 }
 </style>
