@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="drink-list-container">
     <div>
         <h1></h1>
     </div>
@@ -40,6 +40,9 @@ created(){
 </script>
 
 <style>
+.drink-list-container{
+  margin-top: 100px;
+}
 div.main {
   margin: 1rem 0;
 }
@@ -57,6 +60,7 @@ div.main div.well-display div.well {
   text-align: center;
   margin: 0.25rem;
   padding: 0.25rem;
+  
 }
 
 .card-header {

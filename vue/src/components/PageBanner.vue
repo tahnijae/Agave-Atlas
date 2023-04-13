@@ -21,5 +21,8 @@ export default {
   border-style:solid;
   border-color:black;
   border-radius: 15px;
+  
+
 }
+
 </style>
