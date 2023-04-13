@@ -3,6 +3,7 @@
     <div>
         <h1></h1>
     </div>
+    
       <drink-card
       class = "list-group-item"
       v-for="drink in drinks" 
@@ -67,4 +68,5 @@ div.main div.well-display div.well {
 .card-body {
   padding: 10px;
 }
+
 </style>
