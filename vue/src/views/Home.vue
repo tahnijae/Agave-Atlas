@@ -77,6 +77,8 @@ export default {
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+  height: fit-content(5em);
+  
 }
 
 .main{
