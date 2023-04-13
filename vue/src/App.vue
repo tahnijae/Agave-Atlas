@@ -2,42 +2,58 @@
   <div id="app">
     <div id="nav">
       <!-- added click functionality that scrolls to top of page, but it doesn't work please fix, there is also a method at the bottom "scrollToTop"-->
-     <button v-bind:to="{ name: 'home' }" @click.prevent="scrollToTop">
-    <font-awesome-icon :icon="['fas', 'martini-glass-citrus']" />
-    Home
-  </button>
-      
-      <!-- <router-link v-if="isAuthenticated" v-bind:to="{ name: 'home' }"
+      <div id="nav_name">
+        <h1>Agave Atlas</h1>
+      </div>
+      <div id="nav_buttons">
+        <button v-bind:to="{ name: 'home' }" @click.prevent="scrollToTop">
+          <font-awesome-icon :icon="['fas', 'martini-glass-citrus']" />
+          Home
+        </button>
+
+        <!-- <router-link v-if="isAuthenticated" v-bind:to="{ name: 'home' }"
         > Home </router-link> -->
         &nbsp;|&nbsp;
-      <button v-if="this.$store.state.token == ''" @click="$router.push('/login')">Login</button>
-&nbsp;|&nbsp;
-      <button v-if="this.$store.state.token !== ''" @click="$router.push('/logout')">Logout</button>
+        <button
+          v-if="this.$store.state.token == ''"
+          @click="$router.push('/login')"
+        >
+          Login
+        </button>
+        &nbsp;|&nbsp;
+        <button
+          v-if="this.$store.state.token !== ''"
+          @click="$router.push('/logout')"
+        >
+          Logout
+        </button>
 
-      <!-- <router-link v-if="this.$store.state.token == ''" v-bind:to="{ name: 'register' }"
+        <!-- <router-link v-if="this.$store.state.token == ''" v-bind:to="{ name: 'register' }"
         > Register </router-link> -->
-<button v-if="this.$store.state.token == ''" @click="$router.push('/register')">Register</button>
-
-        
+        <button
+          v-if="this.$store.state.token == ''"
+          @click="$router.push('/register')"
+        >
+          Register
+        </button>
+      </div>
     </div>
     <router-view />
   </div>
 </template>
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
 
-library.add(fas)
-
-
+library.add(fas);
 
 export default {
   name: "App",
-  components:{
-    FontAwesomeIcon
+  components: {
+    FontAwesomeIcon,
   },
-  computed(){
+  computed() {
     this.isAuthenticated = this.$store.state.token !== "";
   },
   data() {
@@ -48,23 +64,28 @@ export default {
   created() {
     this.isAuthenticated = this.$store.state.token !== "";
   },
-  methods:{
-     //this method is part of the scrollToTopfunctaionality at the top nav bar in template, it does not work, but maybe with some cool js and template powers, you can make it work
-    scrollToTop(){
-      if (this.$route.path === '/') {
+  methods: {
+    //this method is part of the scrollToTopfunctaionality at the top nav bar in template, it does not work, but maybe with some cool js and template powers, you can make it work
+    scrollToTop() {
+      if (this.$route.path === "/") {
         window.scrollTo({
-          top:0,
+          top: 0,
           behavior: "smooth",
         });
       } else {
-        this.$router.push({ name: 'home' });
+        this.$router.push({ name: "home" });
       }
-}
-  }
+    },
+  },
 };
 </script>
 <style scoped>
-#nav {
+#nav div{
+  display: flex;
+  justify-content: center;
+  padding: 0%;
+}
+#nav{
   position: fixed;
   top: 0;
   left: 0;
@@ -74,8 +95,12 @@ export default {
   z-index: 9999;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 50px;
+  height: 100px;
   transition: all 0.3s ease-in-out; /* add transition for smooth effect */
+}
+#nav_title{
+  margin: 10px;
 }
 </style>

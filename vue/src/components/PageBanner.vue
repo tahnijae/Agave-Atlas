@@ -1,6 +1,6 @@
 <template>
   <div class='banner'>
-      <h1>What eva we goin call dis lolz</h1> 
+      <h1>Agave Atlas</h1> 
   </div>
 </template>
 
