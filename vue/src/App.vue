@@ -90,7 +90,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: #F3FAEF;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
   z-index: 9999;
   display: flex;
@@ -100,8 +100,9 @@ export default {
   height: 100px;
   transition: all 0.3s ease-in-out; /* add transition for smooth effect */
 }
-#nav_title{
+#nav_title h1{
   margin: 10px;
+  color: #0C0C0C;
 }
 #nav div button {
   margin: 0 5px;
