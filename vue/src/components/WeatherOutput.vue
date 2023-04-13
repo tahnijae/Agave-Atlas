@@ -2,15 +2,17 @@
   <div id="mainW">
       <h2>Forecast for Cuyahoga County, OH</h2>
       <div id = "allWeather">
+            <div id="forecastWeather">
+                <span class = "dayNames" v-for="period in periods" v-bind:key="period.id"
+                v-on:mouseover="filterCurrent(period)">{{period.name}}
+                </span>
+            </div>
             <span id="highlightedWeather">
                 <div id="currentWeather" >
-                    <weather-widget v-bind:period="filter"/>
+                    <weather-widget v-bind:period="periods[filter]"/>
                 </div>
             </span>
-      <div id="forecastWeather">
-        <span class = "dayNames" v-for="period in periods" v-bind:key="period.id"
-        v-on:mouseover="filterCurrent(period.number)">{{period.name}}</span>
-      </div>
+      
       </div>
   </div>
 </template>
@@ -40,19 +42,7 @@ methods: {
         this.today = this.tempToday;
     },
     filterCurrent(num) {
-        this.foundPer = {};
-        this.periods.filter(per => {
-            if(per.number === num) {
-                console.log(per);
-                this.foundPer = {
-                    number: JSON.parse(JSON.stringify(per.number)),
-                        name: JSON.parse(JSON.stringify(per.name)),
-                        detailedForecast: JSON.parse(JSON.stringify(per.detailedForecast))
-                };
-            }
-        })
-        this.filter = this.periods.indexOf(this.foundPer);
-        
+        this.filter = this.periods.indexOf(num);
     }
 },
 created() {
@@ -88,8 +78,10 @@ created() {
 <style scoped>
 #allWeather{
     display: flex;
-    flex-direction: row;
-    height: 50%;
+    flex-direction: column;
+    height: 70%;
+    align-items: center;
+    justify-content: space-between;
 }
 #forecastWeather{
     display: flex;
@@ -102,11 +94,11 @@ created() {
 #currentWeather{
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 100%;
     max-height: 100%;
     grid-area: today;
 }
-#main{
+#mainW{
 display: grid;
   align-items: center;
   justify-content: center;
@@ -121,16 +113,22 @@ display: grid;
   border-radius: 15px;
 }
 #highlightedWeather{
-    padding: 20px;
+    /* padding: 20px; */
     margin: 10px;
     border:2px solid black;
+    border-style: solid hidden none hidden;
     max-width: 100%;
-    inline-size: 20%;
+    height: 100%;
+    inline-size: 80%;
+    position: inherit;
 }
 #name{
     margin: 0;
 }
 .widgets{
     width:fit-content;
+}
+h2{
+    margin: 0 0 20px 0;
 }
 </style>

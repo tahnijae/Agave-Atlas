@@ -22,17 +22,18 @@ props: ["period"]
 </script>
 
 <style scoped>
-#fullDay{
+#info{
     display: flex;
     flex-direction: column;
     
 }
 #info{
-    height: 15vh;
-    width: 14%;
+    max-height: 100%;
+    width: 100%;
 }
 p{
     display:inline-block;
+    margin: 5px;
 }
 
 </style>
