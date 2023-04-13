@@ -8,6 +8,7 @@
         v-for="restaurant in restaurants"
         v-bind:key="restaurant.id"
         v-bind:restaurant="restaurant"
+        
       />
     </div>
   </div>

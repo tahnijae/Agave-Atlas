@@ -57,7 +57,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 .restaurant-list {
   text-align: center;
   margin: auto;
@@ -87,6 +87,7 @@ export default {
   ". . rest . .";
   grid-template-columns: .5fr 1fr 4fr 1fr .5fr;
 }
+
 
 
 </style>
