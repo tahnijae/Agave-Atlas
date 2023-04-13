@@ -94,6 +94,7 @@ label {
   margin-right: 0.5rem;
 }
 #login {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,16 +125,22 @@ label {
   position: absolute;
 }
 .top-left {
+    margin-top: 100px;
+
   top: 0;
   left: 0;
+
 }
 .top-right {
+    margin-top: 100px;
+
   top: 0;
   right: 0;
   position: absolute;
 }
 .bottom-left {
-  bottom: 0;
+    
+    bottom: 0;
   left: 0;
 }
 .bottom-right {
