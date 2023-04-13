@@ -5,7 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import DrinkList from '../components/DrinkList.vue'
+//import DrinkList from '../components/DrinkList.vue'
 import Restaurant from '../views/Restaurant.vue'
 
 Vue.use(Router)
@@ -58,13 +58,13 @@ const router = new Router({
     {
       path: "/restaurant/:id/drinks",
       name:"drink-list",
-      component: DrinkList
+      component: Restaurant
     },
     {
       path: "/drinks",
       name:"all-drinks",
       component: Restaurant
-    },
+    }
     
   ]
 })
