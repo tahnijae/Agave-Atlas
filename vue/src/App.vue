@@ -82,31 +82,39 @@ export default {
 <style scoped>
 #nav div{
   display: flex;
-  justify-content: center;
   padding: 0%;
 }
-#nav{
+#nav {
+  display: flex;
+  justify-content: space-between;
   position: fixed;
+  align-items: center;
   top: 0;
   left: 0;
   right: 0;
   background-color: #F3FAEF;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
   z-index: 9999;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
   height: 100px;
-  transition: all 0.3s ease-in-out; /* add transition for smooth effect */
+  transition: all 0.3s ease-in-out;
 }
+
+#nav_name {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+<<<<<<< HEAD
+#nav_buttons {
+  margin-right: 10px;
+=======
 #nav_title h1{
   margin: 10px;
   color: #0C0C0C;
+>>>>>>> dce9b9ddab182a906d03b3aaf39a56a3df3301f1
 }
 #nav div button {
-  margin: 0 5px;
-  padding: 8px 15px;
+  margin: 5px;
+  padding: 5px 15px;
   background-color: #7bc950;
   color: white;
   border: none;
