@@ -54,7 +54,7 @@ export default {
 #weather{
   grid-area: weather;
   padding: 20px;
-  margin: 10rem 0 15rem 0;
+  margin: 5rem 0 1rem 0;
   border: black 2px;
   border-style: solid;
   width: 100%;

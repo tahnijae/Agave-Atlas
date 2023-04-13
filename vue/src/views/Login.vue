@@ -13,7 +13,7 @@
     </div>
 
     <div class="title-container">
-      <h1 class="title">Welcome to Marg Spots!</h1>
+      <h1 class="title">Welcome to AGAVE ATLAS!</h1>
     </div>
     <form @submit.prevent="login">
       <h1>Please Sign In</h1>
