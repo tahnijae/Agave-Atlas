@@ -1,13 +1,16 @@
 <template>
-  <div id= "logout">
+  <div id="logout">
     <navigation-bar />
+    <div class="image-container">
+      <img src="../assets/MargaritaMascotSadFace.png">
+    </div>
     <h1>Logout</h1>
     <div v-if="isAuthenticated">
       <p>You have successfully logged out.</p>
-      <router-link to="/login">Click here to log back in.</router-link>
+      <router-link to="/login">Ready to rejoin the fiesta? Log back in and let's get this party started again!</router-link>
     </div>
     <div v-else>
-      <p>You are not currently logged in.</p>
+      <p>Ready to rejoin the fiesta? Log back in and let's get this party started again!</p>
       <router-link to="/login">Click here to log in.</router-link>
     </div>
   </div>
@@ -36,5 +39,15 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.image-container img {
+  max-width: 300px;
 }
 </style>
