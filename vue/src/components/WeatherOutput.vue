@@ -2,18 +2,14 @@
   <div id="mainW">
       <h2>Forecast for Cuyahoga County, OH</h2>
       <div id = "allWeather">
-      <div id="currentWeather" >
-          <p id="name" >{{today.name}}</p>
-          <p id="details">{{today.detailedForecast}}</p>
-      </div>
+            <span id="highlightedWeather">
+                <div id="currentWeather" >
+                    <weather-widget v-bind:period="filter"/>
+                </div>
+            </span>
       <div id="forecastWeather">
-        <weather-widget 
-        v-for="period in periods"
-        v-bind:key="period.id"
-        v-bind:period="period" 
-        v-on:mouseover="onMouse"
-        v-on:mouseleave="offMouse"
-        />
+        <span class = "dayNames" v-for="period in periods" v-bind:key="period.id"
+        v-on:mouseover="filterCurrent(period.number)">{{period.name}}</span>
       </div>
       </div>
   </div>
@@ -30,7 +26,8 @@ data(){
     return {
         today: {},
         periods: [],
-        tempToday: {}
+        filter: 0,
+        foundPer: {}
     }
 },
 methods: {
@@ -41,22 +38,38 @@ methods: {
     },
     offMouse(){
         this.today = this.tempToday;
+    },
+    filterCurrent(num) {
+        this.foundPer = {};
+        this.periods.filter(per => {
+            if(per.number === num) {
+                console.log(per);
+                this.foundPer = {
+                    number: JSON.parse(JSON.stringify(per.number)),
+                        name: JSON.parse(JSON.stringify(per.name)),
+                        detailedForecast: JSON.parse(JSON.stringify(per.detailedForecast))
+                };
+            }
+        })
+        this.filter = this.periods.indexOf(this.foundPer);
+        
     }
 },
 created() {
     Weather.GetWeatherCuyahoga().then(response =>
         {
             response.data.properties.periods.filter(per => {
-                if(per.number === 1){
-                    this.today = JSON.parse(JSON.stringify(per));
-                    //console.log(this.today);
-                } else if (!per.name.includes('Night')) {
+                // if(per.number === 1){
+                //     this.today = JSON.parse(JSON.stringify(per));
+                //     //console.log(this.today);
+                //} else 
+                if (!per.name.includes('Night')) {
                     let chunk = {
                         number: JSON.parse(JSON.stringify(per.number)),
                         name: JSON.parse(JSON.stringify(per.name)),
                         detailedForecast: JSON.parse(JSON.stringify(per.detailedForecast))
                     }
-                    //console.log(chunk.number);
+                    console.log(chunk);
                     this.periods.push(chunk);
                     console.log(this.periods[0].name);
                 }
@@ -72,7 +85,7 @@ created() {
 }
 </script>
 
-<style>
+<style scoped>
 #allWeather{
     display: flex;
     flex-direction: row;
@@ -84,12 +97,13 @@ created() {
     flex-wrap: wrap;
     grid-area: next;
     width: 80%;
-    justify-content: space-between;
+    justify-content: space-around;
 };
 #currentWeather{
     display: flex;
     flex-direction: column;
     width: 20%;
+    max-height: 100%;
     grid-area: today;
 }
 #main{
@@ -104,5 +118,18 @@ created() {
   border-style:solid;
   border-color:black;
   border-radius: 15px;
+}
+#highlightedWeather{
+    padding: 20px;
+    margin: 10px;
+    border:2px solid black;
+    max-width: 100%;
+    inline-size: 20%;
+}
+#name{
+    margin: 0;
+}
+.widgets{
+    width:fit-content;
 }
 </style>
