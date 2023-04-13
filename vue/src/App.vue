@@ -97,6 +97,7 @@ export default {
   z-index: 9999;
   height: 100px;
   transition: all 0.3s ease-in-out;
+  
 }
 #nav_name {
   flex-grow: 1;
@@ -109,10 +110,7 @@ export default {
 #nav_buttons {
   margin-right: 10px;
   }
-<<<<<<< HEAD
   
-=======
->>>>>>> 231cd54090d67ebb4260b9d59c3e417342e85243
 #nav_title h1{
   margin: 10px;
   color: #0C0C0C;
@@ -130,4 +128,5 @@ export default {
 #nav button:hover {
   background-color: #6db743;
 }
+
 </style>

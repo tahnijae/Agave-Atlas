@@ -68,7 +68,5 @@ div.main div.well-display div.well {
 .card-body {
   padding: 10px;
 }
-.container{
-  margin-top: 70px;
-}
+
 </style>
