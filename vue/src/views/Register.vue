@@ -37,7 +37,9 @@
           required
         />
       </div>
+      <div>
       <button type="submit">Create Account</button>
+      </div>
       <p>
         <router-link :to="{ name: 'login' }"
           >Already have an account? Log in.</router-link
