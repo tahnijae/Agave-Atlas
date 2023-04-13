@@ -10,6 +10,15 @@ export default {
     },
 
     getDrinkById(id){
-        return http.get(`drink/${id}`)
-        }
+        return http.get(`drink/${id}`);
+    },
+    AddDrink(drink){
+        return http.post(`drink`,drink);
+    },
+    UpdateDrink(id,drink){
+        return http.put(`drink/${id}`,drink);
+    },
+    DeleteDrink(id){
+        return http.delete(`drink/${id}`);
+    }
 }
