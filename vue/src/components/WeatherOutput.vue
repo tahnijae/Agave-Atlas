@@ -1,6 +1,9 @@
 <template>
   <div id="mainW">
-      <h2>Forecast for Cuyahoga County, OH</h2>
+      <h2>Forecast for {{cityName}}, {{stateAbb}}</h2>
+      <label for="zipCode">Input Zip Code </label>
+      <input type="text" pattern="[0-9]*" id="zipCode" name="zipCode" placeholder="44118" v-model="zipCode"/>
+      <input type="button" v-on:click="updateWeather(zipCode)" value="GO"/>
       <div id = "allWeather">
             <div id="forecastWeather">
                 <span class = "dayNames" v-for="period in periods" v-bind:key="period.id"
@@ -21,47 +24,75 @@
 <script>
 import Weather from '../services/WeatherService.js'
 import WeatherWidget from './WeatherWidget.vue'
+import ZipCodeService from '../services/ZipCodeService'
 
 export default {
     components: {WeatherWidget},
 data(){
     return {
-        today: {},
         periods: [],
         filter: 0,
-        foundPer: {}
+        zipCode: '',
+        newLat: '',
+        newLong: '',
+        cityName: 'Cleveland',
+        stateAbb: 'OH'
     }
 },
 methods: {
-    onMouse(){
-
-        this.tempToday = this.today;
-        this.today = this.period;
-    },
-    offMouse(){
-        this.today = this.tempToday;
-    },
     filterCurrent(num) {
         this.filter = this.periods.indexOf(num);
-    }
-},
-created() {
-    Weather.GetWeatherCuyahoga().then(response =>
-        {
-            response.data.properties.periods.filter(per => {
-                // if(per.number === 1){
-                //     this.today = JSON.parse(JSON.stringify(per));
-                //     //console.log(this.today);
-                //} else 
+    },
+    setWeatherPeriods(resp){
+        this.periods = [];
+        resp.data.properties.periods.filter(per => {
                 if (!per.name.includes('Night')) {
                     let chunk = {
                         number: JSON.parse(JSON.stringify(per.number)),
                         name: JSON.parse(JSON.stringify(per.name)),
                         detailedForecast: JSON.parse(JSON.stringify(per.detailedForecast))
                     }
-                    console.log(chunk);
                     this.periods.push(chunk);
-                    console.log(this.periods[0].name);
+    }})},
+    updateWeather(zip){
+        
+        ZipCodeService.GetCityByZipcode(zip).then(response =>
+        {
+            console.log(response.data)
+            this.newLat = response.data.places[0].latitude;
+            this.newLong = response.data.places[0].longitude;
+            this.cityName = response.data.places[0]["place name"];
+            this.stateAbb = response.data.places[0]["state abbreviation"];
+            //console.log(this.newLat + ', ' + this.newLong);
+            Weather.GetWeatherByCoordinate(this.newLat, this.newLong).then(response => {
+                console.log(response);
+            this.setWeatherPeriods(response);
+        }
+
+        ).catch(error => {
+            
+               alert(`${error.response.status}: Error retrieving weather data for ${this.cityName}`);
+            
+        })
+        }).catch(error => {
+        alert(`${error.response.status}: Error finding City with zip code "${this.zipCode}"`);
+           
+        })
+    }
+},
+created() {
+    Weather.GetWeatherCuyahoga().then(response =>
+        {
+            response.data.properties.periods.filter(per => {
+                if (!per.name.includes('Night')) {
+                    let chunk = {
+                        number: JSON.parse(JSON.stringify(per.number)),
+                        name: JSON.parse(JSON.stringify(per.name)),
+                        detailedForecast: JSON.parse(JSON.stringify(per.detailedForecast))
+                    }
+                    //console.log(chunk);
+                    this.periods.push(chunk);
+                    //console.log(this.periods[0].name);
                 }
                 
             });     
