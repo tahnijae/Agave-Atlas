@@ -2,7 +2,8 @@
   <div id="logout">
     <navigation-bar />
     <div class="image-container">
-      <img src="../assets/MargaritaMascotSadFace.png">
+       <img src="../assets/MargaritaMascotSadFace.png" class="mascot">
+      <img src="../assets/tearGif.gif" class="tear">
     </div>
     <h1>Logout</h1>
     <div v-if="isAuthenticated">
@@ -10,7 +11,7 @@
       <router-link to="/login">Ready to rejoin the fiesta? Log back in and let's get this party started again!</router-link>
     </div>
     <div v-else>
-      <p>Ready to rejoin the fiesta? Log back in and let's get this party started again!</p>
+      <p>You are not currently logged in.</p>
       <router-link to="/login">Click here to log in.</router-link>
     </div>
   </div>
@@ -49,5 +50,18 @@ export default {
 
 .image-container img {
   max-width: 300px;
+}
+.mascot {
+  position: relative;
+  max-width: 300px;
+}
+
+.tear {
+  position: absolute;
+  top: 46%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  max-width: 100px;
+  z-index: 1;
 }
 </style>
