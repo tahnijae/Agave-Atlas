@@ -1,5 +1,6 @@
 <template>
   <div id= "logout">
+    <navigation-bar />
     <h1>Logout</h1>
     <div v-if="isAuthenticated">
       <p>You have successfully logged out.</p>
@@ -13,7 +14,9 @@
 </template>
 
 <script>
+import NavigationBar from '../components/NavigationBar.vue';
 export default {
+  components: { NavigationBar },
   name: "Logout",
   data() {
     return {

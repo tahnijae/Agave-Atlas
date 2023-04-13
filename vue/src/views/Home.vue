@@ -1,14 +1,6 @@
 <template>
   <div class = 'main'>
-    <nav>
-      <!-- <router-link to="/">Home</router-link> -->
-      <span v-if="!isAuthenticated">
-        <!-- <router-link to="/login" @click="login">Login</router-link> -->
-      </span>
-      <span v-else>
-        <!-- <router-link to="/logout" @click="logout">Logout</router-link> -->
-      </span>
-    </nav>
+    <navigation-bar />
       <weather-output id="weather"/>
     <div class="restaurant-list">
       <h2>Locations:</h2>
@@ -19,13 +11,15 @@
 <script>
 import RestaurantList from "../components/RestaurantList.vue";
 import WeatherOutput from '../components/WeatherOutput.vue';
+import NavigationBar from '../components/NavigationBar.vue'
 import authService from "../services/AuthService.js";
 
 export default {
   name: "Home",
   components: {
     RestaurantList,
-    WeatherOutput
+    WeatherOutput,
+    NavigationBar
   },
   
   data() {
