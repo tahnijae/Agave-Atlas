@@ -2,9 +2,10 @@
   <div id="app">
     <div id="nav">
       <!-- added click functionality that scrolls to top of page, but it doesn't work please fix, there is also a method at the bottom "scrollToTop"-->
-      <button v-bind:to="{ name: 'home' }" @click.prevent="scrollToTop">
-        Home
-      </button>
+     <button v-bind:to="{ name: 'home' }" @click.prevent="scrollToTop">
+    <font-awesome-icon :icon="['fas', 'martini-glass-citrus']" />
+    Home
+  </button>
       
       <!-- <router-link v-if="isAuthenticated" v-bind:to="{ name: 'home' }"
         > Home </router-link> -->
@@ -23,8 +24,19 @@
   </div>
 </template>
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+library.add(fas)
+
+
+
 export default {
   name: "App",
+  components:{
+    FontAwesomeIcon
+  },
   computed(){
     this.isAuthenticated = this.$store.state.token !== "";
   },

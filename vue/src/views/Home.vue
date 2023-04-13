@@ -77,8 +77,11 @@ export default {
   border: black 2px;
   border-style: solid;
   width: 100%;
-  
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 .main{
   display: grid;
   grid-template-areas: 

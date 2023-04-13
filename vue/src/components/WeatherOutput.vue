@@ -82,10 +82,11 @@ created() {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    grid-area: next;
-    width: 80%;
-    justify-content: space-between;
-};
+    grid-area: next; 
+    width: 100%;
+    justify-content: space-between; 
+}
+
 #currentWeather{
     display: flex;
     flex-direction: column;
@@ -93,16 +94,18 @@ created() {
     grid-area: today;
 }
 #main{
-    display: grid;
+display: grid;
   align-items: center;
   justify-content: center;
   grid-template-areas: 
   "today next next next next next next"
   "today next next next next next next";
   height: 100px;
+  text-overflow: ellipsis;
   background-color: #dcf1d0;
   border-style:solid;
   border-color:black;
   border-radius: 15px;
 }
+
 </style>
