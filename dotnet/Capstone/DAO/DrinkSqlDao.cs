@@ -98,6 +98,77 @@ namespace Capstone.DAO
             return drink;
         }
 
+        public Drink AddDrink(Drink newDrink)
+        {
+            Drink drink = null;
+            try
+
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO drinks (drink_name, description, isFrozen) 
+                                                   OUTPUT INSERTED.drink_id 
+                                                  VALUES (@drink_name, @description, @isFrozen);", conn);
+                    cmd.Parameters.AddWithValue("@drink_name", newDrink.Name);
+                    cmd.Parameters.AddWithValue("@description", newDrink.Description);
+                    cmd.Parameters.AddWithValue("@isFrozen", newDrink.isFrozen);
+
+                    int drinkId = Convert.ToInt32(cmd.ExecuteScalar());
+                    drink = GetDrinkById(drinkId);
+                }
+            }
+            catch (Exception) { Console.WriteLine("error adding new drink");}
+            return drink;
+        }
+
+        public Drink UpdateDrink(int drinkID,Drink newDrink)
+        {
+            Drink drink = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(@"UPDATE drinks 
+                                                      SET drink_name = @drink_name, description = @description, isFrozen = @isFrozen 
+                                                      WHERE drink_id = @drink_id",conn);
+                    cmd.Parameters.AddWithValue("@drink_name",newDrink.Name);
+                    cmd.Parameters.AddWithValue("@description", newDrink.Description);
+                    cmd.Parameters.AddWithValue("@isFrozen", newDrink.isFrozen);
+                    cmd.Parameters.AddWithValue("@drink_id", drinkID);
+
+                    cmd.ExecuteNonQuery();
+                    drink = GetDrinkById(drinkID);
+
+                }
+            }
+            catch (Exception) { Console.WriteLine("Error updating drink"); }
+            return drink;
+        }
+
+        public bool DeleteDrink(int drinkID)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("DELETE FROM drinks WHERE drink_id = @drinks_id;"
+                        , conn);
+                    cmd.Parameters.AddWithValue("@drinks_id", drinkID);
+                    cmd.ExecuteNonQuery();
+                   
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error updating drink on the server");
+            }
+            return true;
+        }
+
+
         private Drink CreateDrinkFromReader(SqlDataReader reader)
         {
             Drink newDrink = new Drink();
