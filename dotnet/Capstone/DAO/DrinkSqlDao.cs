@@ -107,9 +107,9 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"INSERT INTO drink (drink_name, description, isFrozen) 
-                                                 OUTPUT INSERTED.drink_id 
-                                                  VALUES (@drink_name, @description, @isFrozen", conn);
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO drinks (drink_name, description, isFrozen) 
+                                                   OUTPUT INSERTED.drink_id 
+                                                  VALUES (@drink_name, @description, @isFrozen);", conn);
                     cmd.Parameters.AddWithValue("@drink_name", newDrink.Name);
                     cmd.Parameters.AddWithValue("@description", newDrink.Description);
                     cmd.Parameters.AddWithValue("@isFrozen", newDrink.isFrozen);
@@ -122,7 +122,7 @@ namespace Capstone.DAO
             return drink;
         }
 
-        public Drink UpdateDrink(Drink newDrink)
+        public Drink UpdateDrink(int drinkID,Drink newDrink)
         {
             Drink drink = null;
             try
@@ -136,9 +136,10 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@drink_name",newDrink.Name);
                     cmd.Parameters.AddWithValue("@description", newDrink.Description);
                     cmd.Parameters.AddWithValue("@isFrozen", newDrink.isFrozen);
+                    cmd.Parameters.AddWithValue("@drink_id", drinkID);
 
                     cmd.ExecuteNonQuery();
-                    drink = GetDrinkById(newDrink.drink_ID);
+                    drink = GetDrinkById(drinkID);
 
                 }
             }
@@ -146,24 +147,25 @@ namespace Capstone.DAO
             return drink;
         }
 
-        public void DeleteDrink(int drinkID)
+        public bool DeleteDrink(int drinkID)
         {
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("DELETE FROM drinks WHERE drinks_id = @drinks_id;"
+                    SqlCommand cmd = new SqlCommand("DELETE FROM drinks WHERE drink_id = @drinks_id;"
                         , conn);
                     cmd.Parameters.AddWithValue("@drinks_id", drinkID);
-
                     cmd.ExecuteNonQuery();
+                   
                 }
             }
             catch (Exception)
             {
                 Console.WriteLine("Error updating drink on the server");
             }
+            return true;
         }
 
 

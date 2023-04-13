@@ -48,7 +48,7 @@ namespace Capstone.Controllers
             return Ok(drink);
         }
 
-        [HttpPost("drinks")]
+        [HttpPost]
          public ActionResult<Drink> AddNewDrink(Drink newDrink)
         {
             Drink drink = drinkDao.AddDrink(newDrink);
@@ -59,16 +59,17 @@ namespace Capstone.Controllers
             return drink;
         }
 
-        [HttpPut("{drink_ID}")]
-        public ActionResult<Drink> UpdateDrink(Drink newDrink)
+        [HttpPut("{drinkID}")]
+        public ActionResult<Drink> UpdateDrink(int drinkID,Drink newDrink)
         {
-            if(GetDrinkByDrinkId(newDrink.drink_ID)== null)
+            
+            if(GetDrinkByDrinkId(drinkID)== null)
             {
                 return NotFound();
             }
             else
             {
-                Drink drink = drinkDao.UpdateDrink(newDrink);
+                Drink drink = drinkDao.UpdateDrink(drinkID, newDrink);
                 if (drink == null)
                 {
                     return NoContent();
@@ -79,7 +80,7 @@ namespace Capstone.Controllers
         }
 
         [HttpDelete("{drinkID}")]
-        public ActionResult DeleteRestaurantFromDB(int drinkID)
+        public ActionResult DeleteDrink(int drinkID)
         {
             Drink deletedDrink = drinkDao.GetDrinkById(drinkID);
             if (deletedDrink == null)
@@ -88,9 +89,9 @@ namespace Capstone.Controllers
             }
             else
             {
-                drinkDao.DeleteDrink(drinkID);
-                deletedDrink = drinkDao.GetDrinkById(drinkID);
-                if (deletedDrink == null)
+               
+                
+                if (drinkDao.DeleteDrink(drinkID))
                 {
                     return NoContent();
                 }

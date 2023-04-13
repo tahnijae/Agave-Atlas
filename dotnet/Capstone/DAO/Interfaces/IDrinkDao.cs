@@ -13,9 +13,9 @@ namespace Capstone.DAO.Interfaces
 
         Drink AddDrink(Drink drink);
 
-        Drink UpdateDrink(Drink newDrink);
+        Drink UpdateDrink(int drinkID, Drink newDrink);
 
-        void DeleteDrink(int drinkID);
+        bool DeleteDrink(int drinkID);
     }
 
 }
