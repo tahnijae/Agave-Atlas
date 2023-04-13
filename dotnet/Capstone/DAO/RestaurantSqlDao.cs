@@ -134,7 +134,7 @@ namespace Capstone.DAO
                         "UPDATE restaurants " +
                         "SET name = @name, zip_code = @zip_code " +
                         "WHERE restaurant_id = @restaurant_id;"
-                        , conn);
+                        ,conn);
                     cmd.Parameters.AddWithValue("@name", inputRestaurant.Name);
                     cmd.Parameters.AddWithValue("@zip_code", inputRestaurant.ZipCode);
                     cmd.Parameters.AddWithValue("@restaurant_id", inputRestaurant.Restaurant_ID);
