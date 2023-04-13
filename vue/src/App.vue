@@ -105,7 +105,7 @@ export default {
 }
 #nav_buttons {
   margin-right: 10px;
-}
+  }
 #nav_title h1{
   margin: 10px;
   color: #0C0C0C;
