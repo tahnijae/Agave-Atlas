@@ -2,7 +2,8 @@
   <div id="nav">
       <!-- added click functionality that scrolls to top of page, but it doesn't work please fix, there is also a method at the bottom "scrollToTop"-->
       <div id="nav_name">
-        <img src="../assets/AgaveAtlasLogo.png" alt="Agave Atlas logo">
+        <router-link v-bind:to="{ name: 'home' }"> <img src="../assets/AgaveAtlasLogo.png" alt="Agave Atlas logo">
+        </router-link>
       </div>
       <div id="nav_buttons">
         <button v-bind:to="{ name: 'home' }" @click.prevent="scrollToTop">
