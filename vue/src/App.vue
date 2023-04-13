@@ -92,7 +92,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: #F3FAEF;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
   z-index: 9999;
   height: 100px;
@@ -103,8 +103,14 @@ export default {
   flex-grow: 1;
   margin-left: 10px;
 }
+<<<<<<< HEAD
 #nav_buttons {
   margin-right: 10px;
+=======
+#nav_title h1{
+  margin: 10px;
+  color: #0C0C0C;
+>>>>>>> dce9b9ddab182a906d03b3aaf39a56a3df3301f1
 }
 #nav div button {
   margin: 5px;
