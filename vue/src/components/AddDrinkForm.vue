@@ -1,7 +1,15 @@
 <template>
   <div>
-      <form>
+      <form v-on:submit.prevent="submitForm">
+        <h3>Add a Drink!</h3>
+        <label for="name">Drink Name:</label>
+        <input id="name" type="text" v-model="drink.name"/>
 
+        <label for="description">Description:</label>
+        <input id="description" type="text" v-model="drink.description"/>
+
+        <input type="checkbox">
+        
       </form>
   </div>
 </template>
