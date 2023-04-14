@@ -36,6 +36,12 @@
         >
           Register
         </button>
+        &nbsp;&nbsp;
+        <button
+          @click="$router.push('/socials')"
+        >
+          Socials
+        </button>
       </div>
     </div>
 </template>

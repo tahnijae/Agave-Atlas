@@ -19,7 +19,7 @@ export default {
     name: "add-new-restaurant",
     data(){
         return{
-            restaurant: []
+            restaurant: {}
         }
     }
 
