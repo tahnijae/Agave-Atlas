@@ -43,7 +43,7 @@ methods:{
     drinkService.addNewDrink(newdrink).then((response)=>{
       console.log(response);
     });
-    this.resetDrink();
+   // this.resetDrink();
 
   },
   resetDrink(){
