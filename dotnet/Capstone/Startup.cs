@@ -12,6 +12,7 @@ using Capstone.Security;
 using Capstone.DAO.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Capstone.Services;
+using Capstone.Email_Stuff;
 
 namespace Capstone
 {
@@ -73,6 +74,7 @@ namespace Capstone
             services.AddTransient<IRestaurantSqlDao>(m => new RestaurantSqlDao(connectionString));
             services.AddTransient<IDrinkDao>(m => new DrinkSqlDao(connectionString));
             services.AddTransient<YelpFusionApiService>(m => new YelpFusionApiService(connectionString));
+            services.AddTransient<GmailClient>(m => new GmailClient());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
