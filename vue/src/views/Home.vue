@@ -21,7 +21,6 @@ export default {
     WeatherOutput,
     NavigationBar
   },
-  
   data() {
     return {
       isAuthenticated: false, // Set to false by default
@@ -36,11 +35,12 @@ export default {
       authService.logout();
       this.$store.commit("LOGOUT");
       this.isAuthenticated = false;
-    },
+    }
   },
+  computed: {}
 };
 </script>
-<style>
+<style scoped>
 .restaurant-list {
   text-align: center;
   margin: auto;
@@ -53,7 +53,7 @@ export default {
 #weather{
   grid-area: weather;
   padding: 20px;
-  margin: 10rem 0 15rem 0;
+  margin: 5rem 0 1rem 0;
   border: black 2px;
   border-style: solid;
   width: 100%;
