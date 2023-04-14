@@ -7,11 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 //import DrinkList from '../components/DrinkList.vue'
 import Restaurant from '../views/Restaurant.vue'
-<<<<<<< HEAD
-//import AddDrinkForm from '../components/AddDrinkForm.vue'
-=======
 import Socials from '../views/Socials.vue'
->>>>>>> 2764091deb0c9cefe4f0f4f88c3e864e15243379
 
 Vue.use(Router)
 
