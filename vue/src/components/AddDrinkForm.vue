@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <form v-on:submit.prevent="submitForm">
+  <div class = "drinkForm">
+      <form v-on:submit="submitForm">
         <h3>Add a Drink!</h3>
         <label for="name">Drink Name:</label>
         <input id="name" type="text" v-model="drink.name"/>
@@ -8,7 +8,10 @@
         <label for="description">Description:</label>
         <input id="description" type="text" v-model="drink.description"/>
 
-        <input type="checkbox">
+        <label for='isFrozen'>Frozen:</label>
+        <input id="isFrozen" type="checkbox" v-model="drink.isFrozen"/>
+        
+        <button type='submit'>Submit</button>
         
       </form>
   </div>
@@ -30,8 +33,27 @@ data(){
 },
 methods:{
   submitForm(){
-    drinkService.addDrink();
+    const newdrink = {
+      restaurantID: Number(this.$route.params.id),
+      Name: this.name,
+      Description: this.description,
+      isFrozen: this.isFrozen
+    }
+
+    drinkService.addNewDrink(newdrink).then((response)=>{
+      console.log(response);
+    });
+    this.resetDrink();
+
+  },
+  resetDrink(){
+    this.drink = {
+      name:'',
+      description:'',
+      isFrozen:false,
+    }
   }
+
 }
 }
 
@@ -39,5 +61,7 @@ methods:{
  </script>
 
 <style>
-
+.drinkForm{
+  margin-top:30px;
+}
 </style>

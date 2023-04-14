@@ -13,12 +13,12 @@ export default {
         return http.get(`drink/${id}`);
     },
 
-    addDrink(drink){
-        return http.post(`drink`,drink);
+    addNewDrink(drink){
+        return http.post('drink', drink);
     },
 
     updateDrink(id,drink){
-        return http.put(`drink/${id}`,drink);
+        return http.put(`drink/${id}`, drink);
     },
     
     deleteDrink(id){

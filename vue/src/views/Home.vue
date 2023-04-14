@@ -21,6 +21,8 @@ export default {
     WeatherOutput,
     NavigationBar,
   
+
+  
   },
   data() {
     return {

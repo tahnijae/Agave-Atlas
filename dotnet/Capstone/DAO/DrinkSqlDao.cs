@@ -107,12 +107,19 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"INSERT INTO drinks (drink_name, description, isFrozen) 
-                                                   OUTPUT INSERTED.drink_id 
-                                                  VALUES (@drink_name, @description, @isFrozen);", conn);
+                    SqlCommand cmd = new SqlCommand(@"BEGIN TRANSACTION
+                                                  INSERT INTO drinks (drink_name, description, isFrozen) 
+                                                  OUTPUT INSERTED.drink_id 
+                                                  VALUES (@drink_name, @description, @isFrozen) 
+
+                                                  INSERT INTO restaurant_drinks (restaurant_id,drink_id) 
+                                                  VALUES (@restaurant_id,(SELECT drink_id FROM drinks WHERE drink_name='@drink_name')); 
+
+                                                  COMMIT;", conn);
                     cmd.Parameters.AddWithValue("@drink_name", newDrink.Name);
                     cmd.Parameters.AddWithValue("@description", newDrink.Description);
                     cmd.Parameters.AddWithValue("@isFrozen", newDrink.isFrozen);
+                    cmd.Parameters.AddWithValue("@restaurant_id", newDrink.restaurant_ID);
 
                     int drinkId = Convert.ToInt32(cmd.ExecuteScalar());
                     drink = GetDrinkById(drinkId);
