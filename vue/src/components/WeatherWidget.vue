@@ -2,7 +2,7 @@
   <div>
       <div id="fullDay">
           <span id="info">
-          <p id="name">{{period.name}}</p>
+          <p>{{period.name}}</p>
           <p id="details">{{period.detailedForecast}}</p>
           </span>
       </div>
