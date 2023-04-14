@@ -14,12 +14,17 @@ namespace Capstone.Services
 {
     public class YelpFusionApiService 
     {
-        private string apiKey = File.ReadAllText("ApiKey.txt");
+        private string apiKey = File.ReadAllText("YelpApiKey.txt");
         public string apiUrl = "https://api.yelp.com/v3/";
+        private string connectionString;
 
-        //RestClient client = new RestClient("https://api.yelp.com/v3/businesses/search?location=44113&term=Barrio&sort_by=best_match&limit=20");
-        
-        
+        public YelpFusionApiService(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
+        //RestClient client = new RestClient("https://api.yelp.com/v3/");
+
         //RestRequest request = new RestRequest(Method.GET);
         //request.AddHeader("accept", "application/json");
         //request.AddHeader("Authorization", apiKey);
@@ -36,13 +41,11 @@ namespace Capstone.Services
             //// The cancellation token comes from the caller. You can still make a call without it.
             //var response = client.Get(request);
 
-
             RestClient client = new RestClient("https://api.yelp.com/v3/businesses/search?location=44113&term=Barrio&sort_by=best_match&limit=20");
             RestRequest request = new RestRequest();
             //request.AddHeader("Cache-Control", "no-cache");
             request.AddHeader("Authorization", "Bearer " + apiKey);
             RestResponse response = client.Execute(request);
-            
 
             return response;
         }
