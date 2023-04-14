@@ -71,6 +71,12 @@ export default {
   ". weather weather weather ."
   ". . rest . .";
   grid-template-columns: .5fr 1fr 4fr 1fr .5fr;
+  background-image: url('/src/assets/cheers.jpg');
+  background-size: cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment: fixed;
+
 }
 
 

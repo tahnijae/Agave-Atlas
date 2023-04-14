@@ -1,5 +1,5 @@
 <template>
-  <div class="card" v-on:click="seeDrinks(restaurant.restaurant_ID)">
+  <div class=card v-on:click="seeDrinks(restaurant.restaurant_ID)">
     <div class="card-header">
       <h2>{{ restaurant.name }}</h2>
     </div>
@@ -27,6 +27,11 @@ export default {
     },
   },
   computed:{
+  cardClass(){
+    const name = this.restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, `_`);
+    return `card-${name}_bg`;
+  }
+    
   },
   created() {
       zipcodeService.GetCityByZipcode(this.restaurant.zipCode).then((response) => {
