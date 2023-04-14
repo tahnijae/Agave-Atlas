@@ -22,7 +22,6 @@ export default {
     NavigationBar,
   
   },
-  
   data() {
     return {
       isAuthenticated: false, // Set to false by default
@@ -37,11 +36,12 @@ export default {
       authService.logout();
       this.$store.commit("LOGOUT");
       this.isAuthenticated = false;
-    },
+    }
   },
+  computed: {}
 };
 </script>
-<style>
+<style scoped>
 .restaurant-list {
   text-align: center;
   margin: auto;
