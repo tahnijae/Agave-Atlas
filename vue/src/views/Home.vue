@@ -6,6 +6,7 @@
       <h2>Locations:</h2>
       <restaurant-list />
     </div>
+     <twitter-feed />
   </div>
 </template>
 <script>
@@ -13,6 +14,7 @@ import RestaurantList from "../components/RestaurantList.vue";
 import WeatherOutput from '../components/WeatherOutput.vue';
 import NavigationBar from '../components/NavigationBar.vue'
 import authService from "../services/AuthService.js";
+import TwitterFeed from "../components/TwitterFeed.vue";
 
 export default {
   name: "Home",
@@ -20,9 +22,7 @@ export default {
     RestaurantList,
     WeatherOutput,
     NavigationBar,
-  
-
-  
+    TwitterFeed,
   },
   data() {
     return {
@@ -73,9 +73,7 @@ export default {
   "banner banner banner banner banner"
   ". weather weather weather ."
   ". . rest . .";
-  grid-template-columns: .5fr 1fr 4fr 1fr .5fr;
+  grid-template-columns: 0.5fr 1fr 4fr 1fr 0.5fr;
 }
-
-
 
 </style>
