@@ -12,27 +12,20 @@ export default {
         let options = {
             method: 'GET',
             url: http,
-            params: {location: zipcode, term: name, sort_by: 'best_match', limit: '20'},
+            params: { location: zipcode, term: name, sort_by: 'best_match', limit: '20' },
             headers: {
-              accept: 'application/json',
-              Authorization: `BEARER ${apiKey}`
+                accept: 'application/json',
+                Authorization: `BEARER ${apiKey}`
             }
-          };
-         return http.request(options)
-        
-        // fetch(`?location=${zipcode}&term=${name}&sort_by=best_match&limit=20`, options)
-        //     .then(response => response.json())
-        //     .then(response => console.log(response))
-        //     .catch(err => console.error(err));
+        };
+        return http.request(options)
+            // fetch(`?location=${zipcode}&term=${name}&sort_by=best_match&limit=20`, options)
+            //     .then(response => response.json())
+            //     .then(response => console.log(response))
+            //     .catch(err => console.error(err));
 
         //return http.get(`?location=${zipcode}&term=${name}&sort_by=best_match&limit=5`)
 
-        
+
     }
 }
-
-
-
-
-
-
