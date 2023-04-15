@@ -1,7 +1,7 @@
 <template>
   <div class = 'main'>
     <navigation-bar />
-      <weather-output id="weather"/>
+      <weather-output class="weather"/>
     <div class="restaurant-list">
       <h2>Locations:</h2>
       <restaurant-list />
@@ -15,6 +15,7 @@ import WeatherOutput from '../components/WeatherOutput.vue';
 import NavigationBar from '../components/NavigationBar.vue'
 import authService from "../services/AuthService.js";
 import TwitterFeed from "../components/TwitterFeed.vue";
+
 
 export default {
   name: "Home",
@@ -53,7 +54,7 @@ export default {
 #banner{
   grid-area: banner;
 }
-#weather{
+.weather{
   grid-area: weather;
   padding: 20px;
   margin: 5rem 0 1rem 0;

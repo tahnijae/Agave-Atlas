@@ -9,50 +9,76 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using Capstone.Security;
+using System.ComponentModel;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
 
 namespace Capstone.Email_Stuff
 {
     public class GmailClient
     {
-        private readonly JwtGenerator jwt;
-
-        SmtpClient client = new SmtpClient("smtp.gmail.com")
+        public static void TestMessage(string recepientName, string recepientEmail, string senderName)
         {
-            DeliveryMethod = SmtpDeliveryMethod.Network,
-            UseDefaultCredentials = true,
-            Port = 587,
-            Credentials = new NetworkCredential("agaveatlas@gmail.com", "KaitlinLovesMargs23!"),
-            EnableSsl = true,
-        };
-        
-        public GmailClient() { }
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(senderName, "agaveatlas@hotmail.com"));
+            message.To.Add(new MailboxAddress(recepientName, recepientEmail));
+            message.Subject = "Testing Email";
 
-        public MailMessage createTestEmail(string senderName, string recepient)
-        {
-            var mailMessage = new MailMessage
+            message.Body = new TextPart("plain")
             {
-                From = new MailAddress("agaveatlas@gmail.com"),
-                Subject = $"Join {senderName} on Agave Atlas!",
-                Body = "This is a test!",
-                IsBodyHtml = false,
-                
+                Text = @"This message is a test!"
             };
-            mailMessage.To.Add(recepient);
-            return mailMessage;
+
+            using (var client = new MailKit.Net.Smtp.SmtpClient())
+            {
+                client.Connect("smtp.office365.com", 587, false);
+
+                client.Authenticate("agaveatlas@hotmail.com", "KaitlinLovesMargs23!");
+                try
+                {
+                    client.Send(message);
+                    client.Disconnect(true);
+                    message.Dispose();
+                }
+                catch (SmtpException e)
+                {
+                    Console.WriteLine(e.StatusCode);
+                    client.Disconnect(true);
+                    message.Dispose();
+                }
+            }
         }
-        public void SendTest(MailMessage message)
+        public static void SendInvite(string recepientName, string recepientEmail, string senderName)
         {
-            
-            try
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(senderName, "agaveatlas@hotmail.com"));
+            message.To.Add(new MailboxAddress(recepientName, recepientEmail));
+            message.Subject = "Testing Email";
+
+            message.Body = new TextPart("plain")
             {
-                
-                this.client.Send(message);
-            }
-            catch (SmtpException e)
+                Text = @"This one was sent with recepient and sender params passed in from Postman"
+            };
+
+            using (var client = new MailKit.Net.Smtp.SmtpClient())
             {
-                Console.WriteLine(e);
+                client.Connect("smtp.office365.com", 587, false);
+
+                client.Authenticate("agaveatlas@hotmail.com", "KaitlinLovesMargs23!");
+                try
+                {
+                    client.Send(message);
+                    client.Disconnect(true);
+                    message.Dispose();
+                }
+                catch (SmtpException e)
+                {
+                    Console.WriteLine(e.StatusCode);
+                    client.Disconnect(true);
+                    message.Dispose();
+                }
             }
         }
-        
     }
 }
