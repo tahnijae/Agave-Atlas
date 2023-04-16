@@ -8,6 +8,7 @@ import store from '../store/index'
 //import DrinkList from '../components/DrinkList.vue'
 import Restaurant from '../views/Restaurant.vue'
 import Socials from '../views/Socials.vue'
+import Invite from '../components/InviteUserForm.vue'
 
 Vue.use(Router)
 
@@ -72,6 +73,11 @@ const router = new Router({
             meta: {
                 requiresAuth: false
             }
+        },
+        {
+            path: "/invite",
+            name: "invite",
+            component: Invite
         }
     ]
 })
