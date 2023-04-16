@@ -107,19 +107,17 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"BEGIN TRANSACTION
+                    SqlCommand cmd = new SqlCommand(@"
                                                   INSERT INTO drinks (drink_name, description, isFrozen) 
                                                   OUTPUT INSERTED.drink_id 
                                                   VALUES (@drink_name, @description, @isFrozen) 
 
                                                   INSERT INTO restaurant_drinks (restaurant_id,drink_id) 
-                                                  VALUES (@restaurant_id,(SELECT drink_id FROM drinks WHERE drink_name='@drink_name')); 
-
-                                                  COMMIT;", conn);
+                                                  VALUES (@restaurant_id,(SELECT drink_id FROM drinks WHERE drink_name = @drink_name));", conn);
                     cmd.Parameters.AddWithValue("@drink_name", newDrink.Name);
                     cmd.Parameters.AddWithValue("@description", newDrink.Description);
-                    cmd.Parameters.AddWithValue("@isFrozen", newDrink.isFrozen);
-                    cmd.Parameters.AddWithValue("@restaurant_id", newDrink.restaurant_ID);
+                    cmd.Parameters.AddWithValue("@isFrozen", newDrink.IsFrozen);
+                    cmd.Parameters.AddWithValue("@restaurant_id", newDrink.RestaurantID);
 
                     int drinkId = Convert.ToInt32(cmd.ExecuteScalar());
                     drink = GetDrinkById(drinkId);
@@ -142,7 +140,7 @@ namespace Capstone.DAO
                                                       WHERE drink_id = @drink_id",conn);
                     cmd.Parameters.AddWithValue("@drink_name",newDrink.Name);
                     cmd.Parameters.AddWithValue("@description", newDrink.Description);
-                    cmd.Parameters.AddWithValue("@isFrozen", newDrink.isFrozen);
+                    cmd.Parameters.AddWithValue("@isFrozen", newDrink.IsFrozen);
                     cmd.Parameters.AddWithValue("@drink_id", drinkID);
 
                     cmd.ExecuteNonQuery();
@@ -180,10 +178,10 @@ namespace Capstone.DAO
         {
             Drink newDrink = new Drink();
 
-            newDrink.drink_ID = Convert.ToInt32(reader["drink_id"]);
+            newDrink.DrinkID = Convert.ToInt32(reader["drink_id"]);
             newDrink.Name = Convert.ToString(reader["drink_name"]);
             newDrink.Description = Convert.ToString(reader["description"]);
-            newDrink.isFrozen = Convert.ToBoolean(reader["isFrozen"]);
+            newDrink.IsFrozen = Convert.ToBoolean(reader["isFrozen"]);
 
             return newDrink;
 
