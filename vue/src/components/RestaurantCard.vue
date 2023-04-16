@@ -1,5 +1,6 @@
 <template>
   <div class=card v-on:click="seeDrinks(restaurant.restaurant_ID)">
+    <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)">
     <div class="card-header">
       <h2>{{ restaurant.name }}</h2>
     </div>

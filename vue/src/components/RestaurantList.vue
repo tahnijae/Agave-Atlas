@@ -61,8 +61,8 @@ export default {
   
 }
 
-</style>
-<style scoped>
+
+/*
 .card-barrio{
   background-image: url('../assets/lakewood2.jpg');
 }
@@ -75,9 +75,9 @@ background-image: url('../assets/tacotontos.png');
 .card-el_carniceno{
   background-image: url('../assets/elcarnicero.jpg');
 }
-</style>
+*/
 
-<style>
+
 div.main {
   margin: 1rem 0;
 }
