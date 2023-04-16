@@ -1,10 +1,11 @@
 <template>
   <div>
     <navigation-bar />
-    <div v-if="loading" class="loading">
-      <font-awesome-icon :icon="['fas', 'cocktail']" spin />
+    <div v-if="isLoading" class="loading">
+       <div class="loading-text">Getting ready to join the fiesta... 🍹🎉</div>
+      <img src="../assets/MargaritaLoader.gif"/>
     </div>
-    <div class="twitter-div">
+    <div class="twitter-div" v-else>
       <a class="twitter-timeline" data-lang="en" data-theme="dark" href="https://twitter.com/AgaveAtlas?ref_src=twsrc%5Etfw">Tweets by AgaveAtlas</a> <script type="application/javascript" async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       <div class="share-container">
         <div class="share-text">
@@ -24,23 +25,50 @@ export default {
   name: "SocialsPage",
   data(){
     return{
-      loading:true
+      isLoading:true
     }
   },
   mounted(){
-    
+    setTimeout(() => {
+      this.isLoading = false
+    }, 3000)
   }
 };
 </script>
 
 <style scoped>
-.twitter-div {
+.loading {
   margin-top: 5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
+.loading-text {
+  margin: 15rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.loading img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.twitter-div {
+  position: relative;
+  top: 80px; /* adjust this value based on the height of your navigation-bar */
+  margin: 0 auto;
+  max-width: 800px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+}
+
 .twitter-timeline {
   display: flex;
   justify-content: center;
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 .share-container {
@@ -71,4 +99,18 @@ export default {
 .twitter-share-button:hover {
   background-color: #0c8de4;
 }
+.twitter-timeline {
+  height: 400px;
+  max-width: 500px;
+}
+
+.timeline-TweetList {
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.timeline-Tweet-text {
+  margin: 0;
+}
+
 </style>

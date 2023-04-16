@@ -11,6 +11,7 @@ using Capstone.DAO;
 using Capstone.Security;
 using Capstone.DAO.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Capstone.Services;
 using Capstone.Email_Stuff;
 
 namespace Capstone
@@ -72,6 +73,7 @@ namespace Capstone
             services.AddTransient<IUserDao>(m => new UserSqlDao(connectionString));
             services.AddTransient<IRestaurantSqlDao>(m => new RestaurantSqlDao(connectionString));
             services.AddTransient<IDrinkDao>(m => new DrinkSqlDao(connectionString));
+            services.AddTransient<YelpFusionApiService>(m => new YelpFusionApiService(connectionString));
             services.AddTransient<GmailClient>(m => new GmailClient());
         }
 
