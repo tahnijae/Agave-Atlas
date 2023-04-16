@@ -10,7 +10,7 @@ namespace Capstone.Controllers
 
     public class EmailController : ControllerBase
     {
-        private readonly GmailClient gmailClient;
+        private GmailClient gmailClient;
 
         public EmailController(GmailClient gmailClient)
         {
@@ -24,12 +24,18 @@ namespace Capstone.Controllers
         }
 
         [HttpPost("testEmail")]
-        public ActionResult<MailMessage> SendTestEmail(Email email)
+        public ActionResult<bool> SendTestEmail([FromBody] Email details)
         {
-            MailMessage message = gmailClient.createTestEmail(email.senderName, email.recepient);
 
-            gmailClient.SendTest(message);
-            return message;
+            GmailClient.TestMessage(details.recepient, details.email, details.sender);
+            
+            return true;
+        }
+        [HttpPost("invite")]
+        public ActionResult<bool> InviteUser([FromBody] Email details)
+        {
+            GmailClient.SendInvite(details.recepient, details.email, details.sender);
+            return true;
         }
     }
 }
