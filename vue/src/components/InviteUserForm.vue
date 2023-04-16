@@ -26,7 +26,7 @@
           <p class="preview-field" id="toName">To: {{details.recepient}}</p>
           <p class="preview-field" id="toEmail">At: {{details.email}}</p>
           <p class="preview-field" id="fromName">From: {{details.sender}}</p>
-          <button class="submitButton" v-on:click.prevent="sendTestEmail()">Confirm and Send</button>
+          <button class="submitButton" v-on:click.prevent="sendEmail()">Confirm and Send</button>
           <button class="submitButton" v-on:click.prevent="showPreview = false;">Cancel</button>
       </div>
   </div>
@@ -73,7 +73,13 @@ methods: {
         EmailService.inviteNewUser(this.details).then(
             response => {
                 if(response.data){
+                    alert("Invitation Successfully Sent!")
                     this.emailSent = true;
+                    this.showPreview = false;
+                    this.details = {
+                        recepient:'',
+                        email: '',
+                        sender: this.$store.state.user.username};
                 } else {
                     this.sendError = true;
                     alert(response.status + `There was an error inviting ${this.details.recepient}. Please try again later!`);
