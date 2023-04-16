@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="list">
     <!-- <div id="weather" class ="grid text-center" style="--bs-columns: 3;">
     <weather-output/>
     </div> -->
@@ -105,6 +105,10 @@ div.main div.well-display div.well {
 
 .card-body {
   padding: 10px;
+}
+.list{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 </style>

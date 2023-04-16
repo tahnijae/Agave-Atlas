@@ -79,7 +79,11 @@ export default {
   background-position:center;
   background-repeat:no-repeat;
   background-attachment: fixed;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 
+}
+h2{
+  color: white;
 }
 
 </style>
