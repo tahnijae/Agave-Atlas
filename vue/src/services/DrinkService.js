@@ -12,13 +12,16 @@ export default {
     getDrinkById(id){
         return http.get(`drink/${id}`);
     },
-    AddDrink(drink){
-        return http.post(`drink`,drink);
+
+    addNewDrink(drink){
+        return http.post('drink', drink);
     },
-    UpdateDrink(id,drink){
-        return http.put(`drink/${id}`,drink);
+
+    updateDrink(id,drink){
+        return http.put(`drink/${id}`, drink);
     },
-    DeleteDrink(id){
+    
+    deleteDrink(id){
         return http.delete(`drink/${id}`);
     }
 }
