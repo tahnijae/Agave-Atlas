@@ -9,12 +9,12 @@
              required>
             </div>
             <div id="rec" class="form-input">
-        <label for="RecName" class="form-label"> Recepient Name: </label>
+        <label for="RecName" class="form-label"> Recipient Name: </label>
         <input id="RecName" type = "text" class="form-control"
            name="RecName" v-model="details.recepient" required>
             </div>
             <div id="mail" class="form-input">
-        <label for="RecEmail" class="form-label"> Recepient Email: </label>
+        <label for="RecEmail" class="form-label"> Recipient Email: </label>
         <input id="RecEmail" type="email" class="form-control"
             name="RecEmail" v-model="details.email" required>
             </div>
