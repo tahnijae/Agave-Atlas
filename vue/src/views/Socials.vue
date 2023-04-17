@@ -13,6 +13,10 @@
             <p>Share a picture of your favorite margarita:</p>
           </div>
           <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Hey @AgaveAtlas, just visited your site and loved the [insert feature]. Thanks for making my margarita experience even better! 🍹 #MargaritaLove" data-hashtags="MargaritaDayIsEveryday" data-show-count="false">Tweet to @AgaveAtlas</a>
+          <h2> Invite a friend to the fiesta! </h2>
+          <div class="invite-container">
+          <invite-user-form-vue />
+          </div>
         </div>
         <a class="twitter-timeline" data-lang="en" data-theme="dark" href="https://twitter.com/AgaveAtlas?ref_src=twsrc%5Etfw">Tweets by AgaveAtlas</a> <script type="application/javascript" async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
@@ -21,9 +25,11 @@
 </template>
 
 <script>
+import InviteUserFormVue from '../components/InviteUserForm.vue';
 import NavigationBar from '../components/NavigationBar.vue';
+
 export default {
-  components: { NavigationBar },
+  components: { NavigationBar, InviteUserFormVue },
   name: "SocialsPage",
   data(){
     return{
@@ -61,7 +67,7 @@ export default {
   position: relative;
   top: 80px; /* adjust this value based on the height of your navigation-bar */
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 1000px;
   background-color: #f2f2f2;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
@@ -122,7 +128,7 @@ export default {
   position: relative;
   top: 80px; /* adjust this value based on the height of your navigation-bar */
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 1000px;
   background-color: #f2f2f2;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
@@ -138,15 +144,17 @@ export default {
 
 .share-container {
   position: sticky;
-  top: 5rem; /* adjust this value to set the distance from the top when the section is sticky */
+  top: 5rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   background-color: #f2f2f2;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
+
 .share-text {
   text-align: center;
   margin-bottom: 1rem;
@@ -156,4 +164,12 @@ export default {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+.invite-container{
+  display: flex;
+  text-align: start;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+
 </style>

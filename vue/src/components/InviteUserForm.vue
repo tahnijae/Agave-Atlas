@@ -119,16 +119,14 @@ methods: {
     justify-items: center;
     align-content: center;
     flex-wrap: wrap;
-    width: 50%;
+    width: 70%;
     margin: auto;
 }
 .form-input{
     margin: .5rem;
     padding: .5rem;
-    width: 50%;
+    width: 100%;
     text-align: center;
-    display: flex;
-    flex-direction: row;
 }
 .submitButton{
     margin: 5px;
@@ -144,7 +142,7 @@ methods: {
 }
 .form-label {
     display:flex;
-    width: 40%;
+    width: 100%;
     flex-direction: row;
     justify-content: center;
 }
