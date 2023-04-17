@@ -2,7 +2,8 @@
   <div class = "card">
       <div class = "card-header">
       <h2>{{decodeHtml(drink.name)}}</h2>
-      <button v-on:click="deleteDrink">Delete</button>
+      <button class="deleteBtn" v-on:click="deleteDrink">Delete</button>
+      <button class="deleteBtn" v-on:click="pushToForm" >Update</button>
       </div>
       <div class = "card-body">
       <p>{{decodeHtml(drink.description)}}</p>
@@ -20,6 +21,7 @@ export default {
 data(){
   return{
     drinkId : this.drink.drinkID,
+    
 
   }
 },
@@ -37,6 +39,11 @@ props: ["drink","drink.drinkID"],
         }
       });
     },
+    pushToForm(){
+      this.$router.push({ name: "update-drink", params: { id: this.$route.params.id, drinkId: this.drinkId } });
+    }
+    
+    
 
 }
 
@@ -66,5 +73,14 @@ h2{
 
 .card-body {
   padding: 10px;
+}
+.deleteBtn{
+  margin: 5px;
+  padding: 5px 15px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 }
 </style>
