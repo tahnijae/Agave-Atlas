@@ -10,10 +10,16 @@ import yelpService from "../services/YelpService.js";
 export default {
   name: "yelp-component",
   components: {},
+  data(){
+    return{
+      Restaurant: {}
+    }
+  },
   created() {
-    yelpService.GetBusinessByNameAndZip().then(response => {console.log (response.data)})
-  }
-
+    yelpService.GetBusinessByNameAndZip().then(response => {
+      this.Restaurant = response.data;})
+  },
+  
 }
 </script>
 
