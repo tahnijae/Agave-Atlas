@@ -1,6 +1,9 @@
 <template>
   <div class = 'main'>
     <navigation-bar />
+  <div>
+    <add-restaurant-form/>
+  </div>
       <weather-output class="weather"/>
     <div class="restaurant-list">
       <h2>Locations:</h2>
@@ -15,6 +18,7 @@ import WeatherOutput from '../components/WeatherOutput.vue';
 import NavigationBar from '../components/NavigationBar.vue'
 import authService from "../services/AuthService.js";
 import TwitterFeed from "../components/TwitterFeed.vue";
+import AddRestaurantForm from '../components/AddRestaurantForm.vue';
 
 
 export default {
@@ -24,6 +28,7 @@ export default {
     WeatherOutput,
     NavigationBar,
     TwitterFeed,
+    AddRestaurantForm,
   },
   data() {
     return {
