@@ -119,13 +119,13 @@ methods: {
     justify-items: center;
     align-content: center;
     flex-wrap: wrap;
-    width: 50%;
+    width: 100%;
     margin: auto;
 }
 .form-input{
     margin: .5rem;
     padding: .5rem;
-    width: 50%;
+    width: 100%;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -162,14 +162,14 @@ methods: {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
+    /* width: 100%; */
     margin: auto;
     justify-items: center;
     flex-wrap: wrap;
     align-content: center;
 }
 .preview-field{
-    width: 50%;
+    /* width: 100%; */
     margin: auto;
     padding: 10px;
 }
