@@ -1,6 +1,7 @@
 <template>
   <div class = "drinkForm">
-      <form v-on:submit.prevent="submitForm">
+    <button class= "addDrink" v-if="!showAddDrinkForm && isLoggedIn" v-on:click="showAddDrinkForm = !showAddDrinkForm">Add Drink</button>
+      <form v-on:submit.prevent="submitForm" v-if="showAddDrinkForm">
         <h3>Add a Drink!</h3>
         <label for="name">Drink Name:</label>
         <input id="name" type="text" v-model="drink.Name"/>
@@ -12,6 +13,7 @@
         <input id="isFrozen" type="checkbox" v-model="drink.IsFrozen"/>
         
         <button type='submit'>Submit</button>
+        <button  v-on:click="showAddDrinkForm = showAddDrinkForm">Cancel</button>
         
       </form>
   </div>
@@ -29,8 +31,13 @@ data(){
       Description:'',
       IsFrozen:false,
       RestaurantID: Number(this.$route.params.id)
-    }
+    },
+    showAddDrinkForm : false,
+    isLoggedIn : false,
   }
+},
+created() {
+    this.isLoggedIn = this.$store.state.token !== "";
 },
 methods:{
   submitForm(){
@@ -66,7 +73,20 @@ methods:{
  </script>
 
 <style>
+
+
 .drinkForm{
   margin-top:100px;
+  
+}
+
+.addDrink {
+  margin: 5px 46%;
+  padding: 5px 15px;
+  background-color: #7bc950;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 }
 </style>
