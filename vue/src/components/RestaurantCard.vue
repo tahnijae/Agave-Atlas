@@ -1,9 +1,10 @@
 <template>
-  <div class="card" v-on:click="seeDrinks(restaurant.restaurant_ID)">
-    <div class="card-header">
+  <div class="card container" v-on:click="seeDrinks(restaurant.restaurant_ID)">
+    <img width="100%" :src="require(`@/assets/${restaurant.imageFilePath}`)">
+    <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
+    <div class="centered">
       <h2>{{ restaurant.name }}</h2>
-    </div>
-    <div class="card-body">
+    
       <p>{{locationData["place name"]}}, {{locationData["state abbreviation"]}}</p>
     </div>
   </div>
@@ -27,6 +28,11 @@ export default {
     },
   },
   computed:{
+  cardClass(){
+    const name = this.restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, `_`);
+    return `card-${name}_bg`;
+  }
+    
   },
   created() {
       zipcodeService.GetCityByZipcode(this.restaurant.zipCode).then((response) => {
@@ -47,6 +53,7 @@ export default {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h2 {
@@ -61,5 +68,19 @@ h2 {
 
 .card-body {
   padding: 10px;
+}
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(0, 0, 0); 
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
 }
 </style>

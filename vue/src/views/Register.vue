@@ -22,7 +22,9 @@
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <div class="form-input-group">
+            <div class="form-input-group">
+
+      <div class="column-1">
         <label for="username">Username</label>
         <input
           type="text"
@@ -32,11 +34,11 @@
           autofocus
         />
       </div>
-      <div class="form-input-group">
+      <div class="column-2">
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <div class="form-input-group">
+      <div class="column-3">
         <label for="confirmPassword">Confirm Password</label>
         <input
           type="password"
@@ -45,6 +47,7 @@
           required
         />
       </div>
+            </div>
       <div>
       <button type="submit">Create Account</button>
       </div>
@@ -133,6 +136,8 @@ label {
     #7bc950 70%,
     transparent 70%
   );
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 .title {
   font-size: 2rem;
@@ -163,5 +168,41 @@ label {
 .bottom-right {
   bottom: 0;
   right: 0;
+}
+.column-1 {
+display: flex; 
+margin-bottom: 10px;
+}
+.column-2 {
+display: flex; 
+margin-bottom: 10px;
+
+}
+.column-3 {
+display: flex; 
+}
+input{
+  margin: 0px;
+  width: 100%;
+}
+
+label{
+  margin: 0px;
+  width: 250px;
+}
+
+button {
+  width: 100%;
+  margin: 5px;
+  padding: 5px 15px;
+  background-color: #7bc950;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6db743;
 }
 </style>
