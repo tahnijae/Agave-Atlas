@@ -35,6 +35,7 @@ export default {
   data() {
     return {
       restaurants: [],
+
     };
   },
   
@@ -42,6 +43,7 @@ export default {
     RestaurantService.getRestaurants()
       .then((response) => {
         this.restaurants = response.data;
+        console.log('DATA: '+JSON.stringify(response.data))
       })
       .catch((error) => {
         if (error) {
