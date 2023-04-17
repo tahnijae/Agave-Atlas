@@ -107,20 +107,34 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(@"INSERT INTO drinks (drink_name, description, isFrozen) 
-                                                   OUTPUT INSERTED.drink_id 
-                                                  VALUES (@drink_name, @description, @isFrozen);", conn);
+                    SqlCommand cmd = new SqlCommand(@"
+                                                  INSERT INTO drinks (drink_name, description, isFrozen) 
+                                                  OUTPUT INSERTED.drink_id 
+                                                  VALUES (@drink_name, @description, @isFrozen) 
+
+                                                  ;", conn);
                     cmd.Parameters.AddWithValue("@drink_name", newDrink.Name);
                     cmd.Parameters.AddWithValue("@description", newDrink.Description);
-                    cmd.Parameters.AddWithValue("@isFrozen", newDrink.isFrozen);
+                    cmd.Parameters.AddWithValue("@isFrozen", newDrink.IsFrozen);
+                   //cmd.Parameters.AddWithValue("@restaurant_id", newDrink.RestaurantID);
 
                     int drinkId = Convert.ToInt32(cmd.ExecuteScalar());
                     drink = GetDrinkById(drinkId);
+
+          
+                    SqlCommand comd = new SqlCommand(@"INSERT INTO restaurant_drinks (drink_id , restaurant_id)   
+                                                      VALUES (@drink_id, @restaurant_id);", conn);
+
+                    comd.Parameters.AddWithValue("@restaurant_id", newDrink.RestaurantID);
+                    comd.Parameters.AddWithValue("@drink_id", drinkId);
+                    comd.ExecuteNonQuery();
                 }
             }
             catch (Exception) { Console.WriteLine("error adding new drink");}
             return drink;
         }
+
+
 
         public Drink UpdateDrink(int drinkID,Drink newDrink)
         {
@@ -135,7 +149,7 @@ namespace Capstone.DAO
                                                       WHERE drink_id = @drink_id",conn);
                     cmd.Parameters.AddWithValue("@drink_name",newDrink.Name);
                     cmd.Parameters.AddWithValue("@description", newDrink.Description);
-                    cmd.Parameters.AddWithValue("@isFrozen", newDrink.isFrozen);
+                    cmd.Parameters.AddWithValue("@isFrozen", newDrink.IsFrozen);
                     cmd.Parameters.AddWithValue("@drink_id", drinkID);
 
                     cmd.ExecuteNonQuery();
@@ -154,9 +168,12 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("DELETE FROM drinks WHERE drink_id = @drinks_id;"
+                    SqlCommand cmd = new SqlCommand(@"BEGIN TRANSACTION
+                                                      DELETE from restaurant_drinks where drink_id = @drink_id; 
+                                                      DELETE FROM drinks WHERE drink_id = @drink_id; 
+                                                      COMMIT;"
                         , conn);
-                    cmd.Parameters.AddWithValue("@drinks_id", drinkID);
+                    cmd.Parameters.AddWithValue("@drink_id", drinkID);
                     cmd.ExecuteNonQuery();
                    
                 }
@@ -173,10 +190,10 @@ namespace Capstone.DAO
         {
             Drink newDrink = new Drink();
 
-            newDrink.drink_ID = Convert.ToInt32(reader["drink_id"]);
+            newDrink.DrinkID = Convert.ToInt32(reader["drink_id"]);
             newDrink.Name = Convert.ToString(reader["drink_name"]);
             newDrink.Description = Convert.ToString(reader["description"]);
-            newDrink.isFrozen = Convert.ToBoolean(reader["isFrozen"]);
+            newDrink.IsFrozen = Convert.ToBoolean(reader["isFrozen"]);
 
             return newDrink;
 
