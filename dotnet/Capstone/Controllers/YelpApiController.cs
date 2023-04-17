@@ -1,7 +1,10 @@
-﻿using Capstone.DAO.Interfaces;
+﻿using Azure;
+using Capstone.DAO.Interfaces;
 using Capstone.Services;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using Capstone.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,21 +17,17 @@ namespace Capstone.Controllers
         private readonly IRestaurantSqlDao restaurantDao;
         private readonly YelpFusionApiService yelp;
 
-        //private readonly IUserDao userDao;
-        //private readonly IDrinkDao drinkDao;
-
-        public YelpApiController(IRestaurantSqlDao restaurantDao)
+       
+        public YelpApiController(IRestaurantSqlDao restaurantDao, YelpFusionApiService yelp)
         {
             this.restaurantDao = restaurantDao;
-            //this.userDao = userDao;
-            //this.drinkDao = drinkDao;
+            this.yelp = yelp;
         }
 
-        // GET: api/<ValuesController>
         [HttpGet]
-        public string Get()
+        public ActionResult<Yelp> Get()
         {
-            string data = yelp.GetRestaurantInfo().ToString();
+            Yelp data = yelp.GetRestaurantInfo();
             return data;
         }
 
