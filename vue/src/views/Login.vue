@@ -24,19 +24,16 @@
         Thank you for registering, please sign in.
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          v-model="user.username"
-          required
-          autofocus
-        />
+        <div class="column-1">
+          <label for="username">Username</label>
+          <input type="text" id="username" v-model="user.username" required autofocus />
+        </div>
+        <div class="column-2">
+          <label for="password">Password</label>
+          <input type="password" id="password" v-model="user.password" required />
+        </div>
       </div>
-      <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
-      </div>
+        
       <button type="submit">Sign in</button>
       <p>
         <router-link :to="{ name: 'register' }"
@@ -108,6 +105,8 @@ label {
     #7bc950 70%,
     transparent 70%
   );
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 .title-container {
   display: flex;
@@ -147,5 +146,35 @@ label {
   bottom: 0;
   right: 0;
   position: absolute;
+}
+.column-1 {
+display: flex; 
+margin-bottom: 10px;
+}
+.column-2 {
+display: flex; 
+}
+input{
+  margin: 0px;
+}
+
+label{
+  margin: 0px;
+  width: 100px;
+}
+
+button {
+  width: 100%;
+  margin: 5px;
+  padding: 5px 15px;
+  background-color: #7bc950;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6db743;
 }
 </style>

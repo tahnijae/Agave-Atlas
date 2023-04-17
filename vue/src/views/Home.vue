@@ -76,7 +76,17 @@ export default {
   "banner banner banner banner banner"
   ". weather weather weather ."
   ". . rest . .";
-  grid-template-columns: 0.5fr 1fr 4fr 1fr 0.5fr;
+  grid-template-columns: .5fr 1fr 4fr 1fr .5fr;
+  background-image: url('/src/assets/cheers.jpg');
+  background-size: cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment: fixed;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+h2{
+  color: white;
 }
 
 </style>
