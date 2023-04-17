@@ -81,7 +81,7 @@ methods:{
 }
 
 .addDrink {
-  margin: 5px 46%;
+  margin: 5px 47.5%;
   padding: 5px 15px;
   background-color: #7bc950;
   color: white;

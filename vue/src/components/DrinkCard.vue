@@ -2,8 +2,8 @@
   <div class = "card">
       <div class = "card-header">
       <h2>{{decodeHtml(drink.name)}}</h2>
-      <button class="deleteBtn" v-on:click="deleteDrink">Delete</button>
-      <button class="deleteBtn" v-on:click="pushToForm" >Update</button>
+      <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >Delete</button>
+      <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== ""' >Update</button>
       </div>
       <div class = "card-body">
       <p>{{decodeHtml(drink.description)}}</p>
@@ -74,7 +74,7 @@ h2{
 .card-body {
   padding: 10px;
 }
-.deleteBtn{
+.cardBtn{
   margin: 5px;
   padding: 5px 15px;
   background-color: white;
