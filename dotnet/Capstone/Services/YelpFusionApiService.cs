@@ -9,6 +9,7 @@ using System.IO;
 using Capstone.Services;
 using System;
 using Nest;
+using Newtonsoft.Json;
 
 namespace Capstone.Services
 {
