@@ -2,6 +2,7 @@
   <div class = "card">
       <div class = "card-header">
       <h2>{{decodeHtml(drink.name)}}</h2>
+      <button v-on:click="deleteDrink">Delete</button>
       </div>
       <div class = "card-body">
       <p>{{decodeHtml(drink.description)}}</p>
@@ -13,13 +14,28 @@
 </template>
 
 <script>
+import drinkService from '../services/DrinkService.js'
+
 export default {
-props: ["drink"]
-, methods: {
+data(){
+  return{
+    drinkId : this.drink.drinkID,
+
+  }
+},
+props: ["drink","drink.drinkID"],
+ methods: {
   decodeHtml(html) {
       var txt = document.createElement("textarea");
       txt.innerHTML = html;
       return txt.value;
+    },
+    deleteDrink(){
+      drinkService.deleteDrink(this.drinkId).then((response)=>{
+        if(response.status === 204){
+          location.reload();
+        }
+      });
     },
 
 }

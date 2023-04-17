@@ -168,9 +168,12 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("DELETE FROM drinks WHERE drink_id = @drinks_id;"
+                    SqlCommand cmd = new SqlCommand(@"BEGIN TRANSACTION
+                                                      DELETE from restaurant_drinks where drink_id = @drink_id; 
+                                                      DELETE FROM drinks WHERE drink_id = @drink_id; 
+                                                      COMMIT;"
                         , conn);
-                    cmd.Parameters.AddWithValue("@drinks_id", drinkID);
+                    cmd.Parameters.AddWithValue("@drink_id", drinkID);
                     cmd.ExecuteNonQuery();
                    
                 }

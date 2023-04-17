@@ -88,9 +88,7 @@ namespace Capstone.Controllers
                 return NotFound();
             }
             else
-            {
-               
-                
+            { 
                 if (drinkDao.DeleteDrink(drinkID))
                 {
                     return NoContent();
