@@ -6,13 +6,15 @@
       <img src="../assets/MargaritaLoader.gif"/>
     </div>
     <div class="twitter-div" v-else>
-      <a class="twitter-timeline" data-lang="en" data-theme="dark" href="https://twitter.com/AgaveAtlas?ref_src=twsrc%5Etfw">Tweets by AgaveAtlas</a> <script type="application/javascript" async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      <div class="share-container">
-        <div class="share-text">
-          <h2>Tell us what you think!</h2>
-          <p>Share your thoughts on our website with us:</p>
+      <div class="content-wrapper">
+        <div class="share-container">
+          <div class="share-text">
+            <h2>Tell us what you think!</h2>
+            <p>Share a picture of your favorite margarita:</p>
+          </div>
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Hey @AgaveAtlas, just visited your site and loved the [insert feature]. Thanks for making my margarita experience even better! 🍹 #MargaritaLove" data-hashtags="MargaritaDayIsEveryday" data-show-count="false">Tweet to @AgaveAtlas</a>
         </div>
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Hey @AgaveAtlas, just visited your site and loved the [insert feature]. Thanks for making my margarita experience even better! 🍹 #MargaritaLove" data-hashtags="MargaritaDayIsEveryday" data-show-count="false">Tweet to @AgaveAtlas</a>
+        <a class="twitter-timeline" data-lang="en" data-theme="dark" href="https://twitter.com/AgaveAtlas?ref_src=twsrc%5Etfw">Tweets by AgaveAtlas</a> <script type="application/javascript" async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
     </div>
   </div>
@@ -74,6 +76,7 @@ export default {
 .share-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: #f2f2f2;
   padding: 1rem;
@@ -94,6 +97,7 @@ export default {
   transition: background-color 0.2s ease-in-out;
   text-decoration: none;
   text-align: center;
+  justify-content: center;
   margin-bottom: 1rem;
 }
 .twitter-share-button:hover {
@@ -113,4 +117,43 @@ export default {
   margin: 0;
 }
 
+/*Uncomment or comment out below to see tweet box on the left side of the screen or ontop of the twitter feed, respectively.*/
+.twitter-div {
+  position: relative;
+  top: 80px; /* adjust this value based on the height of your navigation-bar */
+  margin: 0 auto;
+  max-width: 800px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+}
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 1rem;
+  align-items: start;
+}
+
+.share-container {
+  position: sticky;
+  top: 5rem; /* adjust this value to set the distance from the top when the section is sticky */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #f2f2f2;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+.share-text {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.share-text p {
+  width: 100%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
 </style>
