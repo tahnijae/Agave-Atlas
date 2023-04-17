@@ -112,20 +112,29 @@ namespace Capstone.DAO
                                                   OUTPUT INSERTED.drink_id 
                                                   VALUES (@drink_name, @description, @isFrozen) 
 
-                                                  INSERT INTO restaurant_drinks (restaurant_id,drink_id) 
-                                                  VALUES (@restaurant_id,(SELECT drink_id FROM drinks WHERE drink_name = @drink_name));", conn);
+                                                  ;", conn);
                     cmd.Parameters.AddWithValue("@drink_name", newDrink.Name);
                     cmd.Parameters.AddWithValue("@description", newDrink.Description);
                     cmd.Parameters.AddWithValue("@isFrozen", newDrink.IsFrozen);
-                    cmd.Parameters.AddWithValue("@restaurant_id", newDrink.RestaurantID);
+                   //cmd.Parameters.AddWithValue("@restaurant_id", newDrink.RestaurantID);
 
                     int drinkId = Convert.ToInt32(cmd.ExecuteScalar());
                     drink = GetDrinkById(drinkId);
+
+          
+                    SqlCommand comd = new SqlCommand(@"INSERT INTO restaurant_drinks (drink_id , restaurant_id)   
+                                                      VALUES (@drink_id, @restaurant_id);", conn);
+
+                    comd.Parameters.AddWithValue("@restaurant_id", newDrink.RestaurantID);
+                    comd.Parameters.AddWithValue("@drink_id", drinkId);
+                    comd.ExecuteNonQuery();
                 }
             }
             catch (Exception) { Console.WriteLine("error adding new drink");}
             return drink;
         }
+
+
 
         public Drink UpdateDrink(int drinkID,Drink newDrink)
         {

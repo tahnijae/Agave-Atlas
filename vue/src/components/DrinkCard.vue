@@ -21,6 +21,7 @@ props: ["drink"]
       txt.innerHTML = html;
       return txt.value;
     },
+
 }
 
 }

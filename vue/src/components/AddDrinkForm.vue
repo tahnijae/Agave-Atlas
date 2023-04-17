@@ -41,10 +41,14 @@ methods:{
     //   isFrozen: this.isFrozen
     // }
     //newDrink = JSON.stringify(newDrink);
-    drinkService.addNewDrink(this.drink);
+    drinkService.addNewDrink(this.drink).then((response)=>{
+      if(response.status === 200){
+        location.reload();
+      }
+    }); 
   
-    
-   // this.resetDrink();
+    //location.reload() 
+    //this.resetDrink();
 
   },
   resetDrink(){
