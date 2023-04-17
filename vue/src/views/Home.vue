@@ -2,6 +2,7 @@
   <div class = 'main'>
     <navigation-bar />
       <weather-output class="weather"/>
+      <!-- <yelp-component /> -->
     <div class="restaurant-list">
       <h2>Locations:</h2>
       <restaurant-list />
@@ -15,6 +16,7 @@ import WeatherOutput from '../components/WeatherOutput.vue';
 import NavigationBar from '../components/NavigationBar.vue'
 import authService from "../services/AuthService.js";
 import TwitterFeed from "../components/TwitterFeed.vue";
+// import YelpComponent from '../components/YelpComponent.vue';
 
 
 export default {
@@ -24,6 +26,7 @@ export default {
     WeatherOutput,
     NavigationBar,
     TwitterFeed,
+    // YelpComponent,
   },
   data() {
     return {
@@ -40,8 +43,7 @@ export default {
       this.$store.commit("LOGOUT");
       this.isAuthenticated = false;
     }
-  },
-  computed: {}
+  }
 };
 </script>
 <style scoped>
@@ -57,7 +59,7 @@ export default {
 .weather{
   grid-area: weather;
   padding: 20px;
-  margin: 5rem 0 1rem 0;
+  margin: 5rem 0 0rem 0;
   border: black 2px;
   border-style: solid;
   width: 100%;
@@ -75,7 +77,7 @@ export default {
   ". weather weather weather ."
   ". . rest . .";
   grid-template-columns: .5fr 1fr 4fr 1fr .5fr;
-  background-image: url('/src/assets/cheers.jpg');
+  /* background-image: url('/src/assets/cheers.jpg'); */
   background-size: cover;
   background-position:center;
   background-repeat:no-repeat;
