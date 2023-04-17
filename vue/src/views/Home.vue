@@ -1,8 +1,8 @@
 <template>
   <div class = 'main'>
     <navigation-bar />
-      <!-- <weather-output class="weather"/> -->
-      <yelp-component />
+      <weather-output class="weather"/>
+      <!-- <yelp-component /> -->
     <div class="restaurant-list">
       <h2>Locations:</h2>
       <restaurant-list />
@@ -12,21 +12,21 @@
 </template>
 <script>
 import RestaurantList from "../components/RestaurantList.vue";
-//import WeatherOutput from '../components/WeatherOutput.vue';
+import WeatherOutput from '../components/WeatherOutput.vue';
 import NavigationBar from '../components/NavigationBar.vue'
 import authService from "../services/AuthService.js";
 import TwitterFeed from "../components/TwitterFeed.vue";
-import YelpComponent from '../components/YelpComponent.vue';
+// import YelpComponent from '../components/YelpComponent.vue';
 
 
 export default {
   name: "Home",
   components: {
     RestaurantList,
-    // WeatherOutput,
+    WeatherOutput,
     NavigationBar,
     TwitterFeed,
-    YelpComponent,
+    // YelpComponent,
   },
   data() {
     return {
