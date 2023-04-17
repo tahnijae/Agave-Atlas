@@ -81,6 +81,13 @@ PRIMARY KEY (review_id, restaurant_id),
 FOREIGN KEY (review_id) REFERENCES reviews(review_id),
 FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id));
 
+CREATE TABLE drink_review (
+review_id int NOT NULL,
+drink_id int NOT NULL,
+PRIMARY KEY (review_id, drink_id),
+FOREIGN KEY (review_id) REFERENCES reviews(review_id),
+FOREIGN KEY (drink_id) REFERENCES drinks(drink_id));
+
 CREATE TABLE restaurant_drinks (
 drink_id INT NOT NULL,
 restaurant_id INT NOT NULL,

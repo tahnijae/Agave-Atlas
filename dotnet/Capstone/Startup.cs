@@ -75,6 +75,7 @@ namespace Capstone
             services.AddTransient<IDrinkDao>(m => new DrinkSqlDao(connectionString));
             services.AddTransient<YelpFusionApiService>(m => new YelpFusionApiService(connectionString));
             services.AddTransient<GmailClient>(m => new GmailClient());
+            services.AddTransient<IReviewDao>(m => new ReviewSqlDao(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
