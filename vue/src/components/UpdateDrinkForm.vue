@@ -28,20 +28,24 @@ data(){
         newDrink : {
             name:'',
             description:'',
-            isFrozen:'', 
+            isFrozen:'',
+            restaurantID: Number(this.$route.params.id)  
         },
+    drinkId : Number(this.$route.params.drinkId),
+}
+},
 methods:{
     submitForm(){
-    drinkService.updateDrink(this.drink.drinkId, this.newDrink).then((response)=>{
+    drinkService.updateDrink(this.drinkId, this.newDrink).then((response)=>{
       if(response.status === 200){
-        this.$router.push(`/restaurant/${this.$route.params.id}`)
+        this.$router.push(`/restaurant/${this.$route.params.id}/drinks`)
       }
     });
     }
+    }
+
 }
-}
-}
-}
+
 </script>
 
 <style>
