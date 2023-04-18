@@ -96,7 +96,7 @@ namespace Capstone.DAO
             return restaurant;
         }
 
-        public Restaurant AddRestaurant(NewRestaurantInput inputRestaurant)
+        public Restaurant AddRestaurant(YelpRestaurant inputRestaurant)
         {
             Restaurant restaurant = null;
             try
@@ -104,11 +104,27 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO restaurants (name, zip_code) " + 
+                    SqlCommand cmd = new SqlCommand("INSERT INTO restaurants " +
+                        "(name, zip_code, yelp_id, phone, display_phone, address, city, state, country, rating, review_count, is_closed, latitude, longitude, imageUrl, yelp_url ) " + 
                         "OUTPUT INSERTED.restaurant_id " +
-                        "VALUES (@name, @zip_code);", conn);
+                        "VALUES (@name, @zip_code, @yelp_id, @phone, @display_phone, @address, @city, @state, @country, @rating, @review_count, @is_closed, @latitude, @longitude, @imageUrl, @yelp_url ) ;", conn);
                     cmd.Parameters.AddWithValue("@name", inputRestaurant.Name);
                     cmd.Parameters.AddWithValue("@zip_code", inputRestaurant.ZipCode);
+                    cmd.Parameters.AddWithValue("@yelp_id", inputRestaurant.YelpId);
+                    cmd.Parameters.AddWithValue("@phone", inputRestaurant.Phone);
+                    cmd.Parameters.AddWithValue("@display_phone", inputRestaurant.DisplayPhone);
+                    cmd.Parameters.AddWithValue("@address", inputRestaurant.Address);
+                    cmd.Parameters.AddWithValue("@city", inputRestaurant.City);
+                    cmd.Parameters.AddWithValue("@state", inputRestaurant.State);
+                    cmd.Parameters.AddWithValue("@country", inputRestaurant.Country);
+                    cmd.Parameters.AddWithValue("@rating", inputRestaurant.Rating);
+                    cmd.Parameters.AddWithValue("@review_count", inputRestaurant.ReviewCount);
+                    cmd.Parameters.AddWithValue("@is_closed", inputRestaurant.IsClosed);
+                    cmd.Parameters.AddWithValue("@latitude", inputRestaurant.Latitude);
+                    cmd.Parameters.AddWithValue("@longitude", inputRestaurant.Longitude);
+                    cmd.Parameters.AddWithValue("@image_url", inputRestaurant.ImageUrl);
+                    cmd.Parameters.AddWithValue("@yelp_url", inputRestaurant.YelpUrl);
+
 
                     int restaurantID = Convert.ToInt32(cmd.ExecuteScalar());
                     restaurant = GetRestaurantByID(restaurantID);
@@ -132,13 +148,30 @@ namespace Capstone.DAO
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("" +
                         "UPDATE restaurants " +
-                        "SET name = @name, zip_code = @zip_code " +
+                        "SET name = @name, zip_code = @zip_code, yelp_id = @yelp_id, phone = @phone, " +
+                        "display_phone = @display_phone, address = @address, city = @city, state = @state, country = @country, " +
+                        "rating = @rating, review_count = @review_count, is_closed = @is_closed  " +
+                        "latitude = @latitude, longitude = @longitude, image_url = @image_url, yelp_url = @yelp_url " +
                         "WHERE restaurant_id = @restaurant_id;"
                         ,conn);
+                    cmd.Parameters.AddWithValue("@restaurant_id", inputRestaurant.ID);
+
                     cmd.Parameters.AddWithValue("@name", inputRestaurant.Name);
                     cmd.Parameters.AddWithValue("@zip_code", inputRestaurant.ZipCode);
-                    cmd.Parameters.AddWithValue("@restaurant_id", inputRestaurant.ID);
-                    //cmd.Parameters.AddWithValue("@image_file_path", inputRestaurant.ImageFilePath);
+                    cmd.Parameters.AddWithValue("@yelp_id", inputRestaurant.YelpId);
+                    cmd.Parameters.AddWithValue("@phone", inputRestaurant.Phone);
+                    cmd.Parameters.AddWithValue("@display_phone", inputRestaurant.DisplayPhone);
+                    cmd.Parameters.AddWithValue("@address", inputRestaurant.Address);
+                    cmd.Parameters.AddWithValue("@city", inputRestaurant.City);
+                    cmd.Parameters.AddWithValue("@state", inputRestaurant.State);
+                    cmd.Parameters.AddWithValue("@country", inputRestaurant.Country);
+                    cmd.Parameters.AddWithValue("@rating", inputRestaurant.Rating);
+                    cmd.Parameters.AddWithValue("@review_count", inputRestaurant.ReviewCount);
+                    cmd.Parameters.AddWithValue("@is_closed", inputRestaurant.IsClosed);
+                    cmd.Parameters.AddWithValue("@latitude", inputRestaurant.Latitude);
+                    cmd.Parameters.AddWithValue("@longitude", inputRestaurant.Longitude);
+                    cmd.Parameters.AddWithValue("@image_url", inputRestaurant.ImageUrl);
+                    cmd.Parameters.AddWithValue("@yelp_url", inputRestaurant.YelpUrl);
 
                     cmd.ExecuteNonQuery();
                     restaurant = GetRestaurantByID(inputRestaurant.ID);
@@ -179,7 +212,20 @@ namespace Capstone.DAO
             ID = Convert.ToInt32(sdr["restaurant_id"]),
             Name = Convert.ToString(sdr["name"]),
             ZipCode = Convert.ToString(sdr["zip_code"]),
-            ImageFilePath = Convert.ToString(sdr["image_file_path"])
+            YelpId = Convert.ToString(sdr["yelp_id"]),
+            Phone = Convert.ToString(sdr["phone"]),
+            DisplayPhone = Convert.ToString(sdr["display_phone"]),
+            Address = Convert.ToString(sdr["address"]),
+            City = Convert.ToString(sdr["city"]),
+            State = Convert.ToString(sdr["state"]),
+            Country = Convert.ToString(sdr["country"]),
+            Rating = Convert.ToDouble(sdr["rating"]),
+            ReviewCount = Convert.ToInt32(sdr["review_count"]),
+            IsClosed = Convert.ToBoolean(sdr["is_closed"]),
+            Latitude = Convert.ToDouble(sdr["latitude"]),
+            Longitude = Convert.ToDouble(sdr["longitude"]),
+            ImageUrl = Convert.ToString(sdr["image_url"]),
+            YelpUrl = Convert.ToString(sdr["yelp_url"])
         };
         return restaurant;
     }
