@@ -1,20 +1,26 @@
 <template>
   <div class = "drinkForm">
     <button class= "addDrink" v-if="!showAddDrinkForm && isLoggedIn" v-on:click="showAddDrinkForm = !showAddDrinkForm">Add Drink</button>
-      <form v-on:submit.prevent="submitForm" v-if="showAddDrinkForm">
+      <form class="form" v-on:submit.prevent="submitForm" v-if="showAddDrinkForm">
         <h3>Add a Drink!</h3>
+        
         <label for="name">Drink Name:</label>
-        <input id="name" type="text" v-model="drink.Name"/>
+        <input class="text-box" id="name" type="text" v-model="drink.Name"/>
 
         <label for="description">Description:</label>
-        <input id="description" type="text" v-model="drink.Description"/>
+        <input class="text-box" id="description" type="text" v-model="drink.Description"/>
 
+        <div>
         <label for='isFrozen'>Frozen:</label>
         <input id="isFrozen" type="checkbox" v-model="drink.IsFrozen"/>
+        </div>
+
+        <div>
+        <button class="bton" type='submit'>Submit</button>
         
-        <button type='submit'>Submit</button>
-        <button  v-on:click="showAddDrinkForm = showAddDrinkForm">Cancel</button>
-        
+        <button  class="bton" v-on:click="showAddDrinkForm = showAddDrinkForm">Cancel</button>
+        </div>
+    
       </form>
   </div>
 </template>
@@ -72,16 +78,50 @@ methods:{
 
  </script>
 
-<style>
+<style scoped>
+input{
+  margin-left:10px;
+}
+label{
+  margin-left:10px;
+}
+button{
+  margin-left:10px;
+}
 
+.bton{
+  width:150px;
+  background-color: #7bc950;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right:10px;
+}
+.text-box{
+  width:250px;
+}
+.form{
+  border-style:solid;
+  border-color:#7bc950;
+  height: 100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height:250px;
+}
+h3{
+  text-align:center;
+}
 
 .drinkForm{
   margin-top:100px;
-  
+  font-family:sans-serif;
+
 }
 
 .addDrink {
-  margin: 5px 47.5%;
+  margin: 5px 46.5%;
   padding: 5px 15px;
   background-color: #7bc950;
   color: white;

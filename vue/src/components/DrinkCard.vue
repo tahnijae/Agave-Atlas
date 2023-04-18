@@ -2,7 +2,9 @@
   <div class = "card">
       <div class = "card-header">
       <h2>{{decodeHtml(drink.name)}}</h2>
-      <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >Delete</button>
+      <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >
+        <font-awesome-icon :icon="['fas', 'fa-trash']" />
+        </button>
       <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== ""' >Update</button>
       </div>
       <div class = "card-body">
@@ -16,8 +18,12 @@
 
 <script>
 import drinkService from '../services/DrinkService.js'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
+  components:{
+    FontAwesomeIcon
+  },
 data(){
   return{
     drinkId : this.drink.drinkID,
