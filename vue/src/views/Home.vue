@@ -1,13 +1,11 @@
 <template>
   <div class = 'main'>
     <navigation-bar />
-  <div>
-    <add-restaurant-form/>
-  </div>
-      <weather-output class="weather"/>
+          <weather-output class="weather"/>
       <!-- <yelp-component /> -->
     <div class="restaurant-list">
       <h2>Locations:</h2>
+       <add-restaurant-form :is-authenticated="isAuthenticated" />
       <restaurant-list />
     </div>
      <twitter-feed />

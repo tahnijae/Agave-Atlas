@@ -14,7 +14,7 @@ export default {
     },
 
     addRestaurant(restaurant) {
-        return http.post('restaurants', restaurant);
+        return http.post('/restaurant/new', restaurant);
     },
 
     updateRestaurant(id, restaurant) {
@@ -25,7 +25,7 @@ export default {
         return http.delete(`restaurants/${id}`);
     },
 
-    getDrinksByRestaurant(id){
+    getDrinksByRestaurant(id) {
         return http.get(`restaurant/${id}/drinks`);
     }
 }
