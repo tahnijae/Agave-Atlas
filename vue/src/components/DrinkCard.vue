@@ -1,22 +1,16 @@
 <template>
   <div class = "card">
-      <div class = "card-header">
-      <!-- <h2>{{decodeHtml(drink.name)}}</h2> -->
-
-      <h2>{{decodeHtml(drink.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}}</h2>
-      <!-- <h3>{{decodeHtml(drink.name)}}</h3> -->
+    <div class = "card-header">
+      <h2>{{decodeHtml(drink.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}}</h2> 
       <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >
         <font-awesome-icon :icon="['fas', 'fa-trash']" />
-        </button>
+      </button>
       <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== ""' >Update</button>
-      </div>
-      <div class = "card-body">
-        <p>{{decodeHtml(drink.description)}}</p>
-        <p class="m-frozen-text" v-if="drink.isFrozen">It's Frozen!</p>
-      </div>
-      <!-- <div class="frozen" v-if="drink.isFrozen">
-          <p class="frozen-text">It's Frozen!</p>
-      </div> -->
+    </div>
+    <div class = "card-body">
+      <p>{{decodeHtml(drink.description)}}</p>
+      <p class="frozen-text" v-if="drink.isFrozen">It's Frozen!</p>
+    </div>
   </div>
 </template>
 
@@ -77,18 +71,6 @@ h2{
   text-align: center;
 }
 
-/* .card-header {
-  background-color: #7bc950;
-  border-bottom: 1px solid #eaeaea;
-  padding: 10px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-} */
-
 .card-header {
   background-color: #7bc950;
   border-bottom: 1px solid #eaeaea;
@@ -100,10 +82,10 @@ h2{
   align-items: center;
 }
 
-
 .card-body {
   padding: 10px;
 }
+
 .cardBtn{
   margin: 5px;
   padding: 5px 15px;
@@ -113,48 +95,8 @@ h2{
   border-radius: 20px;
   cursor: pointer;
 }
-/*
-.frozen{
-  position: absolute;
-  bottom: 0;
-  
-  left: 800px;
-  transform: translateX(-50%);
-  width: 50%;
-  text-align: right;
-  
-  border: 1px solid #eaeaea; */
-  /* border-radius: 10px; */
-  /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
-  /* padding: 10px;
-  
-}
-.frozen-text{
-  text-align: center;
-  font-weight: bold;
 
-}*/
-
-.frozen{
-  position:absolute;
-  top: 75%;
-  left: 75%;
-  /* transform: translate(-50%, -50%); */
-  /* background-color: #fff; */
-  /* border: 1px solid #eaeaea;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
-  /* padding: 10px; */
-  /* animation: fadein ls; */
-}
-
-.frozen-text{
-  text-align: center;
-  font-weight: bold;
-
-}
-
-.m-frozen-text {
+.frozen-text {
   text-align: right;
   font-family: fantasy;
   color: blue;

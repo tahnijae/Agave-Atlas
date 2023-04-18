@@ -79,32 +79,18 @@ created(){
   margin-top: 100px;
 }
 
-/* .drink-card-grid{
-  display: grid;
-  grid-template-columns: repeat(4,minmax(200px, 1fr));
-  grid-gap: 1rem;
-  background-color: #def7d0;
-} */
-
-/* .drink-card{
-  border: 1px black solid;
-  border-radius: 6px;
-  text-align: center;
-  padding: 0.25rem;
-} */
-
 .drink-card-grid{
   display: grid;
   grid-template-columns: repeat(4,minmax(200px, 1fr));
   grid-gap: 1rem;
   background-color: #def7d0;
 }
+
 .drink-card{
   border: 1px black solid;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
-
 
 h1{
   text-align: center;
