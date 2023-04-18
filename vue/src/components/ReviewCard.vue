@@ -3,7 +3,7 @@
     <div id="review-heading">
       <h1 class="head" id="username">{{setUsername()}}</h1>
       <div id="lime-stars" >
-      <img id="lime" src="../assets/lime-slice2.png" v-for="num in review.rating" v-bind:key="num.key"/>
+      <img id="lime" src="../assets/lime-slice2.png" v-for="num in revNumber" v-bind:key="num.key"/>
       </div>
       
     </div>
@@ -15,6 +15,11 @@
 export default {
   name: "review-card",
     props: ["review"],
+    data(){
+      return {
+        revNumber: 0,
+      }
+    },
     methods: {
       setUsername(){
         if(this.review.username == null){
@@ -23,6 +28,11 @@ export default {
           return this.review.username;
         }
       }
+    },
+    created() {
+      
+      this.revNumber = parseInt(JSON.parse(this.review.rating));  
+         
     }
 }
 </script>

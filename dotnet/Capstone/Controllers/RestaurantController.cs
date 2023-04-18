@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Authorization;
 using System.Text.Json;
 using Newtonsoft.Json;
+using System;
 
 namespace Capstone.Controllers
 {
@@ -74,7 +75,7 @@ namespace Capstone.Controllers
                 return NotFound();
             }
 
-           review.Reviewable_ID = id;
+           review.Reviewable_ID = Convert.ToString(id);
            Review rev = reviewDao.AddRestaurantReview(review);
             if(rev == null)
             {

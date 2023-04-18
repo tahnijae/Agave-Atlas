@@ -3,61 +3,49 @@
       <div class="not-input-review" v-show="!reviewForm">
         <div id="no-reviews" v-if="reviews.length === 0">
           <h3>Nobody has reviewed {{restaurant.name}} yet!</h3>
-          <h4> Click here to be the first!</h4>
+          <h4 v-if="$store.state.token != ''"> Click here to be the first!</h4>
         </div>
-      <input class="button" type="button" v-on:click="reviewForm = true;" value="Click Me!"/>
-      <div id="review-container">
+      <input class="button" type="button" v-on:click="reviewForm = true;" value="Add a Review!" v-if="$store.state.token != ''"/>
+      <div id="review-container" :key="componentKey">
             <review-card class="review-card" 
-            v-for="review in reviews" 
-            v-bind:key="review.id"
+            v-for="(review, id) in reviews" 
+            v-bind:key="`${componentKey}-${id}`"
             v-bind:review="review"
             />
       </div>
-    </div>    
-    <div class="input-review" v-show="reviewForm">
-        <form class="was-validated">
-            <div class="form-group">
-                <label for="ratingselect">Rating</label>
-                <select class="custom-select mr-sm-2" id="ratingselect" name="ratingSelect" v-model="Rating" required>
-                    <option value="" selected>Choose...</option>
-                    <option value='1'> 1</option>
-                    <option value='2'> 2 </option>
-                    <option value='3'> 3 </option>
-                    <option value='4'> 4 </option>
-                    <option value='5'> 5 </option>
-                </select>
-                <label for="reviewText">Your Review</label>
-                <textarea class="form-control is-invalid" id="reviewText" placeholder="Write your thoughts here!" v-model="newReview.ReviewText" required></textarea>
-                <button type="button" class="btn btn-success" v-bind:disabled="checkComplete" v-on:click="submitReview()">Submit</button>
-            </div>
-        </form>
-    </div>
+      </div>
+      <div> 
+      <add-review-form  v-show="reviewForm" @clicked="reviewForm=false; forceUpdate();"/>
+      </div>
+    
   </div>
 </template>
 
 <script>
 import RestaurantService from '../services/RestaurantService.js'
 import ReviewCard from './ReviewCard.vue'
+import AddReviewForm from './AddReviewForm.vue'
 
 export default {
     name: "review-list",
     props: ["restaurant"],
 components: {
-    ReviewCard
+    ReviewCard,
+    AddReviewForm
 },
 data(){
     return{
         reviews:[],
         reviewForm: false,
-        Rating: 0,
         newReview: {
             Review_ID: 0,
-            Reviewable_ID: parseInt(this.$route.params.id),
-            Rating: parseInt(this.Rating),
+            Reviewable_ID: this.$route.params.id,
+            Rating: 0,
             ReviewerUsername: this.$store.state.user.username,
             Reviewer_ID: 0,
             ReviewText: ''
-        }
+        },
+        componentKey: 0
     }
 }
 ,
@@ -76,31 +64,56 @@ created(){
     })
 },
 methods:{
-    submitReview(){
-        RestaurantService.addReviewToRestaurant(this.$route.params.id, this.newReview).then( response => {
-            if(response.data != null){
-                this.created();
-            } else {
-                alert("Error adding Review!");
-            }
-        })
-        .catch(error => {
+    forceUpdate(){
+        RestaurantService.getReviewsByRestaurant(this.$route.params.id).then(response => {
+        if(response.data != null){
+            this.reviews = response.data
+            
+        }
+        console.log(this.reviews);
+    }).catch(error =>
+    {
+        if(error){
             console.log(error.status);
-        })
+        }
+    })
+        this.componentKey += 1;
     }
 },
 computed: {
-    checkComplete() {
+    checkComplete: () => {
         if(this.newReview.Rating != 0 && this.newReview.ReviewText.length != 0){
             return false;
         } else {
             return true;
         }
-    }
+    },
 }
 }
 </script>
 
 <style>
-
+#no-reviews{
+    text-align: center;
+}
+.button{
+    margin: auto;
+  padding: 5px 15px;
+  background-color: #7bc950;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  justify-self: center;
+}
+.button:hover{
+    background-color: #6db743;
+}
+.not-input-review{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-items: center;
+    align-content: center;
+}
 </style>

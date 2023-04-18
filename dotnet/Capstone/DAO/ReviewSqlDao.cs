@@ -126,8 +126,10 @@ namespace Capstone.DAO
             }
             return reviews;
         }
-        public Review AddRestaurantReview(Review review)
+        public Review AddRestaurantReview(Review rev)
         {
+            IntReview review = rev.ConvertToIntReview(rev);
+            review.Reviewer_ID = userDao.GetUser(review.ReviewerUsername).UserId;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -143,20 +145,20 @@ namespace Capstone.DAO
                     SELECT TOP 1 ID FROM @inserted ORDER BY ID DESC;
                     COMMIT;", conn);
 
-                    cmd.Parameters.AddWithValue("@user_id", review.Reviewer_ID);
+                    cmd.Parameters.AddWithValue("@user_id", Convert.ToInt32(review.Reviewer_ID));
                     cmd.Parameters.AddWithValue("@rating", Convert.ToInt32(review.Rating));
                     cmd.Parameters.AddWithValue("@review_text", review.ReviewText);
-                    cmd.Parameters.AddWithValue("@restaurant_id", review.Reviewable_ID);
+                    cmd.Parameters.AddWithValue("@restaurant_id", Convert.ToInt32(review.Reviewable_ID));
 
                     int reviewID = Convert.ToInt32(cmd.ExecuteScalar());
-                    review = GetReviewByID(reviewID);
+                    rev = GetReviewByID(reviewID);
                 }
             }
             catch (Exception)
             {
                 Console.WriteLine($"Error adding review.");
             }
-            return review;
+            return rev;
         }
         public bool DeleteRestaurantReview(int reviewID)
         {
@@ -188,8 +190,8 @@ namespace Capstone.DAO
             Review rev = new Review()
             {
                 Review_ID = Convert.ToInt32(read["review_id"]),
-                Reviewable_ID = reviewableID,
-                Rating = Convert.ToInt32(read["rating"]),
+                Reviewable_ID = Convert.ToString(reviewableID),
+                Rating = Convert.ToString(read["rating"]),
                 ReviewerUsername = "",
                 Reviewer_ID = Convert.ToInt32(read["user_id"]),
                 ReviewText = Convert.ToString(read["review_text"])
@@ -201,8 +203,8 @@ namespace Capstone.DAO
             Review rev = new Review()
             {
                 Review_ID = Convert.ToInt32(read["review_id"]),
-                Reviewable_ID = 0,
-                Rating = Convert.ToInt32(read["rating"]),
+                Reviewable_ID = "0",
+                Rating = Convert.ToString(read["rating"]),
                 ReviewerUsername = userDao.GetUserByID(Convert.ToInt32(read["user_id"])).Username,
                 Reviewer_ID = Convert.ToInt32(read["user_id"]),
                 ReviewText = Convert.ToString(read["review_text"])

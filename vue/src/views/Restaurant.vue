@@ -43,7 +43,7 @@ export default {
       
     }
   },
-  created(){
+  created() {
       {RestaurantService.getRestaurant(this.$route.params.id).then(response =>{
         
         this.restaurant = response.data;
@@ -52,7 +52,8 @@ export default {
         console.log(error.status);
       })
     }
-  }
+  },
+  computed: {}
 
 }
 </script>

@@ -124,7 +124,7 @@ ROWTERMINATOR = ';'
 );
 
 BULK INSERT dbo.restaurants
-FROM "C:\Users\Student\workspace\c-sharp-finalcapstone-team1\dotnet\database\Restaurants.csv"
+FROM "C:\Users\Student\workspace\Partner Projects\c-sharp-finalcapstone-team1\dotnet\database\Restaurants.csv"
 WITH (FORMAT = 'CSV',
 FIRSTROW = 2,
 FIELDTERMINATOR = ',',
@@ -133,7 +133,7 @@ ROWTERMINATOR = ';'
 
 
 BULK INSERT dbo.restaurant_drinks
-FROM "C:\Users\Student\workspace\c-sharp-finalcapstone-team1\dotnet\database\drink_restaurant.csv"
+FROM "C:\Users\Student\workspace\Partner Projects\c-sharp-finalcapstone-team1\dotnet\database\drink_restaurant.csv"
 WITH (FORMAT = 'CSV',
 FIRSTROW = 2,
 FIELDTERMINATOR = ',',
