@@ -1,18 +1,22 @@
 <template>
   <div class = "card">
       <div class = "card-header">
-      <h2>{{decodeHtml(drink.name)}}</h2>
+      <!-- <h2>{{decodeHtml(drink.name)}}</h2> -->
+
+      <h2>{{decodeHtml(drink.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}}</h2>
+      <!-- <h3>{{decodeHtml(drink.name)}}</h3> -->
       <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >
         <font-awesome-icon :icon="['fas', 'fa-trash']" />
         </button>
       <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== ""' >Update</button>
       </div>
       <div class = "card-body">
-      <p>{{decodeHtml(drink.description)}}</p>
+        <p>{{decodeHtml(drink.description)}}</p>
+        <p class="m-frozen-text" v-if="drink.isFrozen">It's Frozen!</p>
       </div>
-      <div class="frozen" v-if="drink.isFrozen">
+      <!-- <div class="frozen" v-if="drink.isFrozen">
           <p class="frozen-text">It's Frozen!</p>
-      </div>
+      </div> -->
   </div>
 </template>
 
@@ -25,27 +29,24 @@ export default {
   components:{
     FontAwesomeIcon
   },
-data(){
-  return{
-    drinkId : this.drink.drinkID,
-    
-
-  }
-},
-props: ["drink"],
- methods: {
-  decodeHtml(html) {
+  data(){
+    return {
+      drinkId : this.drink.drinkID,
+    }
+  },
+  props: ["drink","drink.drinkID"],
+  methods: {
+    decodeHtml(html) {
       var txt = document.createElement("textarea");
       txt.innerHTML = html;
       return txt.value;
     },
     deleteDrink(){
-      drinkService.deleteDrink(this.drinkId).then((response)=>{
+      drinkService.deleteDrink(this.drinkId).then((response)=> {
         if(response.status === 204){
           location.reload();
         }
-      })
-      .catch((error) => {
+      }).catch((error) => {
         if (error) {
           console.log(error);
         }
@@ -54,11 +55,7 @@ props: ["drink"],
     pushToForm(){
       this.$router.push({ name: "update-drink", params: { id: this.$route.params.id, drinkId: this.drinkId } });
     }
-    
-    
-
-}
-
+  }
 }
 
 </script>
@@ -80,7 +77,7 @@ h2{
   text-align: center;
 }
 
-.card-header {
+/* .card-header {
   background-color: #7bc950;
   border-bottom: 1px solid #eaeaea;
   padding: 10px;
@@ -90,7 +87,19 @@ h2{
     justify-content: center;
     align-items: center;
 
+} */
+
+.card-header {
+  background-color: #7bc950;
+  border-bottom: 1px solid #eaeaea;
+  padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .card-body {
   padding: 10px;
@@ -104,6 +113,7 @@ h2{
   border-radius: 20px;
   cursor: pointer;
 }
+/*
 .frozen{
   position: absolute;
   bottom: 0;
@@ -113,15 +123,40 @@ h2{
   width: 50%;
   text-align: right;
   
-  /* border: 1px solid #eaeaea; */
+  border: 1px solid #eaeaea; */
   /* border-radius: 10px; */
   /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
-  /* padding: 10px; */
+  /* padding: 10px;
   
 }
 .frozen-text{
   text-align: center;
   font-weight: bold;
 
+}*/
+
+.frozen{
+  position:absolute;
+  top: 75%;
+  left: 75%;
+  /* transform: translate(-50%, -50%); */
+  /* background-color: #fff; */
+  /* border: 1px solid #eaeaea;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+  /* padding: 10px; */
+  /* animation: fadein ls; */
+}
+
+.frozen-text{
+  text-align: center;
+  font-weight: bold;
+
+}
+
+.m-frozen-text {
+  text-align: right;
+  font-family: fantasy;
+  color: blue;
 }
 </style>
