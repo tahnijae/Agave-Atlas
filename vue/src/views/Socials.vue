@@ -7,7 +7,8 @@
     </div>
     <div class="twitter-div" v-else>
       <div class="content-wrapper">
-        <div class="share-container">
+        <div id="left-side">
+        <div class="share-container" id="share">
           <div class="share-text">
             <h2>Tell us what you think!</h2>
             <p>Share a picture of your favorite margarita:</p>
@@ -18,18 +19,22 @@
           <invite-user-form-vue />
           </div>
         </div>
-        <a class="twitter-timeline" data-lang="en" data-theme="dark" href="https://twitter.com/AgaveAtlas?ref_src=twsrc%5Etfw">Tweets by AgaveAtlas</a> <script type="application/javascript" async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <div class="share-container" id="invite">
+          <invite-user-form/>
+        </div>
+        </div>
+        <a id="twitter" class="twitter-timeline" data-lang="en" data-theme="dark" href="https://twitter.com/AgaveAtlas?ref_src=twsrc%5Etfw">Tweets by AgaveAtlas</a> <script type="application/javascript" async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import InviteUserFormVue from '../components/InviteUserForm.vue';
+import InviteUserForm from '../components/InviteUserForm.vue';
 import NavigationBar from '../components/NavigationBar.vue';
 
 export default {
-  components: { NavigationBar, InviteUserFormVue },
+  components: { NavigationBar, InviteUserForm },
   name: "SocialsPage",
   data(){
     return{
@@ -134,12 +139,19 @@ export default {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   padding: 1rem;
 }
-
+#share{
+  grid-area: share;
+}
+#left-side{
+  grid-area: left;
+}
 .content-wrapper {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 1rem;
   align-items: start;
+  grid-template-areas: 
+  "left tweet";
 }
 
 .share-container {
@@ -153,6 +165,7 @@ export default {
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  margin: 1rem 0;
 }
 
 .share-text {

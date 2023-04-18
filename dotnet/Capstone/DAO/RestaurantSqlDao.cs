@@ -137,11 +137,11 @@ namespace Capstone.DAO
                         ,conn);
                     cmd.Parameters.AddWithValue("@name", inputRestaurant.Name);
                     cmd.Parameters.AddWithValue("@zip_code", inputRestaurant.ZipCode);
-                    cmd.Parameters.AddWithValue("@restaurant_id", inputRestaurant.Restaurant_ID);
+                    cmd.Parameters.AddWithValue("@restaurant_id", inputRestaurant.ID);
                     //cmd.Parameters.AddWithValue("@image_file_path", inputRestaurant.ImageFilePath);
 
                     cmd.ExecuteNonQuery();
-                    restaurant = GetRestaurantByID(inputRestaurant.Restaurant_ID);
+                    restaurant = GetRestaurantByID(inputRestaurant.ID);
                 }
             }
             catch (Exception)
@@ -176,7 +176,7 @@ namespace Capstone.DAO
     {
         Restaurant restaurant = new Restaurant()
         {
-            Restaurant_ID = Convert.ToInt32(sdr["restaurant_id"]),
+            ID = Convert.ToInt32(sdr["restaurant_id"]),
             Name = Convert.ToString(sdr["name"]),
             ZipCode = Convert.ToString(sdr["zip_code"]),
             ImageFilePath = Convert.ToString(sdr["image_file_path"])
