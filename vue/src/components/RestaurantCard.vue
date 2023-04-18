@@ -7,7 +7,7 @@
     <div class="centered">
       <h2>{{ restaurant.name }}</h2>
     
-      <p>{{restaurant.address}},</p>
+      <p>{{restaurant.address}}</p>
       <p>{{restaurant.city}}, {{restaurant.state}} {{restaurant.zipCode}}</p>
     </div>
   </div>
