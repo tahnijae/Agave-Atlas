@@ -75,8 +75,9 @@ export default {
   grid-template-areas: 
   "banner banner banner banner banner"
   ". weather weather weather ."
-  ". . rest . .";
+  ". rest rest rest .";
   grid-template-columns: .5fr 1fr 4fr 1fr .5fr;
+  background-color: #def7d0;
   /* background-image: url('/src/assets/cheers.jpg'); */
   background-size: cover;
   background-position:center;
@@ -86,7 +87,7 @@ export default {
 
 }
 h2{
-  color: white;
+  color: Black;
 }
 
 </style>

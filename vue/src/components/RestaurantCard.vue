@@ -1,6 +1,7 @@
 <template>
-  <div class="card container" v-on:click="seeDrinks(restaurant.id)">
-    <img width="100%" :src="require(`@/assets/${restaurant.imageFilePath}`)">
+<div class="card container" v-on:click="seeDrinks(restaurant.id)" :style="{ backgroundImage: 'url(' + require(`@/assets/${restaurant.imageFilePath}`) + ')' }">
+  <!-- <div class="card container" v-on:click="seeDrinks(restaurant.id)"> -->
+    <!-- <img :src="require(`@/assets/${restaurant.imageFilePath}`)"> -->
     <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
       <h2>{{ restaurant.name }}</h2>
@@ -28,11 +29,13 @@ export default {
     },
   },
   computed:{
-  cardClass(){
-    const name = this.restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, `_`);
-    return `card-${name}_bg`;
-  }
-    
+    cardClass(){
+      const name = this.restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, `_`);
+      return `card-${name}_bg`;
+    },
+    imageUrl() {
+      return `../assets/${this.restaurant.imageFilePath}`;
+    },
   },
   created() {
       zipcodeService.GetCityByZipcode(this.restaurant.zipCode).then((response) => {
@@ -54,6 +57,12 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* width: 300px;
+  height: 300px; */
+  width: 30%;
+  height: 300px;
+  background-size: cover;
+  background-position: top;
 }
 
 h2 {
@@ -82,5 +91,8 @@ h2 {
   background: rgb(0, 0, 0); 
   background: rgba(0, 0, 0, 0.7);
   padding: 20px;
+}
+img{
+  height: fit-content;
 }
 </style>
