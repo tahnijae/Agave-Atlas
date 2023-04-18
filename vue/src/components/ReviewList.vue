@@ -1,8 +1,11 @@
 <template>
   <div id="review-div">
       <div id="review-container">
-            <review-card class="review-card" v-for="review in reviews" v-bind:key="review.id"
-              v-bind:review="review"/>
+            <review-card class="review-card" 
+            v-for="review in reviews" 
+            v-bind:key="review.id"
+            v-bind:review="review"
+            />
       </div>    
   </div>
 </template>
@@ -22,10 +25,12 @@ data(){
 }
 ,
 created(){
-    RestaurantService.getReviewsByRestaurant(this.$router.params.id).then(response => {
+    RestaurantService.getReviewsByRestaurant(this.$route.params.id).then(response => {
         if(response.data != null){
             this.reviews = response.data
+            
         }
+        console.log(this.reviews);
     }).catch(error =>
     {
         if(error){

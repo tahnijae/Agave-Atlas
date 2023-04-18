@@ -1,13 +1,13 @@
 <template>
   <div class="drink-list-container">
-    <div>
+    <!-- <div>
         <h1>{{restaurant.name}}</h1>
         <button v-on:click=GenerateYelpInfo>Get Info</button>
         <div v-if="haveYelpData">
           <p>Yelp ID : {{yelpReturn.yelpId}}</p>
           <p> Address : {{yelpReturn.address}}, {{yelpReturn.city}}, {{yelpReturn.state}}</p>
         </div>
-    </div>
+    </div> -->
     
       <drink-card
       class = "list-group-item"
@@ -21,7 +21,7 @@
 
 import DrinkCard from "./DrinkCard.vue";
 import RestaurantService from "../services/RestaurantService.js"
-import yelpService from "../services/YelpService.js";
+//import yelpService from "../services/YelpService.js";
 
 export default {
     components: {DrinkCard},
@@ -55,26 +55,26 @@ created(){
       });
   },
   methods: {
-    GenerateYelpInfo(){
-      let yelpSearch = {
-          name: this.restaurant.name,
-          zipcode: this.restaurant.zipCode};
-      yelpService.GetBusinessByNameAndZip(yelpSearch).then((response) => {
-      this.yelpReturn = response.data;
-      this.haveYelpData = true;
-      console.log(this.yelpReturn)
-      })
-      .catch(error => {
-        console.log(error)});
-    }
+    // GenerateYelpInfo(){
+    //   let yelpSearch = {
+    //       name: this.restaurant.name,
+    //       zipcode: this.restaurant.zipCode};
+    //   yelpService.GetBusinessByNameAndZip(yelpSearch).then((response) => {
+    //   this.yelpReturn = response.data;
+    //   this.haveYelpData = true;
+    //   console.log(this.yelpReturn)
+    //   })
+    //   .catch(error => {
+    //     console.log(error)});
+    // }
   }
 }
 </script>
 
 <style>
-.drink-list-container{
+/* .drink-list-container{
   margin-top: 100px;
-}
+} */
 div.main {
   margin: 1rem 0;
 }

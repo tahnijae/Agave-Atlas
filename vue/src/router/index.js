@@ -57,14 +57,14 @@ const router = new Router({
                 requiresAuth: false
             }
         },
+        // {
+        //     path: "/restaurant/:id/drinks",
+        //     name: "drink-list",
+        //     component: Restaurant
+        // },
         {
-            path: "/restaurant/:id/drinks",
-            name: "drink-list",
-            component: Restaurant
-        },
-        {
-            path: "/drinks",
-            name: "all-drinks",
+            path: "/restaurant/:id",
+            name: "restaurant-view",
             component: Restaurant
         },
         {
