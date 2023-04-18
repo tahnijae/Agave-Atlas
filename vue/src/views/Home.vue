@@ -1,11 +1,7 @@
 <template>
   <div class = 'main'>
     <navigation-bar />
-<<<<<<< HEAD
-      <!-- <weather-output class="weather"/> -->
-=======
           <weather-output class="weather"/>
->>>>>>> a22ea197b3c36b4f1d3ff3c76268eadc5aed1fdf
       <!-- <yelp-component /> -->
     <div class="restaurant-list">
       <h2>Locations:</h2>
@@ -17,7 +13,7 @@
 </template>
 <script>
 import RestaurantList from "../components/RestaurantList.vue";
-// import WeatherOutput from '../components/WeatherOutput.vue';
+import WeatherOutput from '../components/WeatherOutput.vue';
 import NavigationBar from '../components/NavigationBar.vue'
 import authService from "../services/AuthService.js";
 import TwitterFeed from "../components/TwitterFeed.vue";
@@ -29,7 +25,7 @@ export default {
   name: "Home",
   components: {
     RestaurantList,
-    // WeatherOutput,
+    WeatherOutput,
     NavigationBar,
     TwitterFeed,
     AddRestaurantForm,

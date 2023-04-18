@@ -25,9 +25,9 @@ namespace Capstone.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Yelp> Get(NameAndZip nameandzip)
+        public ActionResult<YelpRestaurant> Get(NameAndZip nameandzip)
         {
-            Yelp data = yelp.GetRestaurantInfo(nameandzip);
+            YelpRestaurant data = yelp.GetRestaurantInfo(nameandzip);
             if (data == null)
             {
                 return NotFound(data);
