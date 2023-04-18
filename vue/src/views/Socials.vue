@@ -6,24 +6,23 @@
       <img src="../assets/MargaritaLoader.gif"/>
     </div>
     <div class="twitter-div" v-else>
-      <div class="content-wrapper">
-        <div id="left-side">
-        <div class="share-container" id="share">
-          <div class="share-text">
-            <h2>Tell us what you think!</h2>
-            <p>Share a picture of your favorite margarita:</p>
+     <div class="content-wrapper">
+  <div id="left-side">
+    <div class="sticky-container">
+          <div class="share-container" id="share">
+            <div class="share-text">
+              <h2>Tell us what you think!</h2>
+              <p>Share a picture of your favorite margarita:</p>
+            </div>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Hey @AgaveAtlas, just visited your site and loved the [insert feature]. Thanks for making my margarita experience even better! 🍹 #AgaveAtlas #FindYourFavoriteMargSpot #MargaritaLove" data-hashtags="MargaritaDayIsEveryday" data-show-count="false">Tweet to @AgaveAtlas</a>
           </div>
-          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Hey @AgaveAtlas, just visited your site and loved the [insert feature]. Thanks for making my margarita experience even better! 🍹 #AgaveAtlas #FindYourFavoriteMargSpot #MargaritaLove" data-hashtags="MargaritaDayIsEveryday" data-show-count="false">Tweet to @AgaveAtlas</a>
-          <h2> Invite a friend to the fiesta! </h2>
-          <div class="invite-container">
-          <invite-user-form-vue />
+          <div class="share-container" id="invite">
+            <invite-user-form/>
           </div>
         </div>
-        <div class="share-container" id="invite">
-          <invite-user-form/>
         </div>
-        </div>
-        <a id="twitter" class="twitter-timeline" data-lang="en" data-theme="dark" href="https://twitter.com/AgaveAtlas?ref_src=twsrc%5Etfw">Tweets by AgaveAtlas</a> <script type="application/javascript" async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a id="twitter" class="twitter-timeline" data-lang="en" data-theme="dark" href="https://twitter.com/AgaveAtlas?ref_src=twsrc%5Etfw">Tweets by AgaveAtlas</a>
+        <script type="application/javascript" async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
     </div>
   </div>
@@ -56,6 +55,7 @@ export default {
   margin: 0 auto;
   text-align: center;
 }
+
 .loading-text {
   margin: 15rem;
   font-size: 1.5rem;
@@ -84,7 +84,10 @@ export default {
   justify-content: center;
   text-overflow: ellipsis;
 }
+
 .share-container {
+  position: sticky;
+  top: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,11 +96,15 @@ export default {
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  margin: 1rem 0;
+  z-index: 1;
 }
+
 .share-text {
   text-align: center;
   margin-bottom: 1rem;
 }
+
 .twitter-share-button {
   font-size: 1rem;
   padding: 0.5rem 1rem;
@@ -111,9 +118,11 @@ export default {
   justify-content: center;
   margin-bottom: 1rem;
 }
+
 .twitter-share-button:hover {
   background-color: #0c8de4;
 }
+
 .twitter-timeline {
   height: 400px;
   max-width: 500px;
@@ -128,7 +137,6 @@ export default {
   margin: 0;
 }
 
-/*Uncomment or comment out below to see tweet box on the left side of the screen or ontop of the twitter feed, respectively.*/
 .twitter-div {
   position: relative;
   top: 80px; /* adjust this value based on the height of your navigation-bar */
@@ -139,12 +147,16 @@ export default {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   padding: 1rem;
 }
-#share{
+
+/* #share{
   grid-area: share;
-}
-#left-side{
+} */
+
+/* #left-side{
+  position: sticky;
   grid-area: left;
-}
+} */
+
 .content-wrapper {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -154,9 +166,32 @@ export default {
   "left tweet";
 }
 
-.share-container {
+.share-text p {
+  width: 100%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* .invite-container {
+  display: flex;
+  position: sticky;
+  top: 14rem;
+  z-index: 0;
+} */
+
+.sticky-container {
   position: sticky;
   top: 5rem;
+  z-index: 0;
+}
+
+/*this fixed the scroll effect for the left side*/
+#left-side{
+  position: sticky;
+  top: 5rem;
+  z-index: 0;
+}
+/* .share-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -166,23 +201,8 @@ export default {
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   margin: 1rem 0;
-}
+} */
 
-.share-text {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-.share-text p {
-  width: 100%;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-.invite-container{
-  display: flex;
-  text-align: start;
-  align-items: flex-start;
-  justify-content: center;
-}
 
 
 </style>

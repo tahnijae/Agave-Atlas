@@ -19,11 +19,8 @@ import WeatherOutput from '../components/WeatherOutput.vue';
 import NavigationBar from '../components/NavigationBar.vue'
 import authService from "../services/AuthService.js";
 import TwitterFeed from "../components/TwitterFeed.vue";
-<<<<<<< HEAD
 import AddRestaurantForm from '../components/AddRestaurantForm.vue';
-=======
 // import YelpComponent from '../components/YelpComponent.vue';
->>>>>>> 448e7af8d8d5a05a9a7e52fd1b6d6f3d55434b67
 
 
 export default {
@@ -33,11 +30,8 @@ export default {
     WeatherOutput,
     NavigationBar,
     TwitterFeed,
-<<<<<<< HEAD
     AddRestaurantForm,
-=======
     // YelpComponent,
->>>>>>> 448e7af8d8d5a05a9a7e52fd1b6d6f3d55434b67
   },
   data() {
     return {
