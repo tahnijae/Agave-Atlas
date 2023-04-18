@@ -22,7 +22,7 @@ library.add(fas);
 
 import zipcodeService from '../services/ZipCodeService.js';
 import RestaurantService from '../services/RestaurantService.js';
-//import yelpService from "../services/YelpService.js";
+// import yelpService from "../services/YelpService.js";
 
 export default {
   components: {FontAwesomeIcon},
