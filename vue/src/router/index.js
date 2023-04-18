@@ -9,6 +9,7 @@ import store from '../store/index'
 import Restaurant from '../views/Restaurant.vue'
 import Socials from '../views/Socials.vue'
 import Invite from '../components/InviteUserForm.vue'
+import updateDrinkForm from'../views/UpdateDrinkForm.vue'
 
 Vue.use(Router)
 
@@ -78,6 +79,11 @@ const router = new Router({
             path: "/invite",
             name: "invite",
             component: Invite
+        },
+        {
+        path: "/restaurant/:id/drinks/:drinkId",
+        name: "update-drink",
+        component: updateDrinkForm
         }
     ]
 })

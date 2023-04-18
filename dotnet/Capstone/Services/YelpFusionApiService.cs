@@ -9,6 +9,9 @@ using System.IO;
 using Capstone.Services;
 using System;
 using Nest;
+using Newtonsoft.Json;
+using Capstone.Models;
+using System.Collections.Generic;
 
 namespace Capstone.Services
 {
@@ -23,31 +26,45 @@ namespace Capstone.Services
             this.connectionString = connectionString;
         }
 
-        //RestClient client = new RestClient("https://api.yelp.com/v3/");
 
-        //RestRequest request = new RestRequest(Method.GET);
-        //request.AddHeader("accept", "application/json");
-        //request.AddHeader("Authorization", apiKey);
-        //IRestResponse response = client.Execute(request);
 
-        public RestResponse GetRestaurantInfo()
+        public Yelp GetRestaurantInfo()
         {
-            //var options = new RestClientOptions("https://api.twitter.com/1.1")
-            //{
-            //    Authenticator = new HttpBasicAuthenticator("username", "password")
-            //};
-            //var client = new RestClient(apiUrl);
-            //var request = new RestRequest("businesses/search?location=44113&term=Barrio&sort_by=best_match&limit=20");
-            //// The cancellation token comes from the caller. You can still make a call without it.
-            //var response = client.Get(request);
-
-            RestClient client = new RestClient("https://api.yelp.com/v3/businesses/search?location=44113&term=Barrio&sort_by=best_match&limit=20");
-            RestRequest request = new RestRequest();
-            //request.AddHeader("Cache-Control", "no-cache");
-            request.AddHeader("Authorization", "Bearer " + apiKey);
+            RestClient client = new RestClient(apiUrl);
+            //RestRequest request = new RestRequest("businesses/search?location=44113&term=Barrio&sort_by=best_match&limit=5");
+            RestRequest request = new RestRequest("businesses/search?location=44113&term=Barrio&sort_by=best_match&limit=5");
+            request.AddHeader("accept", "application/json");
+            request.AddHeader("Authorization", apiKey);
             RestResponse response = client.Execute(request);
 
-            return response;
+
+            string content = response.Content;
+
+            // Deserialize the JSON data into a C# object
+            var result = JsonConvert.DeserializeObject<dynamic>(content);
+            List<Yelp> businesses = new List<Yelp>();
+            foreach (var business in result.businesses)
+            {
+                Yelp yelp = new Yelp()
+                {
+                    Name = business.name,
+                    YelpId = business.id,
+                    Address = business.location.address1,
+                    City = business.location.city,
+                    State = business.location.state,
+                    Country = business.location.country,
+                    Zip_code = business.location.zip_code,
+                    Phone = business.phone,
+                    Rating = business.rating,
+                    ReviewCount = business.review_count,
+                    Is_closed = business.is_closed,
+                    Url = business.url,
+                    Latitude = business.coordinates.latitude,
+                    Longitude = business.coordinates.longitude
+                };
+                businesses.Add(yelp);
+            }
+            return businesses[0];
         }
 
     }
