@@ -1,7 +1,12 @@
 <template>
   <div class="drink-list-container">
     <div>
-        <h1></h1>
+        <h1>{{restaurant.name}}</h1>
+        <button v-on:click=GenerateYelpInfo>Get Info</button>
+        <div v-if="haveYelpData">
+          <p>Yelp ID : {{yelpReturn.yelpId}}</p>
+          <p> Address : {{yelpReturn.address}}, {{yelpReturn.city}}, {{yelpReturn.state}}</p>
+        </div>
     </div>
     
       <drink-card
@@ -16,12 +21,16 @@
 
 import DrinkCard from "./DrinkCard.vue";
 import RestaurantService from "../services/RestaurantService.js"
+import yelpService from "../services/YelpService.js";
 
 export default {
     components: {DrinkCard},
 data() {
     return {
         drinks: [],
+        restaurant: {},
+        yelpReturn: {},
+        haveYelpData: false
     }
 },
 computed: {},
@@ -35,7 +44,30 @@ created(){
             console.log(error);
         }
     });
-}
+    RestaurantService.getRestaurant(this.$route.params.id)
+      .then((response) => {
+        this.restaurant = response.data;
+      })
+      .catch((error) => {
+        if (error) {
+          console.log(error);
+        }
+      });
+  },
+  methods: {
+    GenerateYelpInfo(){
+      let yelpSearch = {
+          name: this.restaurant.name,
+          zipcode: this.restaurant.zipCode};
+      yelpService.GetBusinessByNameAndZip(yelpSearch).then((response) => {
+      this.yelpReturn = response.data;
+      this.haveYelpData = true;
+      console.log(this.yelpReturn)
+      })
+      .catch(error => {
+        console.log(error)});
+    }
+  }
 }
 </script>
 

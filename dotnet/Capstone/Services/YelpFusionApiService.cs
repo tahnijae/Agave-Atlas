@@ -28,11 +28,11 @@ namespace Capstone.Services
 
 
 
-        public Yelp GetRestaurantInfo()
+        public Yelp GetRestaurantInfo(NameAndZip nameandzip)
         {
             RestClient client = new RestClient(apiUrl);
             //RestRequest request = new RestRequest("businesses/search?location=44113&term=Barrio&sort_by=best_match&limit=5");
-            RestRequest request = new RestRequest("businesses/search?location=44113&term=Barrio&sort_by=best_match&limit=5");
+            RestRequest request = new RestRequest($"businesses/search?location={nameandzip.Zipcode}&term={nameandzip.Name}&sort_by=best_match&limit=5");
             request.AddHeader("accept", "application/json");
             request.AddHeader("Authorization", apiKey);
             RestResponse response = client.Execute(request);
@@ -49,12 +49,14 @@ namespace Capstone.Services
                 {
                     Name = business.name,
                     YelpId = business.id,
+                    ImageUrl = business.image_url,
                     Address = business.location.address1,
                     City = business.location.city,
                     State = business.location.state,
                     Country = business.location.country,
                     Zip_code = business.location.zip_code,
                     Phone = business.phone,
+                    DisplayPhone = business.display_phone,
                     Rating = business.rating,
                     ReviewCount = business.review_count,
                     Is_closed = business.is_closed,
