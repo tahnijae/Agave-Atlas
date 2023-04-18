@@ -119,7 +119,7 @@ namespace Capstone.Controllers
         }
 
         [HttpPost("new")]
-        public ActionResult<Restaurant> AddRestaurantToDB(NewRestaurantInput newRestaurantInput)
+        public ActionResult<Restaurant> AddRestaurantToDB(YelpRestaurant newRestaurantInput)
         {
             Restaurant restaurant = restaurantDao.AddRestaurant(newRestaurantInput);
             if (restaurant == null)

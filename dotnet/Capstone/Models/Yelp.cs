@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Capstone.Models
 {
-    public class Yelp
+    public class YelpRestaurant
     {
         public string Name { get; set; }
         public string YelpId { get; set; }
@@ -15,11 +15,11 @@ namespace Capstone.Models
         public string City { get; set; }
         public string State { get; set; }
         public string Country { get; set; }
-        public string Zip_code { get; set; }
+        public string ZipCode { get; set; }
         public double Rating { get; set; }
         public int ReviewCount { get; set; }
-        public bool Is_closed { get; set; }
-        public string Url { get; set; }
+        public bool IsClosed { get; set; }
+        public string YelpUrl { get; set; }
         //public List<string> Categories { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
