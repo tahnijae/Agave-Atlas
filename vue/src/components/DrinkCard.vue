@@ -31,7 +31,7 @@ data(){
 
   }
 },
-props: ["drink","drink.drinkID"],
+props: ["drink"],
  methods: {
   decodeHtml(html) {
       var txt = document.createElement("textarea");
