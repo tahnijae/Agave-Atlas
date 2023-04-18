@@ -74,6 +74,10 @@ h2{
   border-bottom: 1px solid #eaeaea;
   padding: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 

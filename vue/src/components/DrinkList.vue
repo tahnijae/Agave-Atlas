@@ -2,6 +2,7 @@
   <div class="drink-list-container">
     
       <yelp-component />
+      <div class="drink-card-grid">
         <!-- <h1>{{restaurant.name}}</h1> -->
         <!-- <button v-on:click=GenerateYelpInfo>Get Info</button>
         <div v-if="haveYelpData">
@@ -16,7 +17,7 @@
       v-bind:key="drink.id"
       v-bind:drink="drink"/>
   </div>
-  <!-- </div> -->
+  </div>
 </template>
 
 <script>
@@ -81,8 +82,9 @@ created(){
 
 .drink-card-grid{
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(4,minmax(200px, 1fr));
   grid-gap: 1rem;
+  background-color: #def7d0;
 }
 .drink-card{
   border: 1px black solid;
@@ -95,6 +97,8 @@ h1{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
+
+
 /* div.main {
   margin: 1rem 0;
 }
