@@ -10,19 +10,19 @@ export default {
     },
 
     getRestaurant(id) {
-        return http.get(`restaurants/${id}`);
+        return http.get(`restaurant/${id}`);
     },
 
     addRestaurant(restaurant) {
-        return http.post('restaurants', restaurant);
+        return http.post('restaurant', restaurant);
     },
 
     updateRestaurant(id, restaurant) {
-        return http.put(`restaurants/${id}`, restaurant);
+        return http.put(`restaurant/${id}`, restaurant);
     },
 
     deleteRestaurant(id) {
-        return http.delete(`restaurants/${id}`);
+        return http.delete(`restaurant/${id}`);
     },
 
     getDrinksByRestaurant(id){

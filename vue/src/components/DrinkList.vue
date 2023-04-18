@@ -1,7 +1,12 @@
 <template>
   <div class="drink-list-container">
     <div>
-        <h1></h1>
+        <h1>{{restaurant.name}}</h1>
+        <button v-on:click=GenerateYelpInfo>Get Info</button>
+        <div v-if="haveYelpData">
+          <p>Yelp ID : {{yelpReturn.yelpId}}</p>
+          <p> Address : {{yelpReturn.address}}, {{yelpReturn.city}}, {{yelpReturn.state}}</p>
+        </div>
     </div>
     
       <drink-card
@@ -24,10 +29,8 @@ data() {
     return {
         drinks: [],
         restaurant: {},
-        yelpSearch: {
-          name: this.restaurant.name,
-          zipcode: this.restaurant.zipCode},
-        yelpReturn: {}
+        yelpReturn: {},
+        haveYelpData: false
     }
 },
 computed: {},
@@ -50,12 +53,20 @@ created(){
           console.log(error);
         }
       });
-      yelpService.GetBusinessByNameAndZip(this.yelpSearch).then((response) => {
-      this.yelpInfo.id = response.data.id;
+  },
+  methods: {
+    GenerateYelpInfo(){
+      let yelpSearch = {
+          name: this.restaurant.name,
+          zipcode: this.restaurant.zipCode};
+      yelpService.GetBusinessByNameAndZip(yelpSearch).then((response) => {
+      this.yelpReturn = response.data;
+      this.haveYelpData = true;
       console.log(this.yelpReturn)
       })
       .catch(error => {
         console.log(error)});
+    }
   }
 }
 </script>

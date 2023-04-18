@@ -49,6 +49,7 @@ namespace Capstone.Services
                 {
                     Name = business.name,
                     YelpId = business.id,
+                    ImageUrl = business.image_url,
                     Address = business.location.address1,
                     City = business.location.city,
                     State = business.location.state,
