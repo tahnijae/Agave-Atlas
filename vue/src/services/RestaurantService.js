@@ -22,7 +22,7 @@ export default {
     },
 
     deleteRestaurant(id) {
-        return http.delete(`restaurants/${id}`);
+        return http.delete(`restaurant/${id}`);
     },
 
     getDrinksByRestaurant(id) {

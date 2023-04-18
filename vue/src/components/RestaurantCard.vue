@@ -1,7 +1,7 @@
 <template>
   <div class="card container" v-on:click="seeDrinks(restaurant.id)">
     
-     <button @click.prevent.stop="deleteRestaurant(restaurant.id)" class="delete-button"><font-awesome-icon :icon="['fas', 'fa-trash']" /></button>
+     <button @click.prevent.stop="deleteRestaurant(restaurant.id)" v-if='this.$store.state.token !== ""' class="delete-button"><font-awesome-icon :icon="['fas', 'fa-trash']" /></button>
     <img width="100%" :src="require(`@/assets/${restaurant.imageFilePath}`)">
     <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
@@ -19,6 +19,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 library.add(fas);
 
 import zipcodeService from '../services/ZipCodeService.js';
+import RestaurantService from '../services/RestaurantService.js';
 export default {
   components: {FontAwesomeIcon},
     name: "restaurant-card",
@@ -29,18 +30,22 @@ export default {
       }
 
     },
-    methods:{
-    seeDrinks(id){
-      
-      this.$router.push(`/restaurant/${id}/drinks`);
-    },
-    
+    methods: {
+  seeDrinks(id) {
+    this.$router.push(`/restaurant/${id}/drinks`);
   },
-  deleteRestaurant(id) {
-      if (confirm("Are you sure you want to delete this restaurant?")) {
-        this.$emit("deleteRestaurant", id);
-      }
-  },
+  deleteRestaurant() {
+  if (confirm("Are you sure you want to delete this restaurant?")) {
+    this.$emit("deleteRestaurant");
+  }
+  RestaurantService.deleteRestaurant(this.restaurant.id).then((response) => {
+    if (response.status === 204) {
+      location.reload();
+    }
+  });
+},
+},
+
   computed:{
   cardClass(){
     const name = this.restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, `_`);
