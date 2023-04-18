@@ -39,6 +39,10 @@ namespace Capstone.Services
 
 
             string content = response.Content;
+            if(content == null)
+            {
+                return null;
+            }
 
             // Deserialize the JSON data into a C# object
             var result = JsonConvert.DeserializeObject<dynamic>(content);

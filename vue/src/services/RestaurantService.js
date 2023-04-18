@@ -14,7 +14,11 @@ export default {
     },
 
     addRestaurant(restaurant) {
+<<<<<<< HEAD
         return http.post('restaurant', restaurant);
+=======
+        return http.post('/restaurant/new', restaurant);
+>>>>>>> a22ea197b3c36b4f1d3ff3c76268eadc5aed1fdf
     },
 
     updateRestaurant(id, restaurant) {
@@ -25,7 +29,7 @@ export default {
         return http.delete(`restaurant/${id}`);
     },
 
-    getDrinksByRestaurant(id){
+    getDrinksByRestaurant(id) {
         return http.get(`restaurant/${id}/drinks`);
     }
 }

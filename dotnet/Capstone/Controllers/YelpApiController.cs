@@ -28,7 +28,11 @@ namespace Capstone.Controllers
         public ActionResult<Yelp> Get(NameAndZip nameandzip)
         {
             Yelp data = yelp.GetRestaurantInfo(nameandzip);
-            return data;
+            if (data == null)
+            {
+                return NotFound(data);
+            }
+            return Ok(data);
         }
 
     }
