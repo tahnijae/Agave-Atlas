@@ -37,11 +37,13 @@ export default {
     },
   },
   computed:{
-  cardClass(){
-    const name = this.restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, `_`);
-    return `card-${name}_bg`;
-  }
-    
+    cardClass(){
+      const name = this.restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, `_`);
+      return `card-${name}_bg`;
+    },
+    imageUrl() {
+      return `../assets/${this.restaurant.imageFilePath}`;
+    },
   },
   created() {
       zipcodeService.GetCityByZipcode(this.restaurant.zipCode).then((response) => {
@@ -70,6 +72,10 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 30%;
+  height: 300px;
+  background-size: cover;
+  background-position: top;
 }
 
 h2 {
@@ -98,5 +104,13 @@ h2 {
   background: rgb(0, 0, 0); 
   background: rgba(0, 0, 0, 0.7);
   padding: 20px;
+}
+img{
+  height: fit-content;
+}
+.card img{
+  height: 100%;
+  width:100%;
+  object-fit: cover;
 }
 </style>
