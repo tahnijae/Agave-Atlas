@@ -1,7 +1,11 @@
 <template>
   <div class = "card">
       <div class = "card-header">
+<<<<<<< HEAD
       <h2>{{decodeHtml(drink.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}}</h2>
+=======
+      <h3>{{decodeHtml(drink.name)}}</h3>
+>>>>>>> 96dc916143a66b5cce844e9c16a9652d07d0d381
       <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >Delete</button>
       <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== ""' >Update</button>
       </div>

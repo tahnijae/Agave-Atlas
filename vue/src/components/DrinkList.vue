@@ -1,14 +1,20 @@
 <template>
   <div class="drink-list-container">
-    <div>
-        <h1>{{restaurant.name}}</h1>
-        <button v-on:click=GenerateYelpInfo>Get Info</button>
+    
+      <yelp-component />
+        <!-- <h1>{{restaurant.name}}</h1> -->
+        <!-- <button v-on:click=GenerateYelpInfo>Get Info</button>
         <div v-if="haveYelpData">
-          <p>Yelp ID : {{yelpReturn.yelpId}}</p>
+          <p> Yelp ID : {{yelpReturn.yelpId}}</p>
           <p> Address : {{yelpReturn.address}}, {{yelpReturn.city}}, {{yelpReturn.state}}</p>
         </div>
+<<<<<<< HEAD
     </div>
     <div class="drink-card-grid">
+=======
+    </div> -->
+    
+>>>>>>> 96dc916143a66b5cce844e9c16a9652d07d0d381
       <drink-card
       class = "list-group-item"
       v-for="drink in drinks" 
@@ -22,10 +28,11 @@
 
 import DrinkCard from "./DrinkCard.vue";
 import RestaurantService from "../services/RestaurantService.js"
-import yelpService from "../services/YelpService.js";
+import YelpComponent from './YelpComponent.vue';
+//import yelpService from "../services/YelpService.js";
 
 export default {
-    components: {DrinkCard},
+    components: {DrinkCard, YelpComponent},
 data() {
     return {
         drinks: [],
@@ -56,18 +63,18 @@ created(){
       });
   },
   methods: {
-    GenerateYelpInfo(){
-      let yelpSearch = {
-          name: this.restaurant.name,
-          zipcode: this.restaurant.zipCode};
-      yelpService.GetBusinessByNameAndZip(yelpSearch).then((response) => {
-      this.yelpReturn = response.data;
-      this.haveYelpData = true;
-      console.log(this.yelpReturn)
-      })
-      .catch(error => {
-        console.log(error)});
-    }
+    // GenerateYelpInfo(){
+    //   let yelpSearch = {
+    //       name: this.restaurant.name,
+    //       zipcode: this.restaurant.zipCode};
+    //   yelpService.GetBusinessByNameAndZip(yelpSearch).then((response) => {
+    //   this.yelpReturn = response.data;
+    //   this.haveYelpData = true;
+    //   console.log(this.yelpReturn)
+    //   })
+    //   .catch(error => {
+    //     console.log(error)});
+    //}
   }
 }
 </script>

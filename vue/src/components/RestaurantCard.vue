@@ -5,7 +5,8 @@
     <div class="centered">
       <h2>{{ restaurant.name }}</h2>
     
-      <p>{{locationData["place name"]}}, {{locationData["state abbreviation"]}}</p>
+      <p>{{restaurant.address}},</p>
+      <p>{{restaurant.city}}, {{restaurant.state}} {{restaurant.zipCode}}</p>
     </div>
   </div>
 </template>
