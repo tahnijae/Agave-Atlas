@@ -22,6 +22,7 @@ export default {
 data() {
     return {
         drinks: [],
+        restaurant: {}
     }
 },
 computed: {},
@@ -35,6 +36,15 @@ created(){
             console.log(error);
         }
     });
+    RestaurantService.getRestaurant(this.$route.params.id)
+      .then((response) => {
+        this.restaurant = response.data;
+      })
+      .catch((error) => {
+        if (error) {
+          console.log(error);
+        }
+      });
 }
 }
 </script>

@@ -12,12 +12,21 @@
 
 <script>
 import zipcodeService from '../services/ZipCodeService.js';
+import yelpService from "../services/YelpService.js";
+
 export default {
     name: "restaurant-card",
     props: ["restaurant"],
     data(){
       return{
         locationData: [],
+        yelpInput:{
+          name: this.restaurant.name,
+          zipcode: this.restaurant.zipCode
+        },
+        yelpInfo:{
+          id: ""
+        }
       }
 
     },
@@ -39,8 +48,15 @@ export default {
         this.locationData = response.data.places[0];
         this.state = response.data.places.state;
         
-      });
-    }
+      }),
+      yelpService.GetBusinessByNameAndZip(this.yelpInput).then((response) => {
+      this.yelpInfo.id = response.data.id;
+      console.log(this.yelpInfo)
+      })
+      .catch(error => {
+        console.log(error)})
+      }
+    
 };
 </script>
 

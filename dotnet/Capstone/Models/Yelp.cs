@@ -9,6 +9,7 @@ namespace Capstone.Models
         public string Name { get; set; }
         public string YelpId { get; set; }
         public string Phone { get; set; }
+        public string DisplayPhone { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
@@ -21,6 +22,11 @@ namespace Capstone.Models
         //public List<string> Categories { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+    }
 
+    public class NameAndZip
+    {
+        public string Zipcode { get; set; }
+        public string Name { get; set; }
     }
 }
