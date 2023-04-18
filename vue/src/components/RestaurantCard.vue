@@ -1,21 +1,30 @@
 <template>
   <div class="card container" v-on:click="seeDrinks()">
+    
+     <button @click.prevent.stop="deleteRestaurant(this.restaurant.id)" v-if='this.$store.state.token !== ""' class="delete-button"><font-awesome-icon :icon="['fas', 'fa-trash']" /></button>
     <img width="100%" :src=restaurant.imageUrl>
     <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
       <h2>{{ restaurant.name }}</h2>
     
-      <p>{{restaurant.address}},</p>
+      <p>{{restaurant.address}}</p>
       <p>{{restaurant.city}}, {{restaurant.state}} {{restaurant.zipCode}}</p>
     </div>
   </div>
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+library.add(fas);
+
 import zipcodeService from '../services/ZipCodeService.js';
-//import yelpService from "../services/YelpService.js";
+import RestaurantService from '../services/RestaurantService.js';
+// import yelpService from "../services/YelpService.js";
 
 export default {
+  components: {FontAwesomeIcon},
     name: "restaurant-card",
     props: ["restaurant"],
     data(){
@@ -36,12 +45,26 @@ export default {
       this.$router.push(`/restaurant/${this.restaurant.id}`);
     },
   },
-  computed:{
-  cardClass(){
-    const name = this.restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, `_`);
-    return `card-${name}_bg`;
+  deleteRestaurant() {
+  if (confirm("Are you sure you want to delete this restaurant?")) {
+    RestaurantService.deleteRestaurant(this.restaurant.id).then((response) => {
+      if (response.status === 204) {
+        location.reload();
+      }
+    });
+    this.$emit("deleteRestaurant");
   }
-    
+},
+
+
+  computed:{
+    cardClass(){
+      const name = this.restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, `_`);
+      return `card-${name}_bg`;
+    },
+    imageUrl() {
+      return `../assets/${this.restaurant.imageFilePath}`;
+    },
   },
   created() {
       zipcodeService.GetCityByZipcode(this.restaurant.zipCode).then((response) => {
@@ -70,6 +93,10 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 30%;
+  height: 300px;
+  background-size: cover;
+  background-position: top;
 }
 
 h2 {
@@ -98,5 +125,25 @@ h2 {
   background: rgb(0, 0, 0); 
   background: rgba(0, 0, 0, 0.7);
   padding: 20px;
+}
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+img{
+  height: fit-content;
+}
+.card img{
+  height: 100%;
+  width:100%;
+  object-fit: cover;
 }
 </style>

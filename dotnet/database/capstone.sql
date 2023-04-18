@@ -140,10 +140,108 @@ FIELDTERMINATOR = ',',
 ROWTERMINATOR = ';'
 );
 
+<<<<<<< Updated upstream
 
 --SELECT drinks.drink_id, drink_name, description FROM drinks 
 --JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
 --JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
 --WHERE name LIKE 'bar%' ;
+=======
+USE final_capstone
+GO
+ALTER TABLE restaurants
+ADD image_file_path VARCHAR(300);
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'Barrio44107.jpg'
+WHERE name = 'Barrio' AND zip_code = '44107';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'Barrio44113.jpg'
+WHERE name = 'Barrio' AND zip_code = '44113';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'Barrio44115.jpg'
+WHERE name = 'Barrio' AND zip_code = '44115';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'Barrio44114.jpg'
+WHERE name = 'Barrio' AND zip_code = '44114';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'Barrio44106.jpg'
+WHERE name = 'Barrio' AND zip_code = '44106';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'Barrio44149.jpg'
+WHERE name = 'Barrio' AND zip_code = '44149';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'Momocho44113.jpg'
+WHERE name = 'Momocho' AND zip_code = '44113';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'TacoTonto''s44240.jpg'
+WHERE name = 'Taco Tonto''s' AND zip_code = '44240';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'TacoTonto''s44107.jpg'
+WHERE name = 'Taco Tonto''s' AND zip_code = '44107';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'ElCarnicero44107.jpg'
+WHERE name = 'El Carnicero' AND zip_code = '44107';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'Barocco44107.jpg'
+WHERE name = 'Barocco' AND zip_code = '44107';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'BlueHabanero44136.jpg'
+WHERE name = 'Blue Habanero' AND zip_code = '44136';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'BlueHabanero44141.jpg'
+WHERE name = 'Blue Habanero' AND zip_code = '44141';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'BlueHabanero44102.jpg'
+WHERE name = 'Blue Habanero' AND zip_code = '44102';
+USE final_capstone
+GO
+update restaurants
+set image_file_path = 'JohnnyMango44113.jpg'
+WHERE name = 'Johnny Mango' AND zip_code = '44113';
+
+update restaurants
+set image_file_path = 'AgaveAndRye.jpg'
+WHERE name ='Agave & Rye' AND zip_code = '44113';
+
+SELECT drinks.drink_id, drink_name, description FROM drinks 
+JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
+JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
+WHERE name LIKE 'bar%' ;
+>>>>>>> Stashed changes
+
+SELECT drinks.drink_id, drink_name, description 
+FROM drinks 
+JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
+JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
+WHERE name = 'Agave & Rye';
+
 
 COMMIT;

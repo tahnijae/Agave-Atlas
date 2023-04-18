@@ -1,57 +1,62 @@
 <template>
   <div class = "card">
-      <div class = "card-header">
-      <h3>{{decodeHtml(drink.name)}}</h3>
-      <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >Delete</button>
+    <div class = "card-header">
+      <h2>{{decodeHtml(drink.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}}</h2> 
+      <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >
+        <font-awesome-icon :icon="['fas', 'fa-trash']" />
+      </button>
       <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== ""' >Update</button>
-      </div>
-      <div class = "card-body">
+    </div>
+    <div class = "card-body">
       <p>{{decodeHtml(drink.description)}}</p>
-      </div>
-      <div v-if="drink.isFrozen">
-          <p>It's Frozen!</p>
-      </div>
+      <p class="frozen-text" v-if="drink.isFrozen">It's Frozen!</p>
+    </div>
   </div>
 </template>
 
 <script>
+
 import drinkService from '../services/DrinkService.js'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
-data(){
-  return{
-    drinkId : this.drink.drinkID,
-    
-
-  }
-},
-props: ["drink","drink.drinkID"],
- methods: {
-  decodeHtml(html) {
+  components:{
+    FontAwesomeIcon
+  },
+  data(){
+    return {
+      drinkId : this.drink.drinkID,
+    }
+  },
+  props: ["drink","drink.drinkID"],
+  methods: {
+    decodeHtml(html) {
       var txt = document.createElement("textarea");
       txt.innerHTML = html;
       return txt.value;
     },
     deleteDrink(){
-      drinkService.deleteDrink(this.drinkId).then((response)=>{
+      drinkService.deleteDrink(this.drinkId).then((response)=> {
         if(response.status === 204){
           location.reload();
+        }
+      }).catch((error) => {
+        if (error) {
+          console.log(error);
         }
       });
     },
     pushToForm(){
       this.$router.push({ name: "update-drink", params: { id: this.$route.params.id, drinkId: this.drinkId } });
     }
-    
-    
-
+  }
 }
 
-}
 </script>
 
 <style>
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -59,6 +64,7 @@ props: ["drink","drink.drinkID"],
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  
 }
 
 h2{
@@ -69,11 +75,17 @@ h2{
   background-color: #7bc950;
   border-bottom: 1px solid #eaeaea;
   padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-body {
   padding: 10px;
 }
+
 .cardBtn{
   margin: 5px;
   padding: 5px 15px;
@@ -82,5 +94,11 @@ h2{
   border: none;
   border-radius: 20px;
   cursor: pointer;
+}
+
+.frozen-text {
+  text-align: right;
+  font-family: fantasy;
+  color: blue;
 }
 </style>
