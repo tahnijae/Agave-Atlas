@@ -1,9 +1,10 @@
 <template>
-  <div>
-      <form v-on:submit.prevent="submitForm">
-        <h3>Update this Drink!</h3>
+  <div >
+      <form v-on:submit.prevent="submitForm" class="update-drink-form">
+       
+        <h2 class="title">Update this Drink!</h2>
         <label for="name">Drink Name:</label>
-        <input id="name" type="text" v-model="newDrink.name" value= :drink.name>
+        <input id="name" type="text" v-model="newDrink.name" />
 
         <label for="description">Description:</label>
         <input id="description" type="text" v-model="newDrink.description"/>
@@ -11,7 +12,8 @@
         <label for='isFrozen'>Frozen:</label>
         <input id="isFrozen" type="checkbox" v-model="newDrink.isFrozen"/>
         
-        <button type='submit'>Submit</button>
+        <button class = "btn" type='submit'>Submit</button>
+        <button v-on:click="cancelForm" class="btn" >Cancel</button>
         
       </form>
   </div>
@@ -26,7 +28,7 @@ props:["drink"],
 data(){
     return{
         newDrink : {
-            name:'',
+            name: '',
             description:'',
             isFrozen:'',
             restaurantID: Number(this.$route.params.id)  
@@ -40,7 +42,15 @@ methods:{
       if(response.status === 200){
         this.$router.push(`/restaurant/${this.$route.params.id}/drinks`)
       }
-    });
+    })
+    .catch((error) => {
+        if (error) {
+          console.log(error);
+        }
+      });
+    },
+    cancelForm(){
+        this.$router.push(`/restaurant/${this.$route.params.id}/drinks`);
     }
     }
 
@@ -49,5 +59,31 @@ methods:{
 </script>
 
 <style>
+.update-drink-form{
+    margin-top:100px;
+    display:flex;
+    flex-direction:column;
+    width:25%;
+    margin-left:37%;
+    font-family: sans-serif;
+    justify-content: space-evenly;
+    height: 300px;
+}
+.title{
+    text-align: center;
+    font-family:sans-serif
+}
+#isFrozen{
+    margin-right:90%;
+}
+.btn{
+    margin-left:200px;
+    width:100px;
+    background-color: #7bc950;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
 
 </style>
