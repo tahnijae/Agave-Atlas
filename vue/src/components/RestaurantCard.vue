@@ -1,8 +1,5 @@
 <template>
 <div class="card container" v-on:click="seeDrinks(restaurant.id)" :style="{ backgroundImage: 'url(' + require(`@/assets/${restaurant.imageFilePath}`) + ')' }">
-  <!-- <div class="card container" v-on:click="seeDrinks(restaurant.id)"> -->
-    <!-- <img :src="require(`@/assets/${restaurant.imageFilePath}`)"> -->
-    <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
       <h2>{{ restaurant.name }}</h2>
     
@@ -57,8 +54,6 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  /* width: 300px;
-  height: 300px; */
   width: 30%;
   height: 300px;
   background-size: cover;
