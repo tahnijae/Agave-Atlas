@@ -1,5 +1,7 @@
 <template>
-<div class="card container" v-on:click="seeDrinks(restaurant.id)" :style="{ backgroundImage: 'url(' + require(`@/assets/${restaurant.imageFilePath}`) + ')' }">
+  <div class="card container" v-on:click="seeDrinks(restaurant.id)">
+    <img width="100%" :src=restaurant.imageUrl>
+    <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
       <h2>{{ restaurant.name }}</h2>
     
