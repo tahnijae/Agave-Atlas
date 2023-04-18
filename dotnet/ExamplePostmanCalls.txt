@@ -41,3 +41,12 @@ https://localhost:44315/restaurant/16
 ## DELETES:
 Delete a restaurant:
 https://localhost:44315/restaurant/16
+
+
+
+YELP
+https://localhost:44315/YelpApi/ 
+{
+    "zipcode": "44113",
+    "name": "Edisons"
+}

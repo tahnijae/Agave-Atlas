@@ -1,6 +1,6 @@
 <template>
   <div>
-      <p></p>
+      <p>{{Restaurant}}</p>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     }
   },
   created() {
-    yelpService.GetBusinessByNameAndZip().then(response => {
+    yelpService.GetBusinessByNameAndZip("barrio", "44113").then(response => {
       this.Restaurant = response.data;})
   },
   

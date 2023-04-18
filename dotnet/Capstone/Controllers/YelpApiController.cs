@@ -24,10 +24,10 @@ namespace Capstone.Controllers
             this.yelp = yelp;
         }
 
-        [HttpGet]
-        public ActionResult<Yelp> Get()
+        [HttpPost]
+        public ActionResult<Yelp> Get(NameAndZip nameandzip)
         {
-            Yelp data = yelp.GetRestaurantInfo();
+            Yelp data = yelp.GetRestaurantInfo(nameandzip);
             return data;
         }
 

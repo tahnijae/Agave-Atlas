@@ -8,31 +8,8 @@ import axios from 'axios';
 
 
 export default {
-    GetBusinessByNameAndZip() {
-        //GetBusinessByNameAndZip(name, zipcode) {
-        // let options = {
-        //     method: 'GET',
-        //     url: http,
-        //     params: { location: zipcode, term: name, sort_by: 'best_match', limit: '20' },
-        //     headers: {
-        //         accept: 'application/json',
-        //         Authorization: `BEARER ${apiKey}`
-        //     }
-        // };
-        // return http.request(options)
-
-        return axios.get('/YelpApi');
-
-
-
-
-            // fetch(`?location=${zipcode}&term=${name}&sort_by=best_match&limit=20`, options)
-            //     .then(response => response.json())
-            //     .then(response => console.log(response))
-            //     .catch(err => console.error(err));
-
-        //return http.get(`?location=${zipcode}&term=${name}&sort_by=best_match&limit=5`)
-
-
+    GetBusinessByNameAndZip(yelpinput) {
+        //let nameandzip = {yelpinput};
+        return axios.post('/YelpApi/', yelpinput);
     }
 }
