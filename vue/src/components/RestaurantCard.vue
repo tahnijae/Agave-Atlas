@@ -1,5 +1,7 @@
 <template>
   <div class="card container" v-on:click="seeDrinks(restaurant.id)">
+    
+     <button @click.prevent.stop="deleteRestaurant(restaurant.id)" class="delete-button"><font-awesome-icon :icon="['fas', 'fa-trash']" /></button>
     <img width="100%" :src="require(`@/assets/${restaurant.imageFilePath}`)">
     <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
@@ -11,8 +13,14 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+library.add(fas);
+
 import zipcodeService from '../services/ZipCodeService.js';
 export default {
+  components: {FontAwesomeIcon},
     name: "restaurant-card",
     props: ["restaurant"],
     data(){
@@ -26,6 +34,12 @@ export default {
       
       this.$router.push(`/restaurant/${id}/drinks`);
     },
+    
+  },
+  deleteRestaurant(id) {
+      if (confirm("Are you sure you want to delete this restaurant?")) {
+        this.$emit("deleteRestaurant", id);
+      }
   },
   computed:{
   cardClass(){
@@ -83,4 +97,16 @@ h2 {
   background: rgba(0, 0, 0, 0.7);
   padding: 20px;
 }
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
 </style>
