@@ -1,8 +1,7 @@
 <template>
   <div class="drink-list-container">
     
-      <yelp-component />
-      <div class="drink-card-grid">
+      <yelp-component v-bind:restaurant="restaurant" />
         <!-- <h1>{{restaurant.name}}</h1> -->
         <!-- <button v-on:click=GenerateYelpInfo>Get Info</button>
         <div v-if="haveYelpData">
@@ -17,7 +16,7 @@
       v-bind:key="drink.id"
       v-bind:drink="drink"/>
   </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
