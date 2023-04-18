@@ -7,7 +7,7 @@
       <div id="hero-background" class="hero">
         <h1 id="hero-text" class="hero">{{restaurant.name}}</h1>
       </div>
-    <img :src="require(`@/assets/${restaurant.imageFilePath}`)" id="hero-image"/>
+    <img :src="restaurant.imageUrl" id="hero-image"/>
     <drink-form/>
       <div id="drink-list">
         <h1>Drinks</h1>
@@ -17,7 +17,7 @@
       <div id="reviews">
         <h1>Reviews</h1>
         <hr style="width:70%; border-color: black 2px; border-style: solid; margin: 5px auto;"/>
-        <review-list/>
+        <review-list v-bind:restaurant="restaurant"/>
       </div>
     </div>
   </div>
@@ -39,13 +39,17 @@ export default {
   },
   data(){
     return {
-      restaurant: {}
+      restaurant: {},
+      
     }
   },
   created(){
       {RestaurantService.getRestaurant(this.$route.params.id).then(response =>{
         
         this.restaurant = response.data;
+      })
+      .catch(error => {
+        console.log(error.status);
       })
     }
   }

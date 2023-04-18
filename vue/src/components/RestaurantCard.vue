@@ -1,5 +1,5 @@
 <template>
-  <div class="card container" v-on:click="seeDrinks(restaurant.id)">
+  <div class="card container" v-on:click="seeDrinks()">
     <img width="100%" :src=restaurant.imageUrl>
     <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
@@ -31,9 +31,9 @@ export default {
       }
     },
     methods:{
-    seeDrinks(id){
+    seeDrinks(){
       
-      this.$router.push(`/restaurant/${id}/drinks`);
+      this.$router.push(`/restaurant/${this.restaurant.id}`);
     },
   },
   computed:{

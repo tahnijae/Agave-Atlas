@@ -114,9 +114,9 @@ COMMIT;
 GO
 
 BEGIN TRANSACTION
-
+--Partner Projects\
 BULK INSERT dbo.drinks 
-FROM "C:\Users\Student\workspace\c-sharp-finalcapstone-team1\dotnet\database\Drinks.csv"
+FROM "C:\Users\Student\workspace\Partner Projects\c-sharp-finalcapstone-team1\dotnet\database\Drinks.csv"
 WITH (FORMAT = 'CSV',
 FIRSTROW = 2,
 FIELDTERMINATOR = ',',

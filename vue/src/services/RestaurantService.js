@@ -33,7 +33,7 @@ export default {
         return http.get(`restaurant/${id}/reviews`)
     },
 
-    addReviewToRestaurant(id){
-        return http.post(`restaurant/${id}/reviews`)
+    addReviewToRestaurant(id, review){
+        return http.post(`restaurant/${id}/reviews`, review)
     }
 }

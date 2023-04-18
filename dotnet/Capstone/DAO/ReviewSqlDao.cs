@@ -144,7 +144,7 @@ namespace Capstone.DAO
                     COMMIT;", conn);
 
                     cmd.Parameters.AddWithValue("@user_id", review.Reviewer_ID);
-                    cmd.Parameters.AddWithValue("@rating", review.Rating);
+                    cmd.Parameters.AddWithValue("@rating", Convert.ToInt32(review.Rating));
                     cmd.Parameters.AddWithValue("@review_text", review.ReviewText);
                     cmd.Parameters.AddWithValue("@restaurant_id", review.Reviewable_ID);
 
