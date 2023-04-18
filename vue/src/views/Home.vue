@@ -59,7 +59,7 @@ export default {
 .weather{
   grid-area: weather;
   padding: 20px;
-  margin: 5rem 0 1rem 0;
+  margin: 5rem 0 0rem 0;
   border: black 2px;
   border-style: solid;
   width: 100%;
@@ -77,7 +77,7 @@ export default {
   ". weather weather weather ."
   ". . rest . .";
   grid-template-columns: .5fr 1fr 4fr 1fr .5fr;
-  background-image: url('/src/assets/cheers.jpg');
+  /* background-image: url('/src/assets/cheers.jpg'); */
   background-size: cover;
   background-position:center;
   background-repeat:no-repeat;

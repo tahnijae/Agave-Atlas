@@ -43,6 +43,33 @@ namespace Capstone.DAO
 
             return returnUser;
         }
+        public User GetUserByID(int ID)
+        {
+            User returnUser = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT user_id, username, user_role FROM users WHERE user_id = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", ID);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        returnUser = GetUserFromReader(reader, true);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return returnUser;
+        }
 
         public User AddUser(string username, string password, string role)
         {
@@ -79,6 +106,17 @@ namespace Capstone.DAO
                 Username = Convert.ToString(reader["username"]),
                 PasswordHash = Convert.ToString(reader["password_hash"]),
                 Salt = Convert.ToString(reader["salt"]),
+                Role = Convert.ToString(reader["user_role"]),
+            };
+
+            return u;
+        }
+        private User GetUserFromReader(SqlDataReader reader, bool activator)
+        {
+            User u = new User()
+            {
+                UserId = Convert.ToInt32(reader["user_id"]),
+                Username = Convert.ToString(reader["username"]),
                 Role = Convert.ToString(reader["user_role"]),
             };
 
