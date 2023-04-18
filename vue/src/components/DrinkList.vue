@@ -8,20 +8,15 @@
           <p> Yelp ID : {{yelpReturn.yelpId}}</p>
           <p> Address : {{yelpReturn.address}}, {{yelpReturn.city}}, {{yelpReturn.state}}</p>
         </div>
-<<<<<<< HEAD
-    </div>
-    <div class="drink-card-grid">
-=======
     </div> -->
     
->>>>>>> 96dc916143a66b5cce844e9c16a9652d07d0d381
       <drink-card
       class = "list-group-item"
       v-for="drink in drinks" 
       v-bind:key="drink.id"
       v-bind:drink="drink"/>
   </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
