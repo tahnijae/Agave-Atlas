@@ -1,10 +1,11 @@
 <template>
   <div class = 'main'>
     <navigation-bar />
-      <!-- <weather-output class="weather"/> -->
+          <weather-output class="weather"/>
       <!-- <yelp-component /> -->
     <div class="restaurant-list">
       <h2>Locations:</h2>
+       <add-restaurant-form :is-authenticated="isAuthenticated" />
       <restaurant-list />
     </div>
      <twitter-feed />
@@ -16,6 +17,7 @@ import RestaurantList from "../components/RestaurantList.vue";
 import NavigationBar from '../components/NavigationBar.vue'
 import authService from "../services/AuthService.js";
 import TwitterFeed from "../components/TwitterFeed.vue";
+import AddRestaurantForm from '../components/AddRestaurantForm.vue';
 // import YelpComponent from '../components/YelpComponent.vue';
 
 
@@ -26,6 +28,7 @@ export default {
     // WeatherOutput,
     NavigationBar,
     TwitterFeed,
+    AddRestaurantForm,
     // YelpComponent,
   },
   data() {
