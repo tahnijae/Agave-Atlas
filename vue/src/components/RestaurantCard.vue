@@ -1,5 +1,7 @@
 <template>
   <div class="card container" v-on:click="seeDrinks(restaurant.id)">
+    
+     <button @click.prevent.stop="deleteRestaurant(restaurant.id)" v-if='this.$store.state.token !== ""' class="delete-button"><font-awesome-icon :icon="['fas', 'fa-trash']" /></button>
     <img width="100%" :src=restaurant.imageUrl>
     <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
@@ -12,10 +14,17 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+library.add(fas);
+
 import zipcodeService from '../services/ZipCodeService.js';
-//import yelpService from "../services/YelpService.js";
+import RestaurantService from '../services/RestaurantService.js';
+// import yelpService from "../services/YelpService.js";
 
 export default {
+  components: {FontAwesomeIcon},
     name: "restaurant-card",
     props: ["restaurant"],
     data(){
@@ -30,12 +39,22 @@ export default {
         // }
       }
     },
-    methods:{
-    seeDrinks(id){
-      
-      this.$router.push(`/restaurant/${id}/drinks`);
-    },
+    methods: {
+  seeDrinks(id) {
+    this.$router.push(`/restaurant/${id}/drinks`);
   },
+  deleteRestaurant() {
+  if (confirm("Are you sure you want to delete this restaurant?")) {
+    RestaurantService.deleteRestaurant(this.restaurant.id).then((response) => {
+      if (response.status === 204) {
+        location.reload();
+      }
+    });
+    this.$emit("deleteRestaurant");
+  }
+},
+},
+
   computed:{
     cardClass(){
       const name = this.restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, `_`);
@@ -105,6 +124,18 @@ h2 {
   background: rgba(0, 0, 0, 0.7);
   padding: 20px;
 }
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
 img{
   height: fit-content;
 }

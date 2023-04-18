@@ -4,6 +4,8 @@ import router from './router/index'
 import store from './store/index'
 import axios from 'axios'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+Vue.config.devtools = true
+Vue.config.performance = true
 
 
 Vue.config.productionTip = false
