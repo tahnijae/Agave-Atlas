@@ -18,12 +18,14 @@ namespace Capstone.Controllers
         private readonly IRestaurantSqlDao restaurantDao;
         private readonly IUserDao userDao;
         private readonly IDrinkDao drinkDao;
+        private readonly IReviewDao reviewDao;
 
-        public RestaurantController(IRestaurantSqlDao restaurantDao, IUserDao userDao, IDrinkDao drinkDao)
+        public RestaurantController(IRestaurantSqlDao restaurantDao, IUserDao userDao, IDrinkDao drinkDao, IReviewDao reviewDao)
         {
             this.restaurantDao = restaurantDao;
             this.userDao = userDao;
             this.drinkDao = drinkDao;
+            this.reviewDao = reviewDao;
         }
 
         [HttpGet]
@@ -48,7 +50,51 @@ namespace Capstone.Controllers
             }
             return Ok(restaurant);
         }
+        [HttpGet("{id}/reviews")]
+        public ActionResult<IList<Review>> GetReviewsForRestaurant(int id)
+        {
+            IList<Review> reviews = reviewDao.GetRestaurantReviews(id);
 
+            if(reviews.Count == 0)
+            {
+                return NoContent();
+            } else
+            {
+                return Ok(reviews);
+            }
+        }
+        [HttpPost("{id}/reviews")]
+        public ActionResult<Review> AddReviewToRestaurant(int id, [FromBody]Review review)
+        {
+            if(GetRestaurantById(id) == null)
+            {
+                return NotFound();
+            }
+
+           review.Reviewable_ID = id;
+           Review rev = reviewDao.AddRestaurantReview(review);
+            if(rev == null)
+            {
+                return NoContent();
+            } else
+            {
+                return Ok(rev);
+            }
+            
+        }
+        [HttpDelete("{id}/reviews/{review_id}")]
+        public ActionResult DeleteReview(int id, int review_id)
+        {
+            if(reviewDao.GetReviewByID(review_id) == null)
+            {
+                return NotFound();
+            }
+            if (reviewDao.DeleteRestaurantReview(review_id))
+            {
+                return Ok();
+            } else { return NotFound(); }
+
+        }
         [HttpGet("zipcode/{zip_code}")]
         public ActionResult<IList<Restaurant>> GetRestaurantByZipcode(string zip_code)
         {
@@ -86,7 +132,7 @@ namespace Capstone.Controllers
         [HttpPut("{Restaurant_ID}")]
         public ActionResult<Restaurant> UpdateRestaurant(Restaurant inputRestaurant)
         {
-            if (GetRestaurantById(inputRestaurant.Restaurant_ID) == null)
+            if (GetRestaurantById(inputRestaurant.ID) == null)
             {
                 return NotFound();
             }
@@ -100,7 +146,7 @@ namespace Capstone.Controllers
                 return Ok(restaurant);
             }
         }
-
+        
         [HttpDelete("{restaurantID}")]
         public ActionResult DeleteRestaurantFromDB(int restaurantID)
         {
