@@ -50,32 +50,11 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
-.restaurant-cards{
-  display:flex;
+.restaurant-cards {
+  display: flex;
   flex-direction: row;
   flex-flow: wrap;
   justify-content: space-between;
-}
-
-
-/*
-.card-barrio{
-  background-image: url('../assets/lakewood2.jpg');
-}
-.card-momocho{
-  background-image: url('../assets/momocho2.jpg');
-}
-.card-taco_tontos{
-background-image: url('../assets/tacotontos.png');
-}
-.card-el_carniceno{
-  background-image: url('../assets/elcarnicero.jpg');
-=======
-.restaurant-cards {
-  display: flex;
-  flex-direction: column;
->>>>>>> d1c2664a7bee2db3e9cb2ba2a51d385017de4754
 }
 
 div.main {

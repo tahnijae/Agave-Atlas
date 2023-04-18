@@ -1,20 +1,21 @@
 <template>
   <div class = "card">
       <div class = "card-header">
-      <h2>{{decodeHtml(drink.name)}}</h2>
+      <h2>{{decodeHtml(drink.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}}</h2>
       <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >Delete</button>
       <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== ""' >Update</button>
       </div>
       <div class = "card-body">
       <p>{{decodeHtml(drink.description)}}</p>
       </div>
-      <div v-if="drink.isFrozen">
-          <p>It's Frozen!</p>
+      <div class="frozen" v-if="drink.isFrozen">
+          <p class="frozen-text">It's Frozen!</p>
       </div>
   </div>
 </template>
 
 <script>
+
 import drinkService from '../services/DrinkService.js'
 
 export default {
@@ -48,10 +49,12 @@ props: ["drink","drink.drinkID"],
 }
 
 }
+
 </script>
 
 <style>
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -59,6 +62,7 @@ props: ["drink","drink.drinkID"],
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  
 }
 
 h2{
@@ -69,6 +73,8 @@ h2{
   background-color: #7bc950;
   border-bottom: 1px solid #eaeaea;
   padding: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 .card-body {
@@ -82,5 +88,22 @@ h2{
   border: none;
   border-radius: 20px;
   cursor: pointer;
+}
+.frozen{
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 10px;
+  animation: fadein ls;
+}
+.frozen-text{
+  text-align: center;
+  font-weight: bold;
+
 }
 </style>

@@ -8,12 +8,13 @@
           <p> Address : {{yelpReturn.address}}, {{yelpReturn.city}}, {{yelpReturn.state}}</p>
         </div>
     </div>
-    
+    <div class="drink-card-grid">
       <drink-card
       class = "list-group-item"
       v-for="drink in drinks" 
       v-bind:key="drink.id"
       v-bind:drink="drink"/>
+  </div>
   </div>
 </template>
 
@@ -75,7 +76,24 @@ created(){
 .drink-list-container{
   margin-top: 100px;
 }
-div.main {
+
+.drink-card-grid{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 1rem;
+}
+.drink-card{
+  border: 1px black solid;
+  border-radius: 6px;
+  text-align: center;
+  padding: 0.25rem;
+}
+h1{
+  text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+/* div.main {
   margin: 1rem 0;
 }
 div.main div.well-display {
@@ -103,6 +121,6 @@ div.main div.well-display div.well {
 
 .card-body {
   padding: 10px;
-}
+} */
 
 </style>
