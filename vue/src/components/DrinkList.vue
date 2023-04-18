@@ -16,13 +16,18 @@
 
 import DrinkCard from "./DrinkCard.vue";
 import RestaurantService from "../services/RestaurantService.js"
+import yelpService from "../services/YelpService.js";
 
 export default {
     components: {DrinkCard},
 data() {
     return {
         drinks: [],
-        restaurant: {}
+        restaurant: {},
+        yelpSearch: {
+          name: this.restaurant.name,
+          zipcode: this.restaurant.zipCode},
+        yelpReturn: {}
     }
 },
 computed: {},
@@ -45,7 +50,13 @@ created(){
           console.log(error);
         }
       });
-}
+      yelpService.GetBusinessByNameAndZip(this.yelpSearch).then((response) => {
+      this.yelpInfo.id = response.data.id;
+      console.log(this.yelpReturn)
+      })
+      .catch(error => {
+        console.log(error)});
+  }
 }
 </script>
 
