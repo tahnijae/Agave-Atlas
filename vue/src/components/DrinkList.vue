@@ -1,7 +1,7 @@
 <template>
   <div class="drink-list-container">
     
-      <yelp-component />
+      <yelp-component v-bind:restaurant="restaurant" />
         <!-- <h1>{{restaurant.name}}</h1> -->
         <!-- <button v-on:click=GenerateYelpInfo>Get Info</button>
         <div v-if="haveYelpData">

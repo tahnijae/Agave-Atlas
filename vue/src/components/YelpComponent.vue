@@ -1,47 +1,42 @@
 <template>
   <div id="yelp_card">
+    <!-- <map-component v-bind:restaurant="restaurant" /> -->
     <h2>{{ restaurant.name }}</h2>
-    <div id="address">
-      <h4>Address:</h4>
-      <p>{{ restaurant.address }},</p>
-      <p>
-        {{ restaurant.city }}, {{ restaurant.state }} {{ restaurant.zipCode }}
-      </p>
-    </div>
-    <div id="phone">
-      <h4>Phone:</h4>
-      <p>{{ restaurant.displayPhone }}</p>
-    </div>
-    <div id="info">
-      <h4>Info:</h4>
-      <p>This restaurant has {{ restaurant.rating}} stars based on {{restaurant.reviewCount}} reviews on Yelp!</p>
-      <p><a :href="restaurant.yelpUrl">See more on Yelp. </a> </p>
+    <div class="container">
+      <div id="address">
+        <h4>Address:</h4>
+        <p>{{ restaurant.address }},</p>
+        <p>
+          {{ restaurant.city }}, {{ restaurant.state }} {{ restaurant.zipCode }}
+        </p>
+      </div>
+      <div id="phone">
+        <h4>Phone:</h4>
+        <p>{{ restaurant.displayPhone }}</p>
+      </div>
+      <div id="info">
+        <h4>Info:</h4>
+        <p>
+          This restaurant has {{ restaurant.rating }} stars based on
+          {{ restaurant.reviewCount }} reviews on Yelp!
+        </p>
+        <p><a :href="restaurant.yelpUrl">See more on Yelp. </a></p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import RestaurantService from "../services/RestaurantService.js";
+//import MapComponent from "../components/MapComponent.vue"
 
 export default {
   name: "yelp-component",
-  components: {},
+  props: ["restaurant"],
+  //components: {MapComponent},
   data() {
-    return {
-      restaurant: {},
-    };
+    return {};
   },
-  created() {
-    RestaurantService.getRestaurant(this.$route.params.id)
-      .then((response) => {
-        this.restaurant = response.data;
-      })
-      .catch((error) => {
-        if (error) {
-          console.log(error);
-        }
-      });
-  },
+  created() {},
 };
 </script>
 
@@ -50,5 +45,10 @@ export default {
   border: 5px;
   border-color: #7bc950;
   background: #f3faef;
+}
+.container {
+  display: flex;
+  justify-content: space-around;
+  background: #FFFFFF;
 }
 </style>
