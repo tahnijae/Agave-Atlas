@@ -6,6 +6,7 @@
         v-bind:key="restaurant.id"
         v-bind:restaurant="restaurant"
         v-bind:class="restaurantCardClass(restaurant.name)"
+         @deleteRestaurant="deleteRestaurant"
       />
     </div>
   </div>
@@ -20,6 +21,12 @@ export default {
     restaurantCardClass(name) {
       const className = name.toLowerCase().replace(/ /g, '-');
       return `card-${className}`;
+    },
+    deleteRestaurant(id){
+      RestaurantService.deleteRestaurant(id)
+      .then(() =>{
+        this.restaurants = this.restaurants.filter((restaurant) => restaurant.id !== id )
+      })
     },
     fetchRestaurants() {
       RestaurantService.getRestaurants()

@@ -18,7 +18,7 @@ import NavigationBar from '../components/NavigationBar.vue'
 import authService from "../services/AuthService.js";
 import TwitterFeed from "../components/TwitterFeed.vue";
 import AddRestaurantForm from '../components/AddRestaurantForm.vue';
-// import YelpComponent from '../components/YelpComponent.vue';
+//import YelpComponent from '../components/YelpComponent.vue';
 
 
 export default {
