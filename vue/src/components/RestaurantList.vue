@@ -59,11 +59,14 @@ export default {
 <style>
 .restaurant-cards {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: space-between;
 }
 
 div.main {
   margin: 1rem 0;
+  display: flex;
 }
 div.main div.well-display {
   display: flex;

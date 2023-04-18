@@ -1,8 +1,14 @@
 <template>
   <div class="drink-list-container">
-    <div>
-        <h1></h1>
-    </div>
+    
+      <yelp-component />
+        <!-- <h1>{{restaurant.name}}</h1> -->
+        <!-- <button v-on:click=GenerateYelpInfo>Get Info</button>
+        <div v-if="haveYelpData">
+          <p> Yelp ID : {{yelpReturn.yelpId}}</p>
+          <p> Address : {{yelpReturn.address}}, {{yelpReturn.city}}, {{yelpReturn.state}}</p>
+        </div>
+    </div> -->
     
       <drink-card
       class = "list-group-item"
@@ -10,18 +16,24 @@
       v-bind:key="drink.id"
       v-bind:drink="drink"/>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
 
 import DrinkCard from "./DrinkCard.vue";
 import RestaurantService from "../services/RestaurantService.js"
+import YelpComponent from './YelpComponent.vue';
+//import yelpService from "../services/YelpService.js";
 
 export default {
-    components: {DrinkCard},
+    components: {DrinkCard, YelpComponent},
 data() {
     return {
         drinks: [],
+        restaurant: {},
+        yelpReturn: {},
+        haveYelpData: false
     }
 },
 computed: {},
@@ -35,7 +47,30 @@ created(){
             console.log(error);
         }
     });
-}
+    RestaurantService.getRestaurant(this.$route.params.id)
+      .then((response) => {
+        this.restaurant = response.data;
+      })
+      .catch((error) => {
+        if (error) {
+          console.log(error);
+        }
+      });
+  },
+  methods: {
+    // GenerateYelpInfo(){
+    //   let yelpSearch = {
+    //       name: this.restaurant.name,
+    //       zipcode: this.restaurant.zipCode};
+    //   yelpService.GetBusinessByNameAndZip(yelpSearch).then((response) => {
+    //   this.yelpReturn = response.data;
+    //   this.haveYelpData = true;
+    //   console.log(this.yelpReturn)
+    //   })
+    //   .catch(error => {
+    //     console.log(error)});
+    //}
+  }
 }
 </script>
 
@@ -43,7 +78,24 @@ created(){
 .drink-list-container{
   margin-top: 100px;
 }
-div.main {
+
+.drink-card-grid{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 1rem;
+}
+.drink-card{
+  border: 1px black solid;
+  border-radius: 6px;
+  text-align: center;
+  padding: 0.25rem;
+}
+h1{
+  text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+/* div.main {
   margin: 1rem 0;
 }
 div.main div.well-display {
@@ -71,6 +123,6 @@ div.main div.well-display div.well {
 
 .card-body {
   padding: 10px;
-}
+} */
 
 </style>

@@ -3,11 +3,13 @@
     
      <button @click.prevent.stop="deleteRestaurant(restaurant.id)" v-if='this.$store.state.token !== ""' class="delete-button"><font-awesome-icon :icon="['fas', 'fa-trash']" /></button>
     <img width="100%" :src="require(`@/assets/${restaurant.imageFilePath}`)">
+    <img width="100%" :src=restaurant.imageUrl>
     <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
       <h2>{{ restaurant.name }}</h2>
     
-      <p>{{locationData["place name"]}}, {{locationData["state abbreviation"]}}</p>
+      <p>{{restaurant.address}},</p>
+      <p>{{restaurant.city}}, {{restaurant.state}} {{restaurant.zipCode}}</p>
     </div>
   </div>
 </template>
@@ -20,6 +22,8 @@ library.add(fas);
 
 import zipcodeService from '../services/ZipCodeService.js';
 import RestaurantService from '../services/RestaurantService.js';
+//import yelpService from "../services/YelpService.js";
+
 export default {
   components: {FontAwesomeIcon},
     name: "restaurant-card",
@@ -27,8 +31,14 @@ export default {
     data(){
       return{
         locationData: [],
+        // yelpInput:{
+        //   name: this.restaurant.name,
+        //   zipcode: this.restaurant.zipCode
+        // },
+        // yelpInfo:{
+        //   id: ""
+        // }
       }
-
     },
     methods: {
   seeDrinks(id) {
@@ -47,11 +57,13 @@ export default {
 },
 
   computed:{
-  cardClass(){
-    const name = this.restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, `_`);
-    return `card-${name}_bg`;
-  }
-    
+    cardClass(){
+      const name = this.restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, `_`);
+      return `card-${name}_bg`;
+    },
+    imageUrl() {
+      return `../assets/${this.restaurant.imageFilePath}`;
+    },
   },
   created() {
       zipcodeService.GetCityByZipcode(this.restaurant.zipCode).then((response) => {
@@ -59,7 +71,14 @@ export default {
         this.state = response.data.places.state;
         
       });
-    }
+      // yelpService.GetBusinessByNameAndZip(this.yelpInput).then((response) => {
+      // this.yelpInfo.id = response.data.id;
+      // console.log(this.yelpInfo)
+      // })
+      // .catch(error => {
+      //   console.log(error)})
+      }
+    
 };
 </script>
 
@@ -73,6 +92,10 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 30%;
+  height: 300px;
+  background-size: cover;
+  background-position: top;
 }
 
 h2 {
@@ -114,4 +137,12 @@ h2 {
     padding: 5px 10px;
     cursor: pointer;
   }
+img{
+  height: fit-content;
+}
+.card img{
+  height: 100%;
+  width:100%;
+  object-fit: cover;
+}
 </style>

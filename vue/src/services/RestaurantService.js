@@ -10,7 +10,7 @@ export default {
     },
 
     getRestaurant(id) {
-        return http.get(`restaurants/${id}`);
+        return http.get(`restaurant/${id}`);
     },
 
     addRestaurant(restaurant) {
@@ -18,7 +18,7 @@ export default {
     },
 
     updateRestaurant(id, restaurant) {
-        return http.put(`restaurants/${id}`, restaurant);
+        return http.put(`restaurant/${id}`, restaurant);
     },
 
     deleteRestaurant(id) {

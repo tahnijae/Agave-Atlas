@@ -28,37 +28,43 @@ namespace Capstone.Services
 
 
 
-        public Yelp GetRestaurantInfo()
+        public YelpRestaurant GetRestaurantInfo(NameAndZip nameandzip)
         {
             RestClient client = new RestClient(apiUrl);
             //RestRequest request = new RestRequest("businesses/search?location=44113&term=Barrio&sort_by=best_match&limit=5");
-            RestRequest request = new RestRequest("businesses/search?location=44113&term=Barrio&sort_by=best_match&limit=5");
+            RestRequest request = new RestRequest($"businesses/search?location={nameandzip.Zipcode}&term={nameandzip.Name}&sort_by=best_match&limit=5");
             request.AddHeader("accept", "application/json");
             request.AddHeader("Authorization", apiKey);
             RestResponse response = client.Execute(request);
 
 
             string content = response.Content;
+            if(content == null)
+            {
+                return null;
+            }
 
             // Deserialize the JSON data into a C# object
             var result = JsonConvert.DeserializeObject<dynamic>(content);
-            List<Yelp> businesses = new List<Yelp>();
+            List<YelpRestaurant> businesses = new List<YelpRestaurant>();
             foreach (var business in result.businesses)
             {
-                Yelp yelp = new Yelp()
+                YelpRestaurant yelp = new YelpRestaurant()
                 {
                     Name = business.name,
                     YelpId = business.id,
+                    ImageUrl = business.image_url,
                     Address = business.location.address1,
                     City = business.location.city,
                     State = business.location.state,
                     Country = business.location.country,
-                    Zip_code = business.location.zip_code,
+                    ZipCode = business.location.zip_code,
                     Phone = business.phone,
+                    DisplayPhone = business.display_phone,
                     Rating = business.rating,
                     ReviewCount = business.review_count,
-                    Is_closed = business.is_closed,
-                    Url = business.url,
+                    IsClosed = business.is_closed,
+                    YelpUrl = business.url,
                     Latitude = business.coordinates.latitude,
                     Longitude = business.coordinates.longitude
                 };
