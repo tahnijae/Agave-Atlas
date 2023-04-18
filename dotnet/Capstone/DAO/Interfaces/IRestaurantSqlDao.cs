@@ -8,7 +8,7 @@ namespace Capstone.DAO.Interfaces
         IList<Restaurant> GetAllRestaurants();
         IList<Restaurant> GetRestaurantsByZipCode(string zipcode);
         Restaurant GetRestaurantByID(int ID);
-        Restaurant AddRestaurant(NewRestaurantInput inputRestaurant);
+        Restaurant AddRestaurant(YelpRestaurant inputRestaurant);
         Restaurant UpdateRestaurant(Restaurant restaurant);
         void DeleteRestaurant(int restaurantID);
 

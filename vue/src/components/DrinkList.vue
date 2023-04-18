@@ -1,10 +1,11 @@
 <template>
   <div class="drink-list-container">
-    <!-- <div>
-        <h1>{{restaurant.name}}</h1>
-        <button v-on:click=GenerateYelpInfo>Get Info</button>
+    
+      <yelp-component />
+        <!-- <h1>{{restaurant.name}}</h1> -->
+        <!-- <button v-on:click=GenerateYelpInfo>Get Info</button>
         <div v-if="haveYelpData">
-          <p>Yelp ID : {{yelpReturn.yelpId}}</p>
+          <p> Yelp ID : {{yelpReturn.yelpId}}</p>
           <p> Address : {{yelpReturn.address}}, {{yelpReturn.city}}, {{yelpReturn.state}}</p>
         </div>
     </div> -->
@@ -21,10 +22,13 @@
 
 import DrinkCard from "./DrinkCard.vue";
 import RestaurantService from "../services/RestaurantService.js"
+import YelpComponent from './YelpComponent.vue';
 //import yelpService from "../services/YelpService.js";
 
 export default {
-    components: {DrinkCard},
+    components: {DrinkCard, YelpComponent
+    
+    },
 data() {
     return {
         drinks: [],
@@ -66,7 +70,7 @@ created(){
     //   })
     //   .catch(error => {
     //     console.log(error)});
-    // }
+    //}
   }
 }
 </script>

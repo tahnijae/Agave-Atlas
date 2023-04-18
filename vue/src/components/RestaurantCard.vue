@@ -1,11 +1,12 @@
 <template>
   <div class="card container" v-on:click="seeDrinks(restaurant.id)">
-    <img width="100%" :src="require(`@/assets/${restaurant.imageFilePath}`)">
+    <img width="100%" :src=restaurant.imageUrl>
     <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
       <h2>{{ restaurant.name }}</h2>
     
-      <p>{{locationData["place name"]}}, {{locationData["state abbreviation"]}}</p>
+      <p>{{restaurant.address}},</p>
+      <p>{{restaurant.city}}, {{restaurant.state}} {{restaurant.zipCode}}</p>
     </div>
   </div>
 </template>
