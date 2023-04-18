@@ -79,9 +79,10 @@ namespace Capstone.Controllers
             
         }
 
-
+      
         
         [HttpDelete("{drinkID}")]
+        //[Authorize(Roles = "admin")]
         public ActionResult DeleteDrink(int drinkID)
         {
             Drink deletedDrink = drinkDao.GetDrinkById(drinkID);

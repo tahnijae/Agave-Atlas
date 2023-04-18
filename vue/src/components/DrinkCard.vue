@@ -43,6 +43,11 @@ props: ["drink"],
         if(response.status === 204){
           location.reload();
         }
+      })
+      .catch((error) => {
+        if (error) {
+          console.log(error);
+        }
       });
     },
     pushToForm(){

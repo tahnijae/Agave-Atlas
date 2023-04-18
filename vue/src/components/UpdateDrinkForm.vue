@@ -1,7 +1,8 @@
 <template>
   <div >
       <form v-on:submit.prevent="submitForm" class="update-drink-form">
-        <h3 class="title">Update this Drink!</h3>
+       
+        <h2 class="title">Update this Drink!</h2>
         <label for="name">Drink Name:</label>
         <input id="name" type="text" v-model="newDrink.name" />
 
@@ -41,7 +42,12 @@ methods:{
       if(response.status === 200){
         this.$router.push(`/restaurant/${this.$route.params.id}/drinks`)
       }
-    });
+    })
+    .catch((error) => {
+        if (error) {
+          console.log(error);
+        }
+      });
     },
     cancelForm(){
         this.$router.push(`/restaurant/${this.$route.params.id}/drinks`);

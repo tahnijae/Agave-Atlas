@@ -58,7 +58,12 @@ methods:{
       if(response.status === 200){
         location.reload();
       }
-    }); 
+    })
+    .catch((error) => {
+        if (error) {
+          console.log(error);
+        }
+      });
   
     //location.reload() 
     //this.resetDrink();
