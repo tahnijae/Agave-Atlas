@@ -2,6 +2,7 @@
   <div>
       <form id="email-form" v-show="!showPreview">
           <div class="form-group">
+              <h2>Invite a friend to the fiesta!</h2>
               <div id="send" class="form-input">
         <label for="SendName" class="form-label"> Your Name: </label>
         <input id="SendName" type = "text" class="form-control"
@@ -115,6 +116,9 @@ methods: {
 <style scoped>
 .form-group{
     display: flex;
+     position: sticky;
+  top: 80px; /* adjust this value based on the height of your navigation bar */
+  z-index: 1; /* ensure the form appears above other elements */
     flex-direction: column;
     justify-items: center;
     align-content: center;
