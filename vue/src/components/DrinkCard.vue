@@ -56,14 +56,14 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .card {
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  border: 5px solid #eaeaea;
-  /* border-radius: 10px; */
+  background-color: rgb(255, 255, 255);
+  border: #7ac950 2px solid;
+  border-radius: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   margin-bottom: 20px;
 }
@@ -74,11 +74,15 @@ export default {
 
 h2{
   text-align: center;
+  margin: 2px;
+  padding: 3px;
+  font-size: 1.5em;
 }
 
 .card-header {
   background-color: #7bc950;
-  border-bottom: 1px solid #eaeaea;
+  border: none;
+  border-radius: 20px;
   padding: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   /* height: 80px; */

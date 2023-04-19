@@ -152,7 +152,7 @@ h3{
   opacity: 0.8;
   position: fixed;
   bottom: 23px;
-  right: 28px;
+  left: 28px;
   width: 280px;
   z-index: 9;
 }
