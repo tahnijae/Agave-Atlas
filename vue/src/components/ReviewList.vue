@@ -111,6 +111,7 @@ computed: {
 }
 .button:hover{
     background-color: #6db743;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 .not-input-review{
     display:flex;

@@ -8,8 +8,8 @@
             <label class="label" for="zipCode">Input Zip Code</label>
             <input type="text" pattern="[0-9]*" id="zipCode" name="zipCode" placeholder="44118" v-model="zipCode"/>
             <div id="buttons">
-            <input type="button" v-on:click="updateWeather(zipCode); changingZip = false;" value="Go"/>
-            <input type="button" v-on:click="changingZip = false" value="Cancel"/>
+            <input class="btn success" type="button" v-on:click="updateWeather(zipCode); changingZip = false;" value="Go"/>
+            <input class="btn danger" type="button" v-on:click="changingZip = false" value="Cancel"/>
             </div> 
         </span>
         <span id="wantToChangeZip" v-show="!changingZip">
@@ -281,6 +281,11 @@ h2{
 #zipButton{
     width: fit-content;
     margin: 5px;
+}
+.btn:hover{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    color: white;
+    background-color: #6db743;
 }
 
 </style>
