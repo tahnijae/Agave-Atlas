@@ -6,7 +6,7 @@
         <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== "" && this.UserRole=="admin"' >
           <font-awesome-icon :icon="['fas', 'fa-trash']" />
         </button>
-        <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== ""' >Update</button>
+        <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== "" ' >Update</button>
       </div>
     </div>
     <div class = "card-body">

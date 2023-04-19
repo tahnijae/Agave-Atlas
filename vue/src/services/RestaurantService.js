@@ -35,5 +35,10 @@ export default {
 
     addReviewToRestaurant(id, review){
         return http.post(`restaurant/${id}/reviews`, review)
+    },
+    deleteReview(restaurantId,reviewId){
+        return http.delete(`restaurant/${restaurantId}/reviews/${reviewId}`);
     }
+
+
 }
