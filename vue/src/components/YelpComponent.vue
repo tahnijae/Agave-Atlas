@@ -47,11 +47,15 @@ export default {
   border-color: #7bc950;
   background: #f3faef;
   width: 80vw;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 .container {
   display: flex;
   justify-content: space-around;
   background: #FFFFFF;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 h2{
   margin: 0px;

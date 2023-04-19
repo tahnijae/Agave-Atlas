@@ -92,7 +92,7 @@ created(){
 
 .drink-card{
   border: 1px black solid;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
 
