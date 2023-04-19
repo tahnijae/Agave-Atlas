@@ -27,5 +27,13 @@ export default {
 
     getDrinksByRestaurant(id) {
         return http.get(`restaurant/${id}/drinks`);
+    },
+
+    getReviewsByRestaurant(id){
+        return http.get(`restaurant/${id}/reviews`)
+    },
+
+    addReviewToRestaurant(id, review){
+        return http.post(`restaurant/${id}/reviews`, review)
     }
 }
