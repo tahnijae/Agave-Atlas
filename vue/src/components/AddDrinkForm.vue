@@ -2,7 +2,7 @@
   <div class = "drinkForm">
     <button class= "addDrink" v-if="!showAddDrinkForm && isLoggedIn" v-on:click="openForm">Add Drink</button>    
     <div class="form-popup" id="myForm">
-      <form class="form-container" v-on:submit.prevent="submitForm" v-if="showAddDrinkForm">
+      <form class="form-container"   v-if="showAddDrinkForm">
         <h3>Add a Drink!</h3>
         
         <label for="name">Drink Name:</label>
@@ -17,7 +17,7 @@
         </div>
 
         <div class="btns">
-          <button class="bton" type='submit'>Submit</button>
+          <button class="bton"  type='submit' v-on:click.prevent="submitForm" >Submit</button>
           
           <button  class="bton" v-on:click="showAddDrinkForm = showAddDrinkForm">Cancel</button>
         </div>

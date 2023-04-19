@@ -1,6 +1,6 @@
 <template>
   <div >
-      <form v-on:submit.prevent="submitForm" class="update-drink-form">
+      <form  class="update-drink-form">
        
         <h2 class="title">Update this Drink!</h2>
         <label for="name">Drink Name:</label>
@@ -12,7 +12,7 @@
         <label for='isFrozen'>Frozen:</label>
         <input id="isFrozen" type="checkbox" v-model="newDrink.isFrozen"/>
         
-        <button class = "btn" type='submit'>Submit</button>
+        <button class = "btn" type='submit' v-on:click.prevent="submitForm">Submit</button>
         <button v-on:click="cancelForm" class="btn" >Cancel</button>
         
       </form>
@@ -30,7 +30,7 @@ data(){
         newDrink : {
             name: '',
             description:'',
-            isFrozen:'',
+            isFrozen:false,
             restaurantID: Number(this.$route.params.id)  
         },
     drinkId : Number(this.$route.params.drinkId),
@@ -39,8 +39,8 @@ data(){
 methods:{
     submitForm(){
     drinkService.updateDrink(this.drinkId, this.newDrink).then((response)=>{
-      if(response.status === 200){
-        this.$router.push(`/restaurant/${this.$route.params.id}/drinks`)
+      if(response.status == 200){
+        this.$router.push(`/restaurant/${this.$route.params.id}`)
       }
     })
     .catch((error) => {
@@ -50,7 +50,7 @@ methods:{
       });
     },
     cancelForm(){
-        this.$router.push(`/restaurant/${this.$route.params.id}/drinks`);
+        this.$router.push(`/restaurant/${this.$route.params.id}`);
     }
     }
 
