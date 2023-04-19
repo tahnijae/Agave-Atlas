@@ -1,7 +1,7 @@
 <template>
   <div id="yelp_card">
     <!-- <map-component v-bind:restaurant="restaurant" /> -->
-    <h2>{{ restaurant.name }}</h2>
+    <!-- <h2>{{ restaurant.name }}</h2> -->
     <div class="container">
       <div id="address">
         <h4>Address:</h4>

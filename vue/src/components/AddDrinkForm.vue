@@ -166,7 +166,7 @@ h3{
   display: none;
   position: fixed;
   bottom: 0;
-  right: 15px;
+  left: 15px;
   border: 3px solid #f1f1f1;
   z-index: 9;
 }
