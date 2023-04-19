@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using Capstone.DAO;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Authorization;
+using System.Text.Json;
+using Newtonsoft.Json;
+using System;
 
 namespace Capstone.Controllers
 {
@@ -64,6 +67,7 @@ namespace Capstone.Controllers
             }
         }
         [HttpPost("{id}/reviews")]
+        [AllowAnonymous]
         public ActionResult<Review> AddReviewToRestaurant(int id, [FromBody]Review review)
         {
             if(GetRestaurantById(id) == null)
@@ -71,7 +75,7 @@ namespace Capstone.Controllers
                 return NotFound();
             }
 
-           review.Reviewable_ID = id;
+           review.Reviewable_ID = Convert.ToString(id);
            Review rev = reviewDao.AddRestaurantReview(review);
             if(rev == null)
             {

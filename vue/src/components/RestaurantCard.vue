@@ -1,7 +1,7 @@
 <template>
-  <div class="card container" v-on:click="seeDrinks(restaurant.id)">
+  <div class="card container" v-on:click="seeDrinks()">
     
-     <button @click.prevent.stop="deleteRestaurant(restaurant.id)" v-if='this.$store.state.token !== ""' class="delete-button"><font-awesome-icon :icon="['fas', 'fa-trash']" /></button>
+     <button @click.prevent.stop="deleteRestaurant(this.restaurant.id)" v-if='this.$store.state.token !== ""' class="delete-button"><font-awesome-icon :icon="['fas', 'fa-trash']" /></button>
     <img width="100%" :src=restaurant.imageUrl>
     <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
@@ -39,9 +39,11 @@ export default {
         // }
       }
     },
-    methods: {
-  seeDrinks(id) {
-    this.$router.push(`/restaurant/${id}/drinks`);
+    methods:{
+    seeDrinks(){
+      
+      this.$router.push(`/restaurant/${this.restaurant.id}`);
+    },
   },
   deleteRestaurant() {
   if (confirm("Are you sure you want to delete this restaurant?")) {
@@ -53,7 +55,7 @@ export default {
     this.$emit("deleteRestaurant");
   }
 },
-},
+
 
   computed:{
     cardClass(){
@@ -86,15 +88,23 @@ export default {
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 5px solid #eaeaea;
+  /* border-radius: 10px; */
   margin-bottom: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 30%;
   height: 300px;
   background-size: cover;
   background-position: top;
+  position: relative;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.card:hover {
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
 }
 
 h2 {
@@ -110,11 +120,7 @@ h2 {
 .card-body {
   padding: 10px;
 }
-.container {
-  position: relative;
-  text-align: center;
-  color: white;
-}
+
 .centered {
   position: absolute;
   top: 50%;

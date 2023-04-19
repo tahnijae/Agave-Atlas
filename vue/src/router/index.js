@@ -10,7 +10,7 @@ import Restaurant from '../views/Restaurant.vue'
 import Socials from '../views/Socials.vue'
 import Invite from '../components/InviteUserForm.vue'
 import updateDrinkForm from'../views/UpdateDrinkForm.vue'
-
+import ReviewList from '../components/ReviewList.vue'
 Vue.use(Router)
 
 /**
@@ -57,14 +57,14 @@ const router = new Router({
                 requiresAuth: false
             }
         },
+        // {
+        //     path: "/restaurant/:id/drinks",
+        //     name: "drink-list",
+        //     component: Restaurant
+        // },
         {
-            path: "/restaurant/:id/drinks",
-            name: "drink-list",
-            component: Restaurant
-        },
-        {
-            path: "/drinks",
-            name: "all-drinks",
+            path: "/restaurant/:id",
+            name: "restaurant-view",
             component: Restaurant
         },
         {
@@ -84,6 +84,11 @@ const router = new Router({
         path: "/restaurant/:id/drinks/:drinkId",
         name: "update-drink",
         component: updateDrinkForm
+        },
+        {
+            path: "/restaurant/:id/reviews",
+            name: "restaurant-reviews",
+            component: ReviewList
         }
     ]
 })
