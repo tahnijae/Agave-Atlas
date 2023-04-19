@@ -1,7 +1,7 @@
 <template>
   <div id="yelp_card">
     <!-- <map-component v-bind:restaurant="restaurant" /> -->
-    <h2>{{ restaurant.name }}</h2>
+    <!-- <h2>{{ restaurant.name }}</h2> -->
     <div class="container">
       <!-- <div>
         <img width="20%" :src=restaurant.imageUrl />
@@ -47,11 +47,15 @@ export default {
   border-color: #7bc950;
   background: #f3faef;
   width: 80vw;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 .container {
   display: flex;
   justify-content: space-around;
   background: #FFFFFF;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 h2{
   margin: 0px;
