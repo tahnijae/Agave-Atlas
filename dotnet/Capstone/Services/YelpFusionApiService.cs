@@ -74,6 +74,10 @@ namespace Capstone.Services
                 };
                 businesses.Add(yelp);
             }
+            if(businesses.Count == 0)
+            {
+                return null;
+            }
             return businesses[0];
         }
 
