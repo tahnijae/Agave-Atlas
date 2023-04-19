@@ -77,11 +77,18 @@ export default {
             state: "",
             zipCode: "",
           };
+          location.reload();
           //this.yelpReturn = {};
+        }
+        else{
+          alert("Error creating restaurant!");
         }
       });
     },
     GenerateYelpInfo() {
+      if(this.restaurantInput.name == "" || (this.restaurantInput.city == "" && this.restaurantInput.state == "" && this.restaurantInput.zipCode == "")){
+        alert("Please enter name and city or zipcode");
+      }
       let yelpSearch = {
         name: this.restaurantInput.name,
         zipcode: this.restaurantInput.city + " " + this.restaurantInput.state + " " + this.restaurantInput.zipCode,
@@ -89,11 +96,13 @@ export default {
       yelpService
         .GetBusinessByNameAndZip(yelpSearch)
         .then((response) => {
+          if (response.status === 404){
+            alert("Sorry, no results found.")
+          }
           this.yelpReturn = response.data;
           this.haveYelpData = true;
           this.showAddRestaurantForm = false;
           this.ShowMainButton = false;
-          console.log(this.yelpReturn);
         })
         .catch((error) => {
           console.log(error);
@@ -107,7 +116,12 @@ export default {
       this.showMainButton = true;
       this.showAddRestaurantForm = false;
       this.haveYelpData = false;
-      this.restaurantInput = {};
+      this.restaurantInput = {
+            name: "",
+            city: "",
+            state: "",
+            zipCode: "",
+          };
     }
   },
 };
