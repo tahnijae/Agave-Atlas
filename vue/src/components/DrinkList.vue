@@ -87,12 +87,12 @@ created(){
   grid-template-columns: repeat(4,minmax(200px, 1fr));
   grid-gap: 1rem;
   
-  margin: 12px 0 100px 0;
+  margin: 12px 0 0px 0;
 }
 
 .drink-card{
   border: 1px black solid;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
 

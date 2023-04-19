@@ -11,6 +11,8 @@
     <yelp-component id="yelp" class="yelp" v-bind:restaurant="restaurant" />
     <drink-form/>
       <div id="drink-list">
+                <hr style="width:70%; border-color: black 2px; border-style: solid; margin: 5px auto;"/>
+
         <h1>Drinks</h1>
         <hr style="width:70%; border-color: black 2px; border-style: solid; margin: 5px auto;"/>
         <drink-list id="drinks"/>
