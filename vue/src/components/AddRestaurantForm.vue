@@ -23,9 +23,9 @@
       </button>
     </form>
     <div v-if="haveYelpData">
-      <button v-on:click="SubmitForm">Add Restaurant to Agave Atlas!</button>
-      <button v-on:click="showAddRestaurantForm = true">Edit Search</button>
-      <button v-on:click="CancelClick">Cancel</button>
+      <button id="add_restaurant_btn" v-on:click="SubmitForm">Add Restaurant to Agave Atlas!</button>
+      <button id="edit_restaurant_btn" v-on:click="showAddRestaurantForm = true">Edit Search</button>
+      <button id="cancel_restaurant_btn" v-on:click="CancelClick">Cancel</button>
       <yelp-component v-bind:restaurant="yelpReturn" />
     </div>
   </div>
