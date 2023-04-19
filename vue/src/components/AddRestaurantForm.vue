@@ -2,8 +2,8 @@
   <div class="addRestaurantForm">
     <button
       class="addRestaurant"
-      v-if="!showAddRestaurantForm && isAuthenticated && !hideButton"
-      v-on:click="showAddRestaurantForm = !showAddRestaurantForm"
+      v-if="isAuthenticated && showMainButton"
+      v-on:click="MainButtonClick"
     >
       Looking For Somewhere Else?
     </button>
@@ -18,14 +18,14 @@
       <input id="zipCode" type="text" class="input" v-model="restaurantInput.zipCode"/>
       <button @click.prevent="GenerateYelpInfo">Search</button>
 
-      <button v-on:click="showAddRestaurantForm = !showAddRestaurantForm">
+      <button v-on:click="CancelClick">
         Cancel
       </button>
     </form>
     <div v-if="haveYelpData">
-      <button>Looks Good!</button>
-      <button v-on:click="showAddRestaurantForm = !showAddRestaurantForm">Try Again</button>
-      <button>Cancel</button>
+      <button v-on:click="SubmitForm">Add Restaurant to Agave Atlas!</button>
+      <button v-on:click="showAddRestaurantForm = true">Edit Search</button>
+      <button v-on:click="CancelClick">Cancel</button>
       <yelp-component v-bind:restaurant="yelpReturn" />
     </div>
   </div>
@@ -56,7 +56,7 @@ export default {
        // RestaurantID: Number(this.$route.params.id),
       },
       showAddRestaurantForm: false,
-      hideButton: false,
+      showMainButton: true,
       isLoggedIn: false,
       haveYelpData: false,
       yelpReturn: {},
@@ -66,8 +66,8 @@ export default {
     this.isLoggedIn = this.$store.state.token !== "";
   },
   methods: {
-    submitForm() {
-      RestaurantService.addRestaurant(this.restaurantInput).then((response) => {
+    SubmitForm() {
+      RestaurantService.addRestaurant(this.yelpReturn).then((response) => {
         if (response.status === 200) {
           this.$emit("restaurantAdded");
           this.showAddRestaurantForm = false;
@@ -77,6 +77,7 @@ export default {
             state: "",
             zipCode: "",
           };
+          //this.yelpReturn = {};
         }
       });
     },
@@ -91,13 +92,23 @@ export default {
           this.yelpReturn = response.data;
           this.haveYelpData = true;
           this.showAddRestaurantForm = false;
-          this.hideButton = true;
+          this.ShowMainButton = false;
           console.log(this.yelpReturn);
         })
         .catch((error) => {
           console.log(error);
         });
     },
+    MainButtonClick(){
+      this.showMainButton = false;
+      this.showAddRestaurantForm = true;
+    },
+    CancelClick(){
+      this.showMainButton = true;
+      this.showAddRestaurantForm = false;
+      this.haveYelpData = false;
+      this.restaurantInput = {};
+    }
   },
 };
 </script>
