@@ -48,6 +48,14 @@ export default {
         submitReview(){
         RestaurantService.addReviewToRestaurant(this.$route.params.id, this.newReview).then( response => {
             if(response.data != null){
+                this.newReview = {
+            Review_ID: 0,
+            Reviewable_ID: this.$route.params.id,
+            Rating: 0,
+            ReviewerUsername: this.$store.state.user.username,
+            Reviewer_ID: 0,
+            ReviewText: ''
+        };
                 this.onClick();
             } else {
                 alert("Error adding Review!");

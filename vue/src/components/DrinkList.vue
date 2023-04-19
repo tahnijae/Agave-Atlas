@@ -1,6 +1,6 @@
 <template>
   <div class="drink-list-container">
-    <yelp-component class="yelp" v-bind:restaurant="restaurant" />
+    
     <div class="drink-card-grid">
       <!-- <h1>{{restaurant.name}}</h1> -->
       <!-- <button v-on:click=GenerateYelpInfo>Get Info</button>
@@ -23,11 +23,11 @@
 
 import DrinkCard from "./DrinkCard.vue";
 import RestaurantService from "../services/RestaurantService.js"
-import YelpComponent from './YelpComponent.vue';
+//import YelpComponent from './YelpComponent.vue';
 //import yelpService from "../services/YelpService.js";
 
 export default {
-    components: {DrinkCard, YelpComponent
+    components: {DrinkCard
     
     },
 data() {
@@ -78,7 +78,7 @@ created(){
 
 <style>
 .drink-list-container{
-  margin-top: 100px;
+  margin: 10px 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -86,7 +86,8 @@ created(){
   display: grid;
   grid-template-columns: repeat(4,minmax(200px, 1fr));
   grid-gap: 1rem;
-  background-color: #def7d0;
+  
+  margin: 12px 0;
 }
 
 .drink-card{
@@ -123,8 +124,9 @@ div.main div.well-display div.well {
 }
 
 .card-header {
-  background-color: #7bc950;
-  border-bottom: 1px solid #eaeaea;
+  background-color: rgb(123, 201, 80);
+  border: none;
+  border-radius: 20px;
   padding: 10px;
 }
 
@@ -132,5 +134,8 @@ div.main div.well-display div.well {
   padding: 10px;
 }
 
+div.card.list-group-item {
+  background-color: #F3FAEF;
+}
 
 </style>
