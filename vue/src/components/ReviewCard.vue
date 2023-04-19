@@ -7,17 +7,25 @@
       </div>
       
     </div>
-      <p id="review-text">{{review.reviewText}}</p>  
+      <p id="review-text">{{review.reviewText}}</p> 
+      <button class="cardBtn" v-on:click="deleteReview" v-if='this.$store.state.token !== ""' >
+          <font-awesome-icon :icon="['fas', 'fa-trash']" />
+        </button> 
   </div>
 </template>
 
 <script>
+import restaurantService from '../services/RestaurantService.js'
+
 export default {
   name: "review-card",
     props: ["review"],
     data(){
       return {
         revNumber: 0,
+        UserRole: this.$store.state.user.role,
+        restaurantId: this.$route.params.id,
+        reviewId: this.restaurant.id,
       }
     },
     methods: {
@@ -27,6 +35,13 @@ export default {
         } else {
           return this.review.reviewerUsername;
         }
+      },
+      deleteReview(){
+        restaurantService.deleteReview(this.restaurantId,this.reviewId).then((response)=>{
+          if(response.status === 204){
+            alert("successfully deleted!")
+          }
+        })
       }
     },
     created() {
