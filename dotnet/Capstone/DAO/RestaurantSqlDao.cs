@@ -105,9 +105,9 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO restaurants " +
-                        "(name, zip_code, yelp_id, phone, display_phone, address, city, state, country, rating, review_count, is_closed, latitude, longitude, imageUrl, yelp_url ) " + 
+                        "(name, zip_code, yelp_id, phone, display_phone, address, city, state, country, rating, review_count, is_closed, latitude, longitude, image_url, yelp_url ) " + 
                         "OUTPUT INSERTED.restaurant_id " +
-                        "VALUES (@name, @zip_code, @yelp_id, @phone, @display_phone, @address, @city, @state, @country, @rating, @review_count, @is_closed, @latitude, @longitude, @imageUrl, @yelp_url ) ;", conn);
+                        "VALUES (@name, @zip_code, @yelp_id, @phone, @display_phone, @address, @city, @state, @country, @rating, @review_count, @is_closed, @latitude, @longitude, @image_url, @yelp_url ) ;", conn);
                     cmd.Parameters.AddWithValue("@name", inputRestaurant.Name);
                     cmd.Parameters.AddWithValue("@zip_code", inputRestaurant.ZipCode);
                     cmd.Parameters.AddWithValue("@yelp_id", inputRestaurant.YelpId);
