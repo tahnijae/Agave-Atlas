@@ -25,7 +25,9 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM drinks", conn);
+                    SqlCommand cmd = new SqlCommand(@"SELECT drinks.drink_id, drink_name, description, isFrozen, name, restaurants.restaurant_id FROM drinks
+                                                    JOIN restaurant_drinks ON restaurant_drinks.drink_id = drinks.drink_id
+                                                    JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id;", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -50,9 +52,9 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand($@"SELECT drinks.drink_id, drink_name, description, isFrozen FROM drinks 
-                    JOIN restaurant_drinks ON restaurant_drinks.drink_id = drinks.drink_id
-                    JOIN restaurants ON restaurant_drinks.restaurant_id = restaurants.restaurant_id
+                    SqlCommand cmd = new SqlCommand($@"SELECT drinks.drink_id, drink_name, description, isFrozen, name, restaurants.restaurant_id FROM drinks
+                                                    JOIN restaurant_drinks ON restaurant_drinks.drink_id = drinks.drink_id
+                                                    JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
                     WHERE restaurants.restaurant_id = @restID",conn);
                     cmd.Parameters.AddWithValue("@restID", restID);
 
@@ -194,6 +196,8 @@ namespace Capstone.DAO
             newDrink.Name = Convert.ToString(reader["drink_name"]);
             newDrink.Description = Convert.ToString(reader["description"]);
             newDrink.IsFrozen = Convert.ToBoolean(reader["isFrozen"]);
+            newDrink.RestaurantID = Convert.ToInt32(reader["restaurant_id"]);
+            newDrink.RestaurantName = Convert.ToString(reader["name"]);
 
             return newDrink;
 

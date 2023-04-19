@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import drinks from '../services/DrinkService.js'
 
 Vue.use(Vuex)
 
@@ -21,6 +22,8 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    drinks: [],
+    filter: ''
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -38,6 +41,19 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_FILTER(state, filter){
+      state.filter = filter;
+      if(filter != ''){
+        console.log(drinks.getAllDrinks().data);
+      state.drinks = drinks.getAllDrinks().data.filter(drink => {
+        if(drink.description.includes(filter) || drink.name.includes(filter)){
+          return drink;
+        }
+      })
+    } else {
+      state.drinks = drinks.getAllDrinks();
+    }
     }
   }
 })
