@@ -150,11 +150,12 @@ h3{
   border: none;
   cursor: pointer;
   opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  left: 28px;
+  position: sticky;
+  bottom: 20px;
+  left: 10px;
   width: 280px;
   z-index: 9;
+  
 }
 .addDrink:hover{
   background-color: #6db743;
@@ -175,6 +176,7 @@ h3{
   max-width: 300px;
   padding: 10px;
   background-color: white;
+  
 }
 
 .form-container input[type=text], .form-container input[type=password] {
