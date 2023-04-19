@@ -20,7 +20,7 @@
         >
           Login
         </button>
-        &nbsp;&nbsp;
+        <!-- &nbsp;&nbsp; -->
         <button
           v-if="this.$store.state.token !== ''"
           @click="$router.push('/logout')"

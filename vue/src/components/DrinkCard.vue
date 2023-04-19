@@ -3,7 +3,7 @@
     <div class = "card-header">
       <h2>{{decodeHtml(drink.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}}</h2> 
       <div class="btns">
-        <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >
+        <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== "" && this.UserRole=="admin"' >
           <font-awesome-icon :icon="['fas', 'fa-trash']" />
         </button>
         <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== ""' >Update</button>
@@ -28,6 +28,7 @@ export default {
   data(){
     return {
       drinkId : this.drink.drinkID,
+      UserRole: this.$store.state.user.role,
     }
   },
   props: ["drink","drink.drinkID"],
@@ -38,15 +39,24 @@ export default {
       return txt.value;
     },
     deleteDrink(){
+      if(this.UserRole === "admin"){
+      if(confirm("Are you sure you wish to delete?")){
       drinkService.deleteDrink(this.drinkId).then((response)=> {
         if(response.status === 204){
           location.reload();
+          alert("Successfully deleted.")
         }
+      
       }).catch((error) => {
         if (error) {
           console.log(error);
         }
       });
+      }
+      }
+      else{
+        alert("you are not permitted to delete this!")
+      }
     },
     pushToForm(){
       this.$router.push({ name: "update-drink", params: { id: this.$route.params.id, drinkId: this.drinkId } });
