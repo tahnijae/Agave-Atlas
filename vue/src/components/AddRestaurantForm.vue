@@ -77,6 +77,7 @@ export default {
             state: "",
             zipCode: "",
           };
+          location.reload();
           //this.yelpReturn = {};
         }
       });
