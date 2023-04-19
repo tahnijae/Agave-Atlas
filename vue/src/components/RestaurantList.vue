@@ -9,12 +9,17 @@
          @deleteRestaurant="deleteRestaurant"
       />
     </div>
+    <div>
+      <add-restaurant-form :is-authenticated="isAuthenticated" />
+    </div>
   </div>
 </template>
 
 <script>
 import RestaurantCard from "./RestaurantCard.vue";
 import RestaurantService from "../services/RestaurantService.js";
+import AddRestaurantForm from './AddRestaurantForm.vue';
+//import authService from "../services/AuthService.js";
 
 export default {
   methods: {
@@ -43,15 +48,18 @@ export default {
   name: "restaurant-list",
   components: {
     RestaurantCard,
+    AddRestaurantForm,
   },
   data() {
     return {
       restaurants: [],
+      isAuthenticated: false, // Set to false by default
     };
   },
 
   created() {
     this.fetchRestaurants();
+    this.isAuthenticated = this.$store.state.token !== "";
   },
 };
 </script>

@@ -49,6 +49,7 @@ export default {
         RestaurantService.deleteRestaurant(this.restaurant.id).then((response) => {
           if (response.status === 204) {
             location.reload();
+             alert("Successfully deleted.")
             this.$emit("deleteRestaurant");
           }
         });
