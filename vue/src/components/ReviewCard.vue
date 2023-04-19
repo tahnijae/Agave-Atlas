@@ -7,17 +7,23 @@
       </div>
       
     </div>
-      <p id="review-text">{{review.reviewText}}</p> 
-      <button class="cardBtn" v-on:click="deleteReview" v-if='this.$store.state.token !== ""' >
-          <font-awesome-icon :icon="['fas', 'fa-trash']" />
-        </button> 
+      <p id="review-text">{{review.reviewText}}</p>
+      
+      <button v-on:click="deleteReview" v-if='this.$store.state.token !== "" && UserRole === "admin"' >
+        <font-awesome-icon :icon="['fas', 'fa-trash']" />
+      </button> 
+      
   </div>
 </template>
 
 <script>
 import restaurantService from '../services/RestaurantService.js'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
+  components:{
+    FontAwesomeIcon
+  },
   name: "review-card",
     props: ["review"],
     data(){
@@ -25,7 +31,7 @@ export default {
         revNumber: 0,
         UserRole: this.$store.state.user.role,
         restaurantId: this.$route.params.id,
-        reviewId: this.restaurant.id,
+        reviewId: this.review.review_ID
       }
     },
     methods: {
@@ -38,8 +44,12 @@ export default {
       },
       deleteReview(){
         restaurantService.deleteReview(this.restaurantId,this.reviewId).then((response)=>{
-          if(response.status === 204){
+          if(response.status === 200){
             alert("successfully deleted!")
+            location.reload();
+          }
+          else{
+            alert("error while deleting review!")
           }
         })
       }
@@ -99,5 +109,15 @@ export default {
 #lime{
   height: 2.5rem;
   margin: 0px 5px;
+}
+button{
+  top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 </style>
