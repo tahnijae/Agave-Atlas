@@ -28,6 +28,7 @@ export default {
   data(){
     return {
       drinkId : this.drink.drinkID,
+      UserRole: this.$store.state.user.role,
     }
   },
   props: ["drink","drink.drinkID"],
@@ -38,15 +39,24 @@ export default {
       return txt.value;
     },
     deleteDrink(){
+      if(this.UserRole === "admin"){
+      if(confirm("Are you sure you wish to delete?")){
       drinkService.deleteDrink(this.drinkId).then((response)=> {
         if(response.status === 204){
           location.reload();
+          alert("Successfully deleted.")
         }
+      
       }).catch((error) => {
         if (error) {
           console.log(error);
         }
       });
+      }
+      }
+      else{
+        alert("you are not permitted to delete this!")
+      }
     },
     pushToForm(){
       this.$router.push({ name: "update-drink", params: { id: this.$route.params.id, drinkId: this.drinkId } });
