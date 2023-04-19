@@ -14,9 +14,11 @@
             />
       </div>
       </div>
-      <div> 
-      <add-review-form  v-show="reviewForm" @clicked="reviewForm=false; forceUpdate();"/>
+      
+      <div > 
+      <add-review-form   v-show="reviewForm" @clicked="reviewForm=false; forceUpdate();"/>
       </div>
+      
     
   </div>
 </template>
@@ -45,7 +47,8 @@ data(){
             Reviewer_ID: 0,
             ReviewText: ''
         },
-        componentKey: 0
+        componentKey: 0,
+        
     }
 }
 ,
@@ -115,5 +118,8 @@ computed: {
     flex-wrap: wrap;
     justify-items: center;
     align-content: center;
+}
+#review-container{
+    width:90%;
 }
 </style>

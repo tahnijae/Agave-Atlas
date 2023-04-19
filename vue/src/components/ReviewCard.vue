@@ -22,10 +22,10 @@ export default {
     },
     methods: {
       setUsername(){
-        if(this.review.username == null){
+        if(this.review.reviewerUsername === ''){
           return "Anonymous"
         } else {
-          return this.review.username;
+          return this.review.reviewerUsername;
         }
       }
     },
@@ -66,6 +66,12 @@ export default {
 }
 #review-text{
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+  padding: 10px;
 }
 #lime-stars{
   height: 3rem;

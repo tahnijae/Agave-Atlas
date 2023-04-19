@@ -152,6 +152,7 @@ namespace Capstone.DAO
 
                     int reviewID = Convert.ToInt32(cmd.ExecuteScalar());
                     rev = GetReviewByID(reviewID);
+                    rev.ReviewerUsername = userDao.GetUserByID(rev.Reviewer_ID).Username;
                 }
             }
             catch (Exception)
@@ -192,7 +193,7 @@ namespace Capstone.DAO
                 Review_ID = Convert.ToInt32(read["review_id"]),
                 Reviewable_ID = Convert.ToString(reviewableID),
                 Rating = Convert.ToString(read["rating"]),
-                ReviewerUsername = "",
+                ReviewerUsername = userDao.GetUserByID(Convert.ToInt32(read["user_id"])).Username,
                 Reviewer_ID = Convert.ToInt32(read["user_id"]),
                 ReviewText = Convert.ToString(read["review_text"])
             };

@@ -2,19 +2,25 @@
   <div class="input-review" >
         <form class="was-validated">
             <div class="form-group">
-                <label for="ratingselect">Rating</label>
-                <select class="custom-select mr-sm-2" id="ratingselect" name="ratingSelect" v-model="newReview.Rating" required>
-                    <option value="" selected>Choose...</option>
-                    <option value='1'> 1</option>
-                    <option value='2'> 2 </option>
-                    <option value='3'> 3 </option>
-                    <option value='4'> 4 </option>
-                    <option value='5'> 5 </option>
-                </select>
-                <label for="reviewText">Your Review</label>
-                <textarea class="form-control is-invalid" id="reviewText" placeholder="Write your thoughts here!" v-model="newReview.ReviewText" required></textarea>
-                <button type="button" class="btn btn-success" v-bind:disabled="checkComplete" v-on:click="submitReview(); onClick()">Submit</button>
-                <button type="button" class="btn btn-danger" v-on:click="onClick()">Cancel</button>
+                <div id="ratingInput">
+                    <label for="ratingselect">Rating</label>
+                    <select class="custom-select mr-sm-2" id="ratingselect" name="ratingSelect" v-model="newReview.Rating" required>
+                        <option value="" selected>Choose...</option>
+                        <option value='1'> 1</option>
+                        <option value='2'> 2 </option>
+                        <option value='3'> 3 </option>
+                        <option value='4'> 4 </option>
+                        <option value='5'> 5 </option>
+                    </select>
+                </div>
+                <div id="reviewInput">
+                    <label for="reviewText">Your Review</label>
+                    <textarea class="form-control is-invalid" id="reviewText" placeholder="Write your thoughts here!" v-model="newReview.ReviewText" required></textarea>
+                </div>
+                <div id="button-container">
+                    <button type="button" class="btn btn-success" v-bind:disabled="checkComplete" v-on:click="submitReview(); onClick()">Submit</button>
+                    <button type="button" class="btn btn-danger" v-on:click="onClick()">Cancel</button>
+                </div>
             </div>
         </form>
     </div>
@@ -65,6 +71,16 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+#button-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+    margin: 8px 8px;
+}
+.btn{
+    margin: 10px;
+}
 </style>
