@@ -1,6 +1,6 @@
 <template>
   <div class = "drinkForm">
-    <button class= "addDrink" v-if="!showAddDrinkForm && isLoggedIn" v-on:click="openForm">Add Drink</button>    
+    <button class= "addDrink btn success" v-if="!showAddDrinkForm && isLoggedIn" v-on:click="openForm">Not seeing what you're sipping? Add a Drink!</button>    
     <div class="form-popup" id="myForm">
       <form class="form-container"   v-if="showAddDrinkForm">
         <h3>Add a Drink!</h3>
@@ -107,7 +107,7 @@ button{
   margin-left:10px;
 } */
 
-.bton{
+.bton, .btn{
   width:150px;
   background-color: #7bc950;
   color: white;
@@ -144,7 +144,7 @@ h3{
 } */
 
 .addDrink {
-  background-color: #555;
+  /* background-color: #555; */
   color: white;
   padding: 16px 20px;
   border: none;
@@ -155,6 +155,10 @@ h3{
   left: 28px;
   width: 280px;
   z-index: 9;
+}
+.addDrink:hover{
+  background-color: #6db743;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .form-popup {
@@ -212,5 +216,8 @@ h3{
 .frozen{
   display: flex;
   margin-bottom: 10px;
+}
+.btn {
+  margin: auto;
 }
 </style>
