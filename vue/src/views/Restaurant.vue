@@ -12,7 +12,7 @@
       <div id="drink-list">
         <h1>Drinks</h1>
         <hr style="width:70%; border-color: black 2px; border-style: solid; margin: 5px auto;"/>
-        <drink-list/>
+        <drink-list id="drinks"/>
       </div>
       <div id="reviews">
         <h1>Reviews</h1>
@@ -61,8 +61,10 @@ export default {
 <style scoped>
 #hero-image{
   width: 100%;
-  height: 100%;
+  height: 300px;
   position: sticky;
+  object-fit:none;
+  object-position: center;
   display: block;
   grid-area: hero;
   margin: auto;
@@ -76,6 +78,7 @@ h1{
 }
 #reviews{
   grid-area: review;
+  width: 100%;
 }
 #hero-background{
   z-index: 100;
@@ -96,9 +99,12 @@ h1{
   grid-template-areas: 
   "hero hero"
   "list review";
+  grid-template-columns: 2.5fr 1fr;
   margin: 70px 0 0 0;
   gap: 8px;
 }
-
+#drinks {
+  margin: auto;
+}
 
 </style>

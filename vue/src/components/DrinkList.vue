@@ -77,7 +77,7 @@ created(){
 </script>
 
 <style>
-/* .drink-list-container{
+.drink-list-container{
   margin-top: 100px;
 }
 
@@ -101,7 +101,7 @@ h1{
 }
 
 
-/* div.main {
+div.main {
   margin: 1rem 0;
 }
 div.main div.well-display {
@@ -129,6 +129,6 @@ div.main div.well-display div.well {
 
 .card-body {
   padding: 10px;
-} */
+}
 
 </style>
