@@ -47,6 +47,10 @@ namespace Capstone.Services
             // Deserialize the JSON data into a C# object
             var result = JsonConvert.DeserializeObject<dynamic>(content);
             List<YelpRestaurant> businesses = new List<YelpRestaurant>();
+            //if (result = null)
+            //{
+            //    return null;
+            //}
             foreach (var business in result.businesses)
             {
                 YelpRestaurant yelp = new YelpRestaurant()
