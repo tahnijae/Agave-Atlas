@@ -140,12 +140,16 @@ FIELDTERMINATOR = ',',
 ROWTERMINATOR = ';'
 );
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf6efd4840c7d623185e401f2d37144688c24c81
 
 --SELECT drinks.drink_id, drink_name, description FROM drinks 
 --JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
 --JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
 --WHERE name LIKE 'bar%' ;
-=======
+
 USE final_capstone
 GO
 ALTER TABLE restaurants
@@ -230,6 +234,7 @@ update restaurants
 set image_file_path = 'AgaveAndRye.jpg'
 WHERE name ='Agave & Rye' AND zip_code = '44113';
 
+<<<<<<< HEAD
 --SELECT drinks.drink_id, drink_name, description FROM drinks 
 --JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
 --JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
@@ -240,6 +245,8 @@ WHERE name ='Agave & Rye' AND zip_code = '44113';
 --JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
 --JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
 --WHERE name = 'Agave & Rye';
+=======
+>>>>>>> bf6efd4840c7d623185e401f2d37144688c24c81
 
 
 COMMIT;
