@@ -1,7 +1,7 @@
 <template>
   <div>
     <navigation-bar/>
-    <drink-form/>
+    <drink-form class="drink-form"/>
     <drink-list/>
   </div>
 </template>

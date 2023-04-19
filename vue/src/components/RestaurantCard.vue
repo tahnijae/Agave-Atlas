@@ -86,15 +86,23 @@ export default {
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 5px solid #eaeaea;
+  /* border-radius: 10px; */
   margin-bottom: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 30%;
   height: 300px;
   background-size: cover;
   background-position: top;
+  position: relative;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.card:hover {
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
 }
 
 h2 {
@@ -110,11 +118,7 @@ h2 {
 .card-body {
   padding: 10px;
 }
-.container {
-  position: relative;
-  text-align: center;
-  color: white;
-}
+
 .centered {
   position: absolute;
   top: 50%;

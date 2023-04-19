@@ -51,4 +51,7 @@ export default {
   justify-content: space-around;
   background: #FFFFFF;
 }
+h2{
+  margin: 0px;
+}
 </style>
