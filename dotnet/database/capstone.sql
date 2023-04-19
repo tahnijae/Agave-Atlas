@@ -116,7 +116,7 @@ GO
 BEGIN TRANSACTION
 --Partner Projects\
 BULK INSERT dbo.drinks 
-FROM "C:\Users\Student\workspace\Partner Projects\c-sharp-finalcapstone-team1\dotnet\database\Drinks.csv"
+FROM "C:\Users\Student\workspace\c-sharp-finalcapstone-team1\dotnet\database\Drinks.csv"
 WITH (FORMAT = 'CSV',
 FIRSTROW = 2,
 FIELDTERMINATOR = ',',
@@ -124,7 +124,7 @@ ROWTERMINATOR = ';'
 );
 
 BULK INSERT dbo.restaurants
-FROM "C:\Users\Student\workspace\Partner Projects\c-sharp-finalcapstone-team1\dotnet\database\Restaurants.csv"
+FROM "C:\Users\Student\workspace\c-sharp-finalcapstone-team1\dotnet\database\Restaurants.csv"
 WITH (FORMAT = 'CSV',
 FIRSTROW = 2,
 FIELDTERMINATOR = ',',
@@ -133,20 +133,20 @@ ROWTERMINATOR = ';'
 
 
 BULK INSERT dbo.restaurant_drinks
-FROM "C:\Users\Student\workspace\Partner Projects\c-sharp-finalcapstone-team1\dotnet\database\drink_restaurant.csv"
+FROM "C:\Users\Student\workspace\c-sharp-finalcapstone-team1\dotnet\database\drink_restaurant.csv"
 WITH (FORMAT = 'CSV',
 FIRSTROW = 2,
 FIELDTERMINATOR = ',',
 ROWTERMINATOR = ';'
 );
 
-<<<<<<< Updated upstream
+
 
 --SELECT drinks.drink_id, drink_name, description FROM drinks 
 --JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
 --JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
 --WHERE name LIKE 'bar%' ;
-=======
+
 USE final_capstone
 GO
 ALTER TABLE restaurants
@@ -231,17 +231,6 @@ update restaurants
 set image_file_path = 'AgaveAndRye.jpg'
 WHERE name ='Agave & Rye' AND zip_code = '44113';
 
-SELECT drinks.drink_id, drink_name, description FROM drinks 
-JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
-JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
-WHERE name LIKE 'bar%' ;
->>>>>>> Stashed changes
-
-SELECT drinks.drink_id, drink_name, description 
-FROM drinks 
-JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
-JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
-WHERE name = 'Agave & Rye';
 
 
 COMMIT;
