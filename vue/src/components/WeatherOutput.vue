@@ -13,7 +13,7 @@
             </div> 
         </span>
         <span id="wantToChangeZip" v-show="!changingZip">
-                <input type="button" v-on:click="changingZip = true" 
+                <input id="zipButton" class="btn success" type="button" v-on:click="changingZip = true" 
                 value="Change Location"/>
         </span>
       </div>
@@ -222,7 +222,7 @@ display: grid;
     ". header . zip";
     grid-template-columns:1fr 2fr .3fr .7fr;
     margin: 0 0 10px 0;
-    height: 70px;
+    height: 85px;
     
 }
 h2{
@@ -261,7 +261,7 @@ h2{
     grid-area: zip;
     align-self:baseline;
     justify-self: center;
-    width:100%;
+    margin: auto;
 }
 #zipChange {
     display: flex;
@@ -276,6 +276,10 @@ h2{
 } 
 #buttons>input{
     display:inline;
+    margin: 5px;
+}
+#zipButton{
+    width: fit-content;
     margin: 5px;
 }
 

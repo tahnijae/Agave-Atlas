@@ -4,7 +4,7 @@
           <weather-output class="weather"/>
       <!-- <yelp-component /> -->
     <div class="restaurant-list">
-      <h2>Locations:</h2>
+      <h2>Locations</h2>
        <add-restaurant-form :is-authenticated="isAuthenticated" />
       <restaurant-list />
     </div>

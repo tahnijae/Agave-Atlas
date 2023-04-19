@@ -74,7 +74,7 @@ export default {
   padding: 10px;
 }
 #lime-stars{
-  height: 3rem;
+  height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -82,7 +82,7 @@ export default {
   justify-content: space-evenly;
 }
 #lime{
-  height: 100%;
+  height: 2.5rem;
   margin: 0px 5px;
 }
 </style>
