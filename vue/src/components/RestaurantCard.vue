@@ -41,7 +41,6 @@ export default {
     },
     methods:{
     seeDrinks(){
-      
       this.$router.push(`/restaurant/${this.restaurant.id}`);
     },
   },

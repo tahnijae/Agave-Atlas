@@ -3,7 +3,7 @@
     <div class = "card-header">
       <h2>{{decodeHtml(drink.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}}</h2> 
       <div class="btns">
-        <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >
+        <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== "" && this.UserRole=="admin"' >
           <font-awesome-icon :icon="['fas', 'fa-trash']" />
         </button>
         <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== ""' >Update</button>
