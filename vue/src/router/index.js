@@ -11,6 +11,7 @@ import Socials from '../views/Socials.vue'
 import Invite from '../components/InviteUserForm.vue'
 import updateDrinkForm from'../views/UpdateDrinkForm.vue'
 import ReviewList from '../components/ReviewList.vue'
+import SearchDrinksInput from '../components/SearchDrinksInput.vue'
 Vue.use(Router)
 
 /**
@@ -89,6 +90,11 @@ const router = new Router({
             path: "/restaurant/:id/reviews",
             name: "restaurant-reviews",
             component: ReviewList
+        },
+        {
+            path: "/searchDrinks",
+            name: "search-drinks",
+            component: SearchDrinksInput
         }
     ]
 })
