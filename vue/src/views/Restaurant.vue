@@ -8,6 +8,7 @@
         <h1 id="hero-text" class="hero">{{restaurant.name}}</h1>
       </div>
     <img :src="restaurant.imageUrl" id="hero-image"/>
+    <yelp-component id="yelp" class="yelp" v-bind:restaurant="restaurant" />
     <drink-form/>
       <div id="drink-list">
         <h1>Drinks</h1>
@@ -29,13 +30,15 @@ import NavigationBar from '../components/NavigationBar.vue'
 import drinkForm from '../components/AddDrinkForm.vue'
 import RestaurantService from '../services/RestaurantService.js'
 import ReviewList from '../components/ReviewList.vue'
+import YelpComponent from '../components/YelpComponent.vue'
 
 export default {
   components: { 
     DrinkList, 
     NavigationBar,
     drinkForm,
-    ReviewList
+    ReviewList,
+    YelpComponent
   },
   data(){
     return {
@@ -69,6 +72,9 @@ export default {
   grid-area: hero;
   margin: auto;
 }
+#yelp{
+  grid-area: yelp;
+}
 h1{
   text-align: center;
   margin: 5px 0 0 0;
@@ -98,13 +104,12 @@ h1{
   display: grid;
   grid-template-areas: 
   "hero hero"
+  "yelp yelp"
   "list review";
   grid-template-columns: 2.5fr 1fr;
   margin: 70px 0 0 0;
   gap: 8px;
 }
-#drinks {
-  margin: auto;
-}
+
 
 </style>
