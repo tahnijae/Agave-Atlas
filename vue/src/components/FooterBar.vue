@@ -4,53 +4,45 @@
       <div class="row">
         <div class="col-md-4">
           <h4>Contact Us</h4>
-          <p>Email: example@example.com</p>
-          <p>Phone: 555-555-5555</p>
-          <p>Address: 123 Main Street, Anytown USA</p>
+          <p>Email: agaveatlas@gmail.com</p>
+          <p>Address: 7100 Euclid Ave #140, Cleveland, OH 44103</p>
         </div>
-        <div class="col-md-4">
+        <div class="row bottom-row">
+        <div class="col-md-12 github-icons">
           <h4>Follow Us</h4>
           <ul class="social-icons">
             <li>
               <a href="https://twitter.com/AgaveAtlas">
                 <font-awesome-icon :icon="['fab', 'twitter']" />
-              </a>
+              Twitter</a>
             </li>
                     <li>
-                        <a href="https://github.com/user1">
+                        <a href="https://github.com/bmullaly14">
                             <font-awesome-icon class="fa-lg" :icon="['fab', 'github-alt']" style="color: purple" />
-                        </a>
+                        Ben Mullaly</a>
                     </li>
                     <li>
-                        <a href="https://github.com/user2">
+                        <a href="https://github.com/jfrancioso">
                             <font-awesome-icon class="fa-lg" :icon="['fab', 'github-alt']" style="color: green" />
-                        </a>
+                        Joseph Francioso</a>
                     </li>
                     <li>
-                        <a href="https://github.com/user3">
+                        <a href="https://github.com/tahnijae">
                             <font-awesome-icon class="fa-lg" :icon="['fab', 'github-alt']" style="color: black" />
-                        </a>
+                        Tahni Hresko</a>
                     </li>
                     <li>
                         <a href="https://github.com/user4">
                             <font-awesome-icon class="fa-lg" :icon="['fab', 'github-alt']" style="color: red" />
-                        </a>
+                        Wilson Warholic</a>
                     </li>
                     <li>
-                        <a href="https://github.com/user5">
+                        <a href="https://github.com/DaleJMitchell">
                             <font-awesome-icon class="fa-lg" :icon="['fab', 'github-alt']" style="color: blue" />
-                        </a>
+                        Dale Mitchell</a>
                     </li>
                 </ul>
         </div>
-        <div class="col-md-4">
-          <h4>Navigation</h4>
-          <ul class="navigation">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact Us</a></li>
-          </ul>
         </div>
       </div>
       <div class="row">
@@ -125,4 +117,48 @@ footer {
 #footer_buttons button:hover {
   color: #ccc;
 }
+
+
+  /* github styles ... */
+  
+    .bottom-row {
+    margin-top: 1em;
+  }
+
+  .github-icons {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .github-icons ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .github-icons li {
+    margin-right: 2em; /* Add a right margin to create space between items */
+  }
+
+  .github-icons li:last-child {
+    margin-right: 0; /* Remove right margin from the last item */
+  }
+
+  .github-icons li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+  }
+
+  .github-icons li a:hover {
+    text-decoration: underline;
+  }
+
+  .github-icons li a font-awesome-icon {
+    margin-right: 10px; /* increase the margin-right value */
+  }
+
 </style>
