@@ -107,7 +107,12 @@ export default {
       this.showMainButton = true;
       this.showAddRestaurantForm = false;
       this.haveYelpData = false;
-      this.restaurantInput = {};
+      this.restaurantInput = {
+            name: "",
+            city: "",
+            state: "",
+            zipCode: "",
+          };
     }
   },
 };
