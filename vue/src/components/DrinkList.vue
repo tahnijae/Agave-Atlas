@@ -43,6 +43,7 @@ created(){
     RestaurantService.getDrinksByRestaurant(this.$route.params.id)
     .then((response) => {
         this.drinks = response.data;
+        console.log(this.drinks);
     })
     .catch((error) => {
         if(error) {
@@ -52,6 +53,7 @@ created(){
     RestaurantService.getRestaurant(this.$route.params.id)
       .then((response) => {
         this.restaurant = response.data;
+        
       })
       .catch((error) => {
         if (error) {
