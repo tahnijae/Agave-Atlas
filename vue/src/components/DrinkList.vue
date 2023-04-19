@@ -27,7 +27,9 @@ import YelpComponent from './YelpComponent.vue';
 //import yelpService from "../services/YelpService.js";
 
 export default {
-    components: {DrinkCard, YelpComponent},
+    components: {DrinkCard, YelpComponent
+    
+    },
 data() {
     return {
         drinks: [],
@@ -75,7 +77,7 @@ created(){
 </script>
 
 <style>
-.drink-list-container{
+/* .drink-list-container{
   margin-top: 100px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

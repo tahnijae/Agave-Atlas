@@ -1,7 +1,7 @@
 <template>
-  <div class="card container" v-on:click="seeDrinks(restaurant.id)">
+  <div class="card container" v-on:click="seeDrinks()">
     
-     <button @click.prevent.stop="deleteRestaurant(restaurant.id)" v-if='this.$store.state.token !== ""' class="delete-button"><font-awesome-icon :icon="['fas', 'fa-trash']" /></button>
+     <button @click.prevent.stop="deleteRestaurant(this.restaurant.id)" v-if='this.$store.state.token !== ""' class="delete-button"><font-awesome-icon :icon="['fas', 'fa-trash']" /></button>
     <img width="100%" :src=restaurant.imageUrl>
     <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
@@ -39,9 +39,11 @@ export default {
         // }
       }
     },
-    methods: {
-  seeDrinks(id) {
-    this.$router.push(`/restaurant/${id}/drinks`);
+    methods:{
+    seeDrinks(){
+      
+      this.$router.push(`/restaurant/${this.restaurant.id}`);
+    },
   },
   deleteRestaurant() {
   if (confirm("Are you sure you want to delete this restaurant?")) {
@@ -53,7 +55,7 @@ export default {
     this.$emit("deleteRestaurant");
   }
 },
-},
+
 
   computed:{
     cardClass(){
