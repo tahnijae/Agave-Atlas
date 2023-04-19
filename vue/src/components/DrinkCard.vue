@@ -2,14 +2,16 @@
   <div class = "card">
     <div class = "card-header">
       <h2>{{decodeHtml(drink.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}}</h2> 
-      <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >
-        <font-awesome-icon :icon="['fas', 'fa-trash']" />
-      </button>
-      <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== ""' >Update</button>
+      <div class="btns">
+        <button class="cardBtn" v-on:click="deleteDrink" v-if='this.$store.state.token !== ""' >
+          <font-awesome-icon :icon="['fas', 'fa-trash']" />
+        </button>
+        <button class="cardBtn" v-on:click="pushToForm" v-if='this.$store.state.token !== ""' >Update</button>
+      </div>
     </div>
     <div class = "card-body">
       <p>{{decodeHtml(drink.description)}}</p>
-      <p class="frozen-text" v-if="drink.isFrozen">It's Frozen!</p>
+      <p class="frozen-text" v-if="drink.isFrozen">It's Frozen! <font-awesome-icon :icon="['fasr', 'snowflake']" flip style="color: #78ddf2; font-size: large;" /></p>
     </div>
   </div>
 </template>
@@ -60,11 +62,14 @@ export default {
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 5px solid #eaeaea;
+  /* border-radius: 10px; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   margin-bottom: 20px;
-  
+}
+
+.card:hover {
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
 }
 
 h2{
@@ -76,14 +81,16 @@ h2{
   border-bottom: 1px solid #eaeaea;
   padding: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  height: 80px;
+  /* height: 80px; */
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
 }
 
 .card-body {
   padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .cardBtn{
@@ -96,9 +103,16 @@ h2{
   cursor: pointer;
 }
 
+.btns{
+  display: flex;
+  /* flex-flow: row; */
+  justify-content: center;
+  align-items: center;
+}
+
 .frozen-text {
   text-align: right;
-  font-family: fantasy;
-  color: blue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
 }
 </style>

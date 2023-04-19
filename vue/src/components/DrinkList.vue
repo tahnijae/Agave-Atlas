@@ -1,6 +1,6 @@
 <template>
   <div class="drink-list-container">
-    <yelp-component v-bind:restaurant="restaurant" />
+    <yelp-component class="yelp" v-bind:restaurant="restaurant" />
     <div class="drink-card-grid">
       <!-- <h1>{{restaurant.name}}</h1> -->
       <!-- <button v-on:click=GenerateYelpInfo>Get Info</button>
@@ -79,6 +79,7 @@ created(){
 <style>
 .drink-list-container{
   margin-top: 100px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .drink-card-grid{
@@ -130,5 +131,6 @@ div.main div.well-display div.well {
 .card-body {
   padding: 10px;
 }
+
 
 </style>
