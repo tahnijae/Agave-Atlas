@@ -1,12 +1,12 @@
 <template>
   <div class="card container" v-on:click="seeDrinks()">
     
-     <button @click.prevent.stop="deleteRestaurant(this.restaurant.id)" v-if='this.$store.state.token !== ""' class="delete-button"><font-awesome-icon :icon="['fas', 'fa-trash']" /></button>
+     <button @click.prevent.stop="deleteRestaurant()" v-if='this.$store.state.token !== "" && this.UserRole=="admin"' class="delete-button"><font-awesome-icon :icon="['fas', 'fa-trash']" /></button>
     <img width="100%" :src=restaurant.imageUrl>
     <!-- <img width="100%" :src="require(`@/assets/${restaurant.name.replace(/\s+/g, '')}${restaurant.zipCode}.jpg`)"> -->
     <div class="centered">
       <h2>{{ restaurant.name }}</h2>
-    
+
       <p>{{restaurant.address}}</p>
       <p>{{restaurant.city}}, {{restaurant.state}} {{restaurant.zipCode}}</p>
     </div>
@@ -29,6 +29,7 @@ export default {
     props: ["restaurant"],
     data(){
       return{
+        UserRole: this.$store.state.user.role,
         locationData: [],
         // yelpInput:{
         //   name: this.restaurant.name,
@@ -39,22 +40,21 @@ export default {
         // }
       }
     },
-    methods:{
-    seeDrinks(){
-      
+    methods: {
+    seeDrinks() {
       this.$router.push(`/restaurant/${this.restaurant.id}`);
     },
-  },
-  deleteRestaurant() {
-  if (confirm("Are you sure you want to delete this restaurant?")) {
-    RestaurantService.deleteRestaurant(this.restaurant.id).then((response) => {
-      if (response.status === 204) {
-        location.reload();
+    deleteRestaurant() {
+      if (confirm("Are you sure you want to delete this restaurant?")) {
+        RestaurantService.deleteRestaurant(this.restaurant.id).then((response) => {
+          if (response.status === 204) {
+            location.reload();
+            this.$emit("deleteRestaurant");
+          }
+        });
       }
-    });
-    this.$emit("deleteRestaurant");
-  }
-},
+    },
+  },
 
 
   computed:{
