@@ -8,19 +8,36 @@
       Looking For Somewhere Else?
     </button>
     <form v-on:submit.prevent="submitForm" v-if="showAddRestaurantForm">
-      <label for="name">Name:</label>
-      <input id="name" type="text" class="input" v-model="restaurantInput.name" />
-      <label for="city">City:</label>
-      <input id="city" type="text" class="input" v-model="restaurantInput.city" />
-      <label for="state">State:</label>
-      <input id="state" type="text" class="input" v-model="restaurantInput.state" />
-      <label for="zipCode">Zipcode:</label>
-      <input id="zipCode" type="text" class="input" v-model="restaurantInput.zipCode"/>
-      <button @click.prevent="GenerateYelpInfo">Search</button>
-
-      <button v-on:click="CancelClick">
+      <div class="form-row">
+        <div class="form-group col-md-12" id="name-input">
+          <!-- <label for="name">Name:</label> -->
+          <input placeholder="Restaurant Name" id="name" type="text" class="input" v-model="restaurantInput.name" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <!-- <label for="city">City:</label> -->
+          <input placeholder="City" id="city" type="text" class="input" v-model="restaurantInput.city" />
+        </div>
+        <div class="form-group col-md-4">
+          <!-- <label for="state">State:</label> -->
+          <input placeholder="State" id="state" type="text" class="input" v-model="restaurantInput.state" />
+        </div>
+        <div class="form-group col-md-4">
+          <!-- <label for="zipCode">Zipcode:</label> -->
+          <input placeholder="Zip Code" id="zipCode" type="text" class="input" v-model="restaurantInput.zipCode"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+      <button @click.prevent="GenerateYelpInfo" class="btn">Search</button>
+        </div>
+        <div class="form-group col-md-6">
+      <button v-on:click="CancelClick" class="btn">
         Cancel
       </button>
+      </div>
+      </div>
     </form>
     <div v-if="haveYelpData">
       <button id="add_restaurant_btn" v-on:click="SubmitForm">Add Restaurant to Agave Atlas!</button>
@@ -126,14 +143,35 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .addRestaurant {
-  margin: 5px 47.5%;
+  margin: 5px 30%;
   padding: 5px 15px;
   background-color: #7bc950;
   color: white;
   border: none;
   border-radius: 20px;
   cursor: pointer;
+}
+.addRestaurant:hover{
+  color: white;
+  background-color: #6db743;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+.btn{
+  margin: auto;
+  margin-left: auto;
+  width: 60%;
+}
+.btn:hover{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    color: white;
+    background-color: #6db743;
+}
+#name-input{
+  width: 60%;
+}
+#name{
+  width: 60%;
 }
 </style>
