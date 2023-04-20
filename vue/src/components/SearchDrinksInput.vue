@@ -98,7 +98,9 @@ created(){
   align-content: center;
   width: 30vw;
   height: 30vh;
-  background-color:#F3FAEF;
+  background-color:#e0ebdb;
+  border: none;
+  border-radius: 15px;
 }
 #input-for-search{
   display: flex;
