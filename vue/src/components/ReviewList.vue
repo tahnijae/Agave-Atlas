@@ -3,6 +3,7 @@
       <div class="not-input-review" v-show="!reviewForm">
         <div id="no-reviews" v-if="reviews.length === 0">
           <h3>Nobody has reviewed {{restaurant.name}} yet!</h3>
+          <h4 v-if="$store.state.token === ''">Log in to leave a review!</h4>
           <h4 v-if="$store.state.token != ''"> Click here to be the first!</h4>
         </div>
       <input class="button" type="button" v-on:click="reviewForm = true;" value="Add a Review!" v-if="$store.state.token != ''"/>
