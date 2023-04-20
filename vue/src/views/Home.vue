@@ -9,15 +9,7 @@
       <!-- <add-restaurant-form :is-authenticated="isAuthenticated" /> -->
     </div>
      <twitter-feed />
-<<<<<<< HEAD
-     <footer style="grid-area: footer; grid-row: 4; grid-column: 2/5;">
-       <div class="footer-content">
-     <footer-bar />
-       </div>
-     </footer>
-=======
      <footer-bar id="footer" />
->>>>>>> cad3111d6a0098198076d348793e5956bc4a2afa
   </div>
 </template>
 <script>
@@ -100,33 +92,17 @@ export default {
   background-repeat:no-repeat;
   background-attachment: fixed;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-<<<<<<< HEAD
-=======
   padding-bottom: 25em; /* add padding to bottom */
 
->>>>>>> cad3111d6a0098198076d348793e5956bc4a2afa
 }
 
-/* footer {
+footer {
   background-color: #f3faef;
   color: rgb(24, 23, 23);
   padding: 1em;
-<<<<<<< HEAD
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-} */
-
-
-
-
-=======
   transition: opacity 0.5s ease-out;
   opacity: 0;
-  /* transition-delay: 0.5s; */
-  position: fixed;
+  transition-delay: 0.5s;
 }
 
 footer.show {
@@ -136,7 +112,6 @@ footer.hide {
   transition-delay: 0s;
   transition-duration: .2s;
 }
->>>>>>> cad3111d6a0098198076d348793e5956bc4a2afa
 h2{
   color: Black;
 }

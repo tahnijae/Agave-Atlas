@@ -1,45 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <footer class="footer">
-    <ul>
-      <li class="twitter-icon">
-        <a href="https://twitter.com/AgaveAtlas">
-          <font-awesome-icon :icon="['fab', 'twitter']" />
-          Twitter
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/bmullaly14">
-          <font-awesome-icon class="fa-lg" :icon="['fab', 'github-alt']" style="color: purple" />
-          Ben Mullaly
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/jfrancioso">
-          <font-awesome-icon class="fa-lg" :icon="['fab', 'github-alt']" style="color: green" />
-          Joseph Francioso
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/tahnijae">
-          <font-awesome-icon class="fa-lg" :icon="['fab', 'github-alt']" style="color: black" />
-          Tahni Hresko
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/user4">
-          <font-awesome-icon class="fa-lg" :icon="['fab', 'github-alt']" style="color: red" />
-          Wilson Warholic
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/DaleJMitchell">
-          <font-awesome-icon class="fa-lg" :icon="['fab', 'github-alt']" style="color: blue" />
-          Dale Mitchell
-        </a>
-      </li>
-    </ul>
-=======
   <footer>
     <div class="container">
       <div class="row">
@@ -96,7 +55,6 @@
         </div>
       </div>
     </div>
->>>>>>> cad3111d6a0098198076d348793e5956bc4a2afa
   </footer>
 </template>
 
@@ -108,12 +66,6 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 library.add(fab);
 
 export default {
-<<<<<<< HEAD
-  name: "FooterBar",
-  components: {
-    FontAwesomeIcon,
-  },
-=======
     components: {
         FontAwesomeIcon
     },
@@ -122,7 +74,6 @@ export default {
             window.scrollTo({ top: 0, behavior: "auto" });
         }
     }
->>>>>>> cad3111d6a0098198076d348793e5956bc4a2afa
 };
 </script>
 
@@ -140,12 +91,8 @@ export default {
 ul {
   list-style: none;
   display: flex;
-<<<<<<< HEAD
-  justify-content: center;
-=======
   flex-wrap: wrap;
   flex-direction: column;
->>>>>>> cad3111d6a0098198076d348793e5956bc4a2afa
   align-items: center;
   margin: 0;
   padding: 0;
@@ -155,10 +102,6 @@ li {
   margin-right: 1em;
 }
 
-<<<<<<< HEAD
-a {
-  text-decoration: none;
-=======
 #footer_buttons {
   display: flex;
   flex-wrap: wrap;
@@ -169,7 +112,6 @@ a {
 #footer_buttons button {
   background-color: transparent;
   border: none;
->>>>>>> cad3111d6a0098198076d348793e5956bc4a2afa
   color: white;
 }
 
@@ -177,11 +119,6 @@ a:hover {
   text-decoration: underline;
 }
 
-<<<<<<< HEAD
-.twitter-icon {
-  margin-right: 1em;
-}
-=======
 
   /* github styles ... */
   
@@ -240,5 +177,4 @@ a:hover {
     align-items: center;
   }
 
->>>>>>> cad3111d6a0098198076d348793e5956bc4a2afa
 </style>
