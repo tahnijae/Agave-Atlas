@@ -116,7 +116,7 @@ GO
 BEGIN TRANSACTION
 --Partner Projects\
 BULK INSERT dbo.drinks 
-FROM "C:\Users\Student\workspace\c-sharp-finalcapstone-team1\dotnet\database\Drinks.csv"
+FROM "C:\Users\Student\workspace\Partner Projects\c-sharp-finalcapstone-team1\dotnet\database\Drinks.csv"
 WITH (FORMAT = 'CSV',
 FIRSTROW = 2,
 FIELDTERMINATOR = ',',
@@ -124,7 +124,7 @@ ROWTERMINATOR = ';'
 );
 
 BULK INSERT dbo.restaurants
-FROM "C:\Users\Student\workspace\c-sharp-finalcapstone-team1\dotnet\database\Restaurants.csv"
+FROM "C:\Users\Student\workspace\Partner Projects\c-sharp-finalcapstone-team1\dotnet\database\Restaurants.csv"
 WITH (FORMAT = 'CSV',
 FIRSTROW = 2,
 FIELDTERMINATOR = ',',
@@ -133,17 +133,14 @@ ROWTERMINATOR = ';'
 
 
 BULK INSERT dbo.restaurant_drinks
-FROM "C:\Users\Student\workspace\c-sharp-finalcapstone-team1\dotnet\database\drink_restaurant.csv"
+FROM "C:\Users\Student\workspace\Partner Projects\c-sharp-finalcapstone-team1\dotnet\database\drink_restaurant.csv"
 WITH (FORMAT = 'CSV',
 FIRSTROW = 2,
 FIELDTERMINATOR = ',',
 ROWTERMINATOR = ';'
 );
 
-<<<<<<< HEAD
-=======
-
->>>>>>> bf6efd4840c7d623185e401f2d37144688c24c81
+COMMIT;
 
 --SELECT drinks.drink_id, drink_name, description FROM drinks 
 --JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
@@ -156,6 +153,8 @@ ALTER TABLE restaurants
 ADD image_file_path VARCHAR(300);
 USE final_capstone
 GO
+
+BEGIN TRANSACTION
 update restaurants
 set image_file_path = 'Barrio44107.jpg'
 WHERE name = 'Barrio' AND zip_code = '44107';
@@ -234,19 +233,6 @@ update restaurants
 set image_file_path = 'AgaveAndRye.jpg'
 WHERE name ='Agave & Rye' AND zip_code = '44113';
 
-<<<<<<< HEAD
---SELECT drinks.drink_id, drink_name, description FROM drinks 
---JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
---JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
---WHERE name LIKE 'bar%' ;
-
---SELECT drinks.drink_id, drink_name, description 
---FROM drinks 
---JOIN restaurant_drinks ON drinks.drink_id = restaurant_drinks.drink_id
---JOIN restaurants ON restaurants.restaurant_id = restaurant_drinks.restaurant_id
---WHERE name = 'Agave & Rye';
-=======
->>>>>>> bf6efd4840c7d623185e401f2d37144688c24c81
 
 
 COMMIT;
