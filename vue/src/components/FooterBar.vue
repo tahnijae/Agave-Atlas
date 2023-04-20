@@ -5,8 +5,11 @@
         <div class="col-md-4">
           <h4>Contact Us</h4>
           <p>Email: agaveatlas@gmail.com</p>
+          </div>
+          <div class = "col-md-4">
           <p>Address: 7100 Euclid Ave #140, Cleveland, OH 44103</p>
-        </div>
+          </div>
+        
         <div class="row bottom-row">
         <div class="col-md-12 github-icons">
           <h4>Follow Us</h4>
@@ -68,7 +71,7 @@ export default {
     },
     methods: {
         scrollToTop() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({ top: 0, behavior: "auto" });
         }
     }
 };
@@ -91,6 +94,7 @@ footer {
 
 #footer {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
 }
@@ -101,6 +105,7 @@ footer {
 
 #footer_buttons {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin-top: 1em;
 }
@@ -127,7 +132,7 @@ footer {
 
   .github-icons {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-wrap: wrap;
   }
 
@@ -151,6 +156,7 @@ footer {
     align-items: center;
     text-decoration: none;
     color: black;
+    
   }
 
   .github-icons li a:hover {
@@ -159,6 +165,20 @@ footer {
 
   .github-icons li a font-awesome-icon {
     margin-right: 10px; /* increase the margin-right value */
+  }
+
+  h4{
+    margin: 0 8px 8px 0;
+  }
+
+  .row{
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+  }
+  .row:last-child{
+    justify-items: space-between;
+    align-items: center;
   }
 
 </style>
