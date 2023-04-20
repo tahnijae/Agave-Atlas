@@ -116,6 +116,11 @@ h2{
   border-radius: 20px;
   cursor: pointer;
 }
+.cardBtn:hover{
+  background-color: #F3FAEF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  
+}
 
 .btns{
   display: flex;

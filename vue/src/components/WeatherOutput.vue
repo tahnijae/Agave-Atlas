@@ -230,6 +230,7 @@ h2{
     display: inline-block;
     grid-area: header;
     position:sticky;
+    text-align: center;
 }
 .sunny, .partlyCloudy{
     background-image: url('../assets/weatherPics/blueSky.jpg');
@@ -257,10 +258,12 @@ h2{
     background-position: center;
 }
 #changeZipStuff{
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
     grid-area: zip;
     align-self:baseline;
     justify-self: center;
+    justify-content: center;
     margin: auto;
 }
 #zipChange {
@@ -268,7 +271,7 @@ h2{
     flex-wrap: wrap;
     flex-direction: column;
     text-align: center;
-    align-content:center;
+    align-items:center;
     width:initial;
 }
 #zipCode{ 
@@ -277,6 +280,7 @@ h2{
 #buttons>input{
     display:inline;
     margin: 5px;
+    padding: 2px 4px;
 }
 #zipButton{
     width: fit-content;
@@ -287,5 +291,7 @@ h2{
     color: white;
     background-color: #6db743;
 }
-
+.label{
+    margin: 2px;
+}
 </style>

@@ -128,12 +128,17 @@ export default {
 </script>
 <style>
 .addRestaurant {
-  margin: 5px 47.5%;
+  margin: 5px 30%;
   padding: 5px 15px;
   background-color: #7bc950;
   color: white;
   border: none;
   border-radius: 20px;
   cursor: pointer;
+}
+.addRestaurant:hover{
+  color: white;
+  background-color: #6db743;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 </style>
