@@ -75,14 +75,14 @@ methods: {
         
         ZipCodeService.GetCityByZipcode(zip).then(response =>
         {
-            console.log(response.data)
+            
             this.newLat = response.data.places[0].latitude;
             this.newLong = response.data.places[0].longitude;
             this.cityName = response.data.places[0]["place name"];
             this.stateAbb = response.data.places[0]["state abbreviation"];
-            //console.log(this.newLat + ', ' + this.newLong);
+            
             Weather.GetWeatherByCoordinate(this.newLat, this.newLong).then(response => {
-                console.log(response);
+               
             this.setWeatherPeriods(response);
             this.filter = 0;
             this.weatherBackground();

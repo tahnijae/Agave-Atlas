@@ -69,11 +69,7 @@ export default {
     components: {
         FontAwesomeIcon
     },
-    methods: {
-        // scrollToTop() {
-        //     window.scrollTo({ top: 0, behavior: "auto" });
-        // }
-    }
+    
 };
 </script>
 

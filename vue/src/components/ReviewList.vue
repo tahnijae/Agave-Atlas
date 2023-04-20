@@ -59,7 +59,7 @@ created(){
             this.reviews = response.data
             
         }
-        console.log(this.reviews);
+        
     }).catch(error =>
     {
         if(error){
@@ -74,7 +74,7 @@ methods:{
             this.reviews = response.data
             
         }
-        console.log(this.reviews);
+        
     }).catch(error =>
     {
         if(error){
