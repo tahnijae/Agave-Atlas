@@ -9,7 +9,7 @@
       <!-- <add-restaurant-form :is-authenticated="isAuthenticated" /> -->
     </div>
      <twitter-feed />
-     <footer-bar />
+     <footer-bar id="footer" />
   </div>
 </template>
 <script>
@@ -109,13 +109,18 @@ footer {
   background-color: #F3FAEF;
   color: rgb(24, 23, 23);
   padding: 1em;
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.5s ease-out;
   opacity: 0;
-  transition-delay: 0.5s;
+  /* transition-delay: 0.5s; */
+  position: fixed;
 }
 
 footer.show {
   opacity: 1;
+}
+footer.hide {
+  transition-delay: 0s;
+  transition-duration: .2s;
 }
 h2{
   color: Black;
