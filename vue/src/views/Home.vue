@@ -9,7 +9,11 @@
       <!-- <add-restaurant-form :is-authenticated="isAuthenticated" /> -->
     </div>
      <twitter-feed />
+     <footer style="grid-area: footer; grid-row: 4; grid-column: 2/5;">
+       <div class="footer-content">
      <footer-bar />
+       </div>
+     </footer>
   </div>
 </template>
 <script>
@@ -18,7 +22,7 @@ import WeatherOutput from '../components/WeatherOutput.vue';
 import NavigationBar from '../components/NavigationBar.vue'
 import authService from "../services/AuthService.js";
 import TwitterFeed from "../components/TwitterFeed.vue";
-import FooterBar from '../components/FooterBar.vue';
+// import FooterBar from '../components/FooterBar.vue';
 //import AddRestaurantForm from '../components/AddRestaurantForm.vue';
 //import YelpComponent from '../components/YelpComponent.vue';
 
@@ -30,7 +34,7 @@ export default {
     WeatherOutput,
     NavigationBar,
     TwitterFeed,
-    FooterBar,
+    // FooterBar,
 //    AddRestaurantForm,
     //YelpComponent,
   },
@@ -49,17 +53,6 @@ export default {
       this.$store.commit("LOGOUT");
       this.isAuthenticated = false;
     }
-  },
- mounted() {
-    window.addEventListener("scroll", () => {
-    const main = this.$refs.main;
-    const footer = document.querySelector("footer");
-    if (main && main.offsetHeight + main.offsetTop < window.innerHeight + window.pageYOffset) {
-      footer.style.opacity = 1;
-    } else {
-      footer.style.opacity = 0;
-    }
-    });
   },
 };
 </script>
@@ -87,14 +80,15 @@ export default {
   
 }
 
-.main{
+.main {
   display: grid;
   grid-template-areas: 
-  "banner banner banner banner banner"
-  ". weather weather weather ."
-  ". rest rest rest ."
-  ". footer footer footer ."; /* Add footer to grid */
+    "banner banner banner banner banner"
+    ". weather weather weather ."
+    ". rest rest rest ."
+    ". footer footer footer .";
   grid-template-columns: .5fr 1fr 4fr 1fr .5fr;
+  grid-template-rows: auto auto 1fr auto; /* Add this line */
   background-color: #def7d0;
   /* background-image: url('/src/assets/cheers.jpg'); */
   background-size: cover;
@@ -102,21 +96,22 @@ export default {
   background-repeat:no-repeat;
   background-attachment: fixed;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding-bottom: 20em; /* add padding to bottom */
-
 }
-footer {
-  background-color: #F3FAEF;
+
+/* footer {
+  background-color: #f3faef;
   color: rgb(24, 23, 23);
   padding: 1em;
-  transition: opacity 0.3s ease-out;
-  opacity: 0;
-  transition-delay: 0.5s;
-}
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+} */
 
-footer.show {
-  opacity: 1;
-}
+
+
+
 h2{
   color: Black;
 }
