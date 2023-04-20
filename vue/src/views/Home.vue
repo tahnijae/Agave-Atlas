@@ -102,7 +102,7 @@ export default {
   background-repeat:no-repeat;
   background-attachment: fixed;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding-bottom: 20em; /* add padding to bottom */
+  padding-bottom: 25em; /* add padding to bottom */
 
 }
 footer {
