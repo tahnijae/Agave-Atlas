@@ -2,6 +2,7 @@
   <div class = "card" v-on:click="routeToPage()">
     <div class = "card-header" >
       <h2>{{decodeHtml(drink.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}}</h2> 
+      <h4> |-{{drink.restaurantName}}-| </h4>
     <div class = "card-body">
       <p>{{decodeHtml(drink.description)}}</p>
       <p class="frozen-text" v-if="drink.isFrozen">It's Frozen! <font-awesome-icon :icon="['fasr', 'snowflake']" flip style="color: #78ddf2; font-size: large;" /></p>
