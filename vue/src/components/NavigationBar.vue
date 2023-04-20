@@ -14,6 +14,10 @@
         <!-- <router-link v-if="isAuthenticated" v-bind:to="{ name: 'home' }"
         > Home </router-link> -->
         &nbsp;&nbsp;
+        <button @click="$router.push('/searchDrinks')" >
+          <font-awesome-icon :icon="['fa-solid', 'fa-magnifying-glass']" />
+          Search
+        </button>
         <button
           v-if="this.$store.state.token == ''"
           @click="$router.push('/login')"

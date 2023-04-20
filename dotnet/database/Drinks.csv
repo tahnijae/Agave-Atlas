@@ -1,10 +1,10 @@
-id,drink_name,description,isFrozen;
+drink_id,drink_name,description,isFrozen;
 1,casa margarita,Made with El Jimador Reposado 100% Blue Agave tequila ,1;
 2,casa margarita,Made with El Jimador Reposado 100% Blue Agave tequila,0;
 3,barrio paloma,"Cazadores Reposado, fresh lime juice, grapefruit, agave nectar",0;
 4,burnin&#39 thyme,"Espolon Reposado, Del Maguey Vida, agave nectar, mango, fresh thyme",0;
 5,coco loco,"Patron Silver, Cointreau, agave nectar, lime, coconut water, ginger sugar rim",0;
-6,freaky tiki,"Jalapen&#771o-infused El Jimador Blanco, Triple Sec, passionfruit, pineapple, house sour mix, chili-lime salt rim, jalapeño",0;
+6,freaky tiki,"Jalapen&#771o-infused El Jimador Blanco, Triple Sec, passionfruit, pineapple, house sour mix, chili-lime salt rim, jalapen&#771",0;
 7,margarita perfecto,"Avion Silver, Dry orange Curacao, fresh squeezed lime juice, Agave nectar, Grand Marnier float",0;
 8,marigold,"Cazadores Reposado, Cointreau, strawberry-pear puree, lemonade",0;
 9,pink pomelo,"El Jimador Blanco, Luxardo Liqueur, grapefruit juice, fresh lime juice, Demerara, Luxardo cherry",0;

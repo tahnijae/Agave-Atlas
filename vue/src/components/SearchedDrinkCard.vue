@@ -11,7 +11,6 @@
 </template>
 
 <script>
-
 import drinkService from '../services/DrinkService.js'
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
