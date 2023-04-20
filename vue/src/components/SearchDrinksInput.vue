@@ -6,7 +6,7 @@
     <div id="search-stuff">
       <div id="input-for-search">
       <label class="col-form-label-lg" for="drink-search">Search All Drinks</label>
-      <input id="drink-search" class="form-control" name="drink-search" type="text" placeholder="Guava" v-model="filterValue">
+      <input id="drink-search" class="form-control" name="drink-search" type="text" placeholder="Lime" v-model="filterValue">
       </div>
       <input id="search-button" type="button" class="btn success" value="Search" v-on:click="setFilter();"/>
       <h3 v-show="noResults" class="fa-shake">No results!</h3>

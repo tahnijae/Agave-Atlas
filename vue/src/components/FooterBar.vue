@@ -69,11 +69,7 @@ export default {
     components: {
         FontAwesomeIcon
     },
-    methods: {
-        scrollToTop() {
-            window.scrollTo({ top: 0, behavior: "auto" });
-        }
-    }
+    
 };
 </script>
 
@@ -82,7 +78,7 @@ footer {
   background-color: #333;
   color: white;
   padding: 1em;
-  position: fixed;
+  
   bottom: 0;
   left: 0;
   right: 0;
