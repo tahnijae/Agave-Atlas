@@ -69,17 +69,16 @@ export default {
     components: {
         FontAwesomeIcon
     },
-    methods: {
-        scrollToTop() {
-            window.scrollTo({ top: 0, behavior: "auto" });
-        }
-    }
+    
 };
 </script>
 
-<style scoped>
-.footer {
-  position: absolute;
+<style>
+footer {
+  background-color: #333;
+  color: white;
+  padding: 1em;
+  
   bottom: 0;
   left: 0;
   right: 0;

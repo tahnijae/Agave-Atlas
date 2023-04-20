@@ -2,13 +2,13 @@
   <div class="main" ref="main">
     <navigation-bar />
           <weather-output class="weather"/>
-      <!-- <yelp-component /> -->
+      
     <div class="restaurant-list">
       <br>
       <h2>Locations</h2>
       <br>
       <restaurant-list />
-      <!-- <add-restaurant-form :is-authenticated="isAuthenticated" /> -->
+      
     </div>
      <twitter-feed />
      <footer-bar id="footer" />
@@ -20,9 +20,8 @@ import WeatherOutput from '../components/WeatherOutput.vue';
 import NavigationBar from '../components/NavigationBar.vue'
 import authService from "../services/AuthService.js";
 import TwitterFeed from "../components/TwitterFeed.vue";
-// import FooterBar from '../components/FooterBar.vue';
-//import AddRestaurantForm from '../components/AddRestaurantForm.vue';
-//import YelpComponent from '../components/YelpComponent.vue';
+import FooterBar from '../components/FooterBar.vue';
+
 
 
 export default {
@@ -32,9 +31,8 @@ export default {
     WeatherOutput,
     NavigationBar,
     TwitterFeed,
-    // FooterBar,
-//    AddRestaurantForm,
-    //YelpComponent,
+    FooterBar,
+
   },
   data() {
     return {
@@ -51,7 +49,7 @@ export default {
       this.$store.commit("LOGOUT");
       this.isAuthenticated = false;
     }
-  },
+  }
 };
 </script>
 <style scoped>
@@ -81,20 +79,20 @@ export default {
 .main {
   display: grid;
   grid-template-areas: 
-    "banner banner banner banner banner"
-    ". weather weather weather ."
-    ". rest rest rest ."
-    ". footer footer footer .";
+  "banner banner banner banner banner"
+  ". weather weather weather ."
+  ". rest rest rest ."
+  "footer footer footer footer footer"; /* Add footer to grid */
   grid-template-columns: .5fr 1fr 4fr 1fr .5fr;
   grid-template-rows: auto auto 1fr auto; /* Add this line */
   background-color: #def7d0;
-  /* background-image: url('/src/assets/cheers.jpg'); */
+  
   background-size: cover;
   background-position:center;
   background-repeat:no-repeat;
   background-attachment: fixed;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding-bottom: 25em; /* add padding to bottom */
+  
 
 }
 
@@ -102,18 +100,17 @@ footer {
   background-color: #f3faef;
   color: rgb(24, 23, 23);
   padding: 1em;
-  transition: opacity 0.5s ease-out;
-  opacity: 0;
-  transition-delay: 0.5s;
+  margin: 50px 0 0 0;
+  opacity: 1; 
+  
+  grid-area: footer;
+}
+#main{
+  margin: 16px 0 0 0;
+  height: 100vh;
+  width: 100vw;
 }
 
-footer.show {
-  opacity: 1;
-}
-footer.hide {
-  transition-delay: 0s;
-  transition-duration: .2s;
-}
 h2{
   color: Black;
 }
