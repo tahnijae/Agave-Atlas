@@ -112,6 +112,8 @@ h1{
   margin: 70px 0 0 0;
   gap: 8px;
 }
-
+.drinkForm {
+  margin: 10px 20px 20px 20px;
+}
 
 </style>

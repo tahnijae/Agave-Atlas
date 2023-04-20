@@ -49,7 +49,9 @@ methods: {
     }
     this.filterDrinks = this.drinks.filter(drink =>
     {
-      if(drink.description.includes(this.filterValue) || drink.name.includes(this.filterValue)){
+      let filter = this.filterValue.toLowerCase();
+      let desc = drink.description.toLowerCase();
+      if(desc.includes(filter) || drink.name.includes(filter)){
           return this.makeDrink(drink);
     }})
     if(this.filterDrinks.length === 0){

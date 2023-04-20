@@ -1,8 +1,8 @@
 <template>
   <div class = "drinkForm">
-    <button class= "addDrink btn success" v-if="!showAddDrinkForm && isLoggedIn" v-on:click="openForm">Not seeing what you're sipping? Add a Drink!</button>    
+    <button class= "addDrink btn success" v-if="isLoggedIn" v-show="!showAddDrinkForm" v-on:click="openForm">Not seeing what you're sipping? Add a Drink!</button>    
     <div class="form-popup" id="myForm">
-      <form class="form-container"   v-if="showAddDrinkForm">
+      <form class="form-container"   v-show="showAddDrinkForm">
         <h3>Add a Drink!</h3>
         
         <label for="name">Drink Name:</label>
@@ -19,7 +19,7 @@
         <div class="btns">
           <button class="bton"  type='submit' v-on:click.prevent="submitForm" >Submit</button>
           
-          <button  class="bton" v-on:click="showAddDrinkForm = showAddDrinkForm">Cancel</button>
+          <button  class="bton" v-on:click.prevent="showAddDrinkForm = false;">Cancel</button>
         </div>
     
       </form>
