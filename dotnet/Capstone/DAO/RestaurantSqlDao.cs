@@ -26,7 +26,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM restaurants", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM restaurants ORDER BY rating DESC", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
