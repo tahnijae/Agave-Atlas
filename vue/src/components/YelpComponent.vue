@@ -1,7 +1,7 @@
 <template>
   <div id="yelp_card">
     <!-- <map-component v-bind:restaurant="restaurant" /> -->
-    <!-- <h2>{{ restaurant.name }}</h2> -->
+    <h2>{{ restaurant.name }}</h2>
     <div class="container">
       <!-- <div>
         <img width="20%" :src=restaurant.imageUrl />
@@ -55,9 +55,15 @@ export default {
   justify-content: space-around;
   background: #FFFFFF;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
 
 }
 h2{
   margin: 0px;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
+
+
 </style>
