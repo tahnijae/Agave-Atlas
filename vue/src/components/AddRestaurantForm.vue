@@ -2,19 +2,19 @@
   <div class="addRestaurantForm">
     <button
       class="addRestaurant"
-      v-if="isAuthenticated && showMainButton"
+      v-show="isAuthenticated && showMainButton"
       v-on:click="MainButtonClick"
     >
       Looking For Somewhere Else?
     </button>
-    <form v-on:submit.prevent="submitForm" v-if="showAddRestaurantForm">
+    <form v-on:submit.prevent="submitForm" v-show="showAddRestaurantForm">
       <div class="form-row">
         <div class="form-group col-md-12" id="name-input">
           <!-- <label for="name">Name:</label> -->
           <input placeholder="Restaurant Name" id="name" type="text" class="input" v-model="restaurantInput.name" />
         </div>
       </div>
-      <div class="form-row">
+      <div class="form-row" id="second-form-row">
         <div class="form-group col-md-4">
           <!-- <label for="city">City:</label> -->
           <input placeholder="City" id="city" type="text" class="input" v-model="restaurantInput.city" />
@@ -28,18 +28,18 @@
           <input placeholder="Zip Code" id="zipCode" type="text" class="input" v-model="restaurantInput.zipCode"/>
         </div>
       </div>
-      <div class="form-row">
+      <div class="form-row" id="final-row">
         <div class="form-group col-md-6">
-      <button @click.prevent="GenerateYelpInfo" class="btn">Search</button>
+      <button @click.prevent="GenerateYelpInfo" class="btn" id="search-button">Search</button>
         </div>
         <div class="form-group col-md-6">
-      <button v-on:click="CancelClick" class="btn">
+      <button v-on:click="CancelClick" class="btn" id="cancel-button">
         Cancel
       </button>
       </div>
       </div>
     </form>
-    <div v-if="haveYelpData">
+    <div v-show="haveYelpData">
       <button id="add_restaurant_btn" v-on:click="SubmitForm">Add Restaurant to Agave Atlas!</button>
       <button id="edit_restaurant_btn" v-on:click="showAddRestaurantForm = true">Edit Search</button>
       <button id="cancel_restaurant_btn" v-on:click="CancelClick">Cancel</button>
@@ -173,5 +173,21 @@ export default {
 }
 #name{
   width: 60%;
+}
+form{
+  background-color: #F3FAEF;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+}
+#second-form-row{
+  width: 60%;
+  margin: auto;
+}
+#final-row{
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 </style>
