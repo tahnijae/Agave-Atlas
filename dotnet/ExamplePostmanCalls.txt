@@ -44,9 +44,32 @@ https://localhost:44315/restaurant/16
 
 
 
-YELP
+YELP GET ( but actually post)
 https://localhost:44315/YelpApi/ 
 {
     "zipcode": "44113",
     "name": "Edisons"
+}
+
+
+POST NEW RESTAURANT
+https://localhost:44315/restaurant/new
+{
+    "name": "Barrio2",
+    "zipCode": "44106",
+    "yelpId": "veXxt8rGY_RJPpA5QkHT9Q",
+    "phone": "12168623498",
+    "displayPhone": "(216) 862-3498",
+    "address": "2466 Fairmount Blvd",
+    "city": "Cleveland Heights",
+    "state": "OH",
+    "country": "US",
+    "rating": 3.5,
+    "reviewCount": 279,
+    "isClosed": false,
+    "latitude": 41.500630000000001,
+    "longitude": -81.592150000000004,
+    "imageUrl": "https://s3-media2.fl.yelpcdn.com/bphoto/VdyhYPcfx5vZRGr3slLkBw/o.jpg",
+    "yelpUrl": "https://www.yelp.com/biz/barrio-cleveland-heights-2?adjust_creative=QLP3fjN-Nr88NGW9H40Xvw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=QLP3fjN-Nr88NGW9H40Xvw",
+    "reviews": null
 }
