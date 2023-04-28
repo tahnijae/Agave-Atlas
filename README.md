@@ -1,5 +1,17 @@
-# Final Capstone
+# Agave Atlas
 
-This directory contains all of the starter projects for the final capstone. The Vue starter project works with both the Java and .NET backend projects with a single configuration update that you can read about in the README.
+A full stack web application in C# and Vue.js in order to find and track the best margaritas!
 
-Each project contains instructions that provides information about the starting code and explains how to get started with the final capstone project.
+
+## Dependancies
+Server Side:
+- RestSharp
+- MailKit
+- Create YelpApiKey.txt in dotnet > Capstone
+    >BEARER PASTE_API_KEY_HERE
+
+Client Side:
+- npm i --save @fortawesome/vue-fontawesome@latest-2
+- npm i --save @fortawesome/free-solid-svg-icons
+- npm install --save @fortawesome/fontawesome-free
+- npm i @tomtom-international/web-sdk-maps
